@@ -1,0 +1,255 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta content="charset=UTF-8"/>
+<title>3DHOP</title>
+<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap" rel="stylesheet">
+<!--STYLESHEET-->
+<link type="text/css" rel="stylesheet" href="stylesheet/3dmodule.css"/>
+<!--SPIDERGL-->
+<script type="text/javascript" src="js/spidergl.js"></script>
+<!--JQUERY-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--PRESENTER-->
+<script type="text/javascript" src="js/presenter.js"></script>
+<!--3D MODELS LOADING AND RENDERING-->
+<script type="text/javascript" src="js/nexus.js"></script>
+<script type="text/javascript" src="js/ply.js"></script>
+<!--TRACKBALLS-->
+<script type="text/javascript" src="js/trackball_turntable.js"></script>
+<script type="text/javascript" src="js/trackball_turntable_pan.js"></script>
+<script type="text/javascript" src="js/trackball_pantilt.js"></script>
+<script type="text/javascript" src="js/trackball_sphere.js"></script>
+<!--UTILITY-->
+<script type="text/javascript" src="js/init.js"></script>
+
+<style>
+	body{
+background-color:rgb(240,240,240);
+	}
+	
+	h4{
+		font-family: 'Barlow Condensed', sans-serif;
+		font-weight:300;
+		font-size:18px;
+		float:left; 
+		text-align:left; 
+		cursor:pointer; 
+		border-radius:8px; 
+	
+		padding:10px; 
+		width: 125px; 
+		text-align:center;
+		background-color:white;
+	
+	}
+	h4:hover{
+		background-color:rgb(230,230,230);
+	}
+
+	textarea, textarea:focus{
+		border: none;
+	}
+	
+</style>
+</head>
+<body>
+
+<div id="module-container">
+
+<div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()">
+
+	<div id="expand-widget"></div>
+	
+	<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar" src="skins/augmented-reality.svg"/></a></div>
+
+ <div id="toolbar">
+  <img id="home"        title="Home"                   src="skins/frame.png"/>
+
+<!--LIGHTING
+  <img id="lighting_off" title="Enable Lighting"       src="skins/light.png" style="position:absolute; visibility:hidden;"/>
+  <img id="lighting"     title="Disable Lighting"      src="skins/light.png"/>-->
+<!--LIGHTING-->
+<!--LIGHT-->
+  <img id="light_on"    title="Disable Light Control"  src="skins/light_change_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="light"       title="Enable Light Control"   src="skins/light_change.png"/>
+<!--LIGHT-->
+<!--MEASURE-->
+  <img id="measure_on"  title="Disable Measure Tool"   src="skins/measure.png" style="position:absolute; visibility:hidden;"/>
+  <img id="measure"     title="Enable Measure Tool"    src="skins/measure.png"/>
+<!--MEASURE-->
+<!--Hotspot
+<img id="hotspot_on" title="Hide Hotspots"         src="skins/info.png" style="position:absolute; visibility:hidden;"/>
+  <img id="hotspot"    title="Show Hotspots"         src="skins/info.png"          />-->
+<!--SECTIONS
+  <img id="sections_on" title="Disable Plane Sections" src="skins/planes.png" style="position:absolute; visibility:hidden;"/>
+  <img id="sections"    title="Enable Plane Sections"  src="skins/planes.png"/><br/>-->
+<!--SECTIONS-->
+<!--COLOR>-->
+  <img id="color_on"    title="Disable Solid Color"    src="skins/texture_no.png" style="position:absolute; visibility:hidden;"/>
+  <img id="color"       title="Enable Solid Color"     src="skins/texture.png"/>
+<!--COLOR-->
+<!--CAMERA-->
+  <img id="perspective"  title="Perspective Camera"    src="skins/perspective_no.png" style="position:absolute; visibility:hidden;"/>
+  <img id="orthographic" title="Orthographic Camera"   src="skins/perspective.png"/>
+<!--CAMERA-->
+<!--SCREENSHOT
+ <img id="screenshot" title="Save Screenshot"   src="skins/print.png"/>-->
+<!--SCREENSHOT-->
+<!-- FULLSCREEN -->
+  <img id="full_on"     title="Exit Full Screen"       src="skins/expand.png" style="position:absolute; visibility:hidden;"/>
+  <img id="full"        title="Full Screen"            src="skins/expand.png"/>
+<!--FULLSCREEN -->
+
+
+ </div>
+
+<!--MEASURE-->
+ <div id="measure-box" class="output-box">Measured length<hr/><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span></div>
+<!--MEASURE-->
+
+
+<!--SECTIONS-->
+ <div id="sections-box" class="output-box">
+  <table class="output-table" onmousedown="event.stopPropagation()">
+	<tr><td>Plane</td><td>Position</td><td>Flip</td></tr>
+	<tr>
+		<td><img   id="xplane_on"    title="Disable X Axis Section" src="skins/icons/sectionX_on.png" onclick="sectionxSwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
+			<img   id="xplane"       title="Enable X Axis Section"  src="skins/icons/sectionX.png"  onclick="sectionxSwitch()"/><br/></td>
+		<td><input id="xplaneSlider" class="output-input"  type="range"    title="Move X Axis Section Position"/></td>
+		<td><input id="xplaneFlip"   class="output-input"  type="checkbox" title="Flip X Axis Section Direction"/></td></tr>
+	<tr>
+		<td><img   id="yplane_on"    title="Disable Y Axis Section" src="skins/icons/sectionY_on.png" onclick="sectionySwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
+			<img   id="yplane"       title="Enable Y Axis Section"  src="skins/icons/sectionY.png"  onclick="sectionySwitch()"/><br/></td>
+		<td><input id="yplaneSlider" class="output-input"  type="range"    title="Move Y Axis Section Position"/></td>
+		<td><input id="yplaneFlip"   class="output-input"  type="checkbox" title="Flip Y Axis Section Direction"/></td></tr>
+	<tr>
+		<td><img   id="zplane_on"    title="Disable Z Axis Section" src="skins/icons/sectionZ_on.png" onclick="sectionzSwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
+			<img   id="zplane"       title="Enable Z Axis Section"  src="skins/icons/sectionZ.png"  onclick="sectionzSwitch()"/><br/></td>
+		<td><input id="zplaneSlider" class="output-input"  type="range"    title="Move Y Axis Section Position"/></td>
+		<td><input id="zplaneFlip"   class="output-input"  type="checkbox" title="Flip Z Axis Section Direction"/></td></tr></table>
+  <table class="output-table" onmousedown="event.stopPropagation()" style="text-align:right;">
+	<tr>
+	 <td>Show planes<input id="showPlane" class="output-input" type="checkbox" title="Show Section Planes" style="bottom:-3px;"/></td>
+	 <td>Show edges<input  id="showBorder" class="output-input" type="checkbox" title="Show Section Edges" style="bottom:-3px;"/></td></tr></table>
+ </div>
+<!--SECTIONS-->
+
+ <canvas id="draw-canvas" style=""/>
+</div>
+
+</div>
+
+<div style="width:70%; margin-top:10px; margin-left:15%; margin-bottom:50px;">
+	<div style="width:310px; margin-left:auto; margin-right:auto;">
+	<h4 style="margin-right:20px;"><a onclick="log(presenter.getTrackballPosition());">Get current position</a></h4>
+	<h4><a onclick="presenter.animateToTrackballPosition([1.34,-34.72,0.37,-0.027,-0.027,0.40]);">Go to test position</a></h4>
+</div> 
+	<textarea id="log-text" style="focus:none; font-family:monospace; width:100%; text-align:center; height:auto; resize: none; text-align:center; border-style:none; background-color:rgb(240,240,240);" readonly></textarea>
+
+	
+   </div> 
+   
+</body>
+
+<script type="text/javascript">
+var presenter = null;
+
+function setup3dhop() {
+	presenter = new Presenter("draw-canvas");
+
+	presenter.setScene({
+		meshes: {
+			"mesh_comp": {
+            url: "/3dhop/models/gargo.nxz"
+			}
+		},
+		modelInstances : {
+			"modell" : { 
+				mesh  : "mesh_comp",
+				color : [50, 50, 50]
+			}
+		},
+		trackball: {
+			type: TurntablePanTrackball,
+      trackOptions : {
+		startPhi      : 0.0,
+		startTheta    : -40.0,
+		startDistance : 1.0,
+		startPanX     : 0.0,
+		startPanY     : -0.3,
+		startPanZ     : 0.0,
+		minMaxPhi     : [-180, 180],
+		minMaxTheta   : [-180.0, 180.0]
+			}
+		}
+	});
+
+//--MEASURE--
+	presenter._onEndMeasurement = onEndMeasure;
+//--MEASURE--
+
+
+//--SECTIONS--
+	sectiontoolInit();
+//--SECTIONS--
+}
+
+function actionsToolbar(action) {
+	if(action=='home') presenter.animateToTrackballPosition([0,-40,0,-0.3,0,1]);
+//--FULLSCREEN--
+	else if(action=='full'  || action=='full_on') fullscreenSwitch();
+//--FULLSCREEN--
+//--ZOOM--
+	else if(action=='zoomin') presenter.zoomIn();
+	else if(action=='zoomout') presenter.zoomOut();
+//--ZOOM--
+//--LIGHTING--
+	else if(action=='lighting' || action=='lighting_off') { presenter.enableSceneLighting(!presenter.isSceneLightingEnabled()); lightingSwitch(); }
+//--LIGHTING--
+//--LIGHT--
+	else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
+//--LIGHT--
+//--CAMERA--
+	else if(action=='perspective' || action=='orthographic') { presenter.toggleCameraType(); cameraSwitch(); }
+//--CAMERA--
+//--COLOR--
+	else if(action=='color' || action=='color_on') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
+//--COLOR--
+//--MEASURE--
+	else if(action=='measure' || action=='measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
+//--MEASURE--
+//--HOTSPOT--
+	else if(action=='hotspot'|| action=='hotspot_on') {
+    presenter.toggleSpotVisibility(HOP_ALL, true); presenter.enableOnHover(!presenter.isOnHoverEnabled());
+    hotspotSwitch(); }
+//--HOTSPOT--
+//--SCREENSHOT--
+	else if(action=='screenshot') presenter.saveScreenshot();
+//--SCREENSHOT--
+//--SECTIONS--
+	else if(action=='sections' || action=='sections_on') { sectiontoolReset(); sectiontoolSwitch(); }
+//--SECTIONS--
+}
+
+function log(msg) {
+	document.getElementById("log-text").innerHTML = "https://shfa.dh.gu.se/objectid/?" + msg + "\n";
+	document.getElementById("log-text").scrollTop = document.getElementById("log-text").scrollHeight;
+}
+
+
+//--MEASURE--
+function onEndMeasure(measure) {
+	// measure.toFixed(2) sets the number of decimals when displaying the measure
+	// depending on the model measure units, use "mm","m","km" or whatever you have
+	$('#measure-output').html(measure.toFixed(2) + "dm");
+}
+//--MEASURE--
+
+
+$(document).ready(function(){
+	init3dhop();
+	setup3dhop();
+});
+</script>
+</html>
