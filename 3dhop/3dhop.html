@@ -189,11 +189,14 @@ function setup3dhop() {
 	presenter._onEndMeasurement = onEndMeasure;
 //--MEASURE--
 
-
 //--SECTIONS--
 	sectiontoolInit();
 //--SECTIONS--
 }
+
+$(document).ready(function() {
+  $('#expand-widget').click(fullscreenSwitch);
+});
 
 function actionsToolbar(action) {
 	if(action=='home') presenter.animateToTrackballPosition([0,-40,0,-0.3,0,1]);
