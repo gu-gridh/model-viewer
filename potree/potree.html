@@ -4,6 +4,10 @@
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link
+      href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<title>GRIDH Point Cloud Viewer</title>
 
@@ -14,6 +18,51 @@
 	<link rel="stylesheet" type="text/css" href="libs/spectrum/spectrum.css">
 	<link rel="stylesheet" type="text/css" href="libs/jstree/themes/mixed/style.css">
 </head>
+
+<style>
+	html,
+body {
+  font-family: "Barlow Condensed", sans-serif !important;
+}
+
+	.title{
+		position:absolute; 
+		z-index:1; 
+		max-width:350px; 
+		top:30px; 
+		right:30px; border-radius:8px;  
+		color:white; 
+		text-align:right; 
+		padding:15px 15px; 
+		font-weight:600; 
+		line-height:0.80; 
+		font-size:4.5em;
+		pointer-events:none;
+	}
+
+	.navigation-instructions{
+		display:flex; 
+		width:100%; 
+		justify-content:center;
+	}
+
+.instructions{
+	pointer-events:none;
+	position:absolute; 
+	z-index:1; 
+	width:auto; 
+	height:auto;bottom:30px; 
+	border-radius:8px; 
+	background-color:rgba(0, 0, 0, 0.8); 
+	color:white; 
+	text-align:center; 
+	padding:10px 15px; 
+	font-size:1.0em;
+	box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3)!important;
+}
+
+</style>
+
 
 <body>
 	<!-- JavaScript files -->
@@ -48,12 +97,12 @@
 		viewer.setEDLEnabled(true);
 
 		/* higher numbers for these leads to greater contrasts  */
-		viewer.setEDLRadius(1.8);
-		viewer.setEDLStrength(0.4);
+		viewer.setEDLRadius(1.0);
+		viewer.setEDLStrength(0.2);
 
 		/* Field of view and how many points can be shown  */
-		viewer.setFOV(60);
-		viewer.setPointBudget(1_000_000);
+		viewer.setFOV(40);
+		viewer.setPointBudget(20_000_000);
 		viewer.loadSettingsFromURL();
 
 		 /* variants inlcude gradient, black, white, and skybox. Write "none" to just have the render-area background */ 
@@ -83,22 +132,22 @@
 			viewer.scene.view.position.set(4.5, -5, 1.5);
 
 			/*  The center of rotation of the camera and angle. These must be fetched in the backend */
-			viewer.scene.view.lookAt(new THREE.Vector3(1, 0, 1));
+			viewer.scene.view.lookAt(new THREE.Vector3(0, 0, 1));
 	
 			
 		});
 	</script>
 
-<div class="title" style="position:absolute; z-index:1; max-width:350px; height:auto; top:30px; right:30px; border-radius:8px;  color:white; text-align:right; padding:15px 15px; font-family:Arial, Helvetica, sans-serif; font-weight:600; line-height:1.0; font-size:3em;">
+<div class="title">
 	<!-- Title, fetched from the backed: -->
 			Tomba Cassata
 		</div>
 	</div>
 	
 	<!-- Here we can have a floating div with instructions on how to navigate -->
-	<div class="navigation-instructions" style="display:flex; width:100%; justify-content:center;">
-		<div class="instructions" style="position:absolute; z-index:1; width:370px; height:auto;bottom:30px; border-radius:8px; background-color:rgba(0,0,0,0.8); color:white; text-align:center; padding:15px 15px; font-family:Arial, Helvetica, sans-serif; font-size:0.9em;">
-		Change point-of-interest by double-clicking. <br>
+	<div class="navigation-instructions">
+		<div class="instructions">
+		Double-click to change focus. <br>
 		Click-and-drag to navigate. Right-click and drag to pan. <br>
 		Scroll to zoom in and out.
 		</div>
