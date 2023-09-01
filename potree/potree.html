@@ -49,9 +49,10 @@ body {
 .instructions{
 	pointer-events:none;
 	position:absolute; 
-	z-index:1; 
+	z-index:100; 
 	width:auto; 
-	height:auto;bottom:30px; 
+	height:auto;
+	bottom:90px; 
 	border-radius:8px; 
 	background-color:rgba(0, 0, 0, 0.8); 
 	color:white; 
@@ -60,6 +61,15 @@ body {
 	font-size:1.0em;
 	box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3)!important;
 }
+
+#footer-container{
+	position:absolute;
+	height:80px;
+	bottom:0px;
+	width:100%;
+	z-index:5;
+}
+
 
 </style>
 
@@ -82,7 +92,7 @@ body {
 	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
 	<!-- INCLUDE SETTINGS HERE -->
 	
-	<div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; bottom:200px;">	
+	<div class="potree_container" style="position: absolute; width: 100%; height: calc(100% - 80px); left: 0px; top: 0px; bottom:200px;">	
 	
 	<!--  specify the bakground-color -->
 		<div id="potree_render_area" style="background-color: rgb(48, 48, 48)"></div>
@@ -152,6 +162,7 @@ body {
 		Scroll to zoom in and out.
 		</div>
 	</div>
-	
+<div id="footer-container"></div>
+	<script > $("#footer-container").load("footer.html");</script>
 </body>
 </html>
