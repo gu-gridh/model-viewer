@@ -5,7 +5,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<title>Potree Viewer</title>
+	<title>GRIDH Point Cloud Viewer</title>
 
 	<!-- CSS files -->
 	<link rel="stylesheet" type="text/css" href="build/potree/potree.css">
@@ -30,9 +30,13 @@
 	<script src="./build/potree/potree.js"></script>
 	<script src="./libs/plasio/js/laslaz.js"></script>
 
-	<!-- HTML content -->
-	<div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;">
-		<div id="potree_render_area" style="background-image: url('resources/images/background.jpg');"></div>
+	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
+	<!-- INCLUDE SETTINGS HERE -->
+	
+	<div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; bottom:200px;">	
+	
+	<!--  specify the bakground-color -->
+		<div id="potree_render_area" style="background-color: rgb(48, 48, 48)"></div>
 		<div id="potree_sidebar_container"> </div>
 	</div>
 
@@ -42,28 +46,63 @@
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		
 		viewer.setEDLEnabled(true);
+
+		/* higher numbers for these leads to greater contrasts  */
+		viewer.setEDLRadius(1.8);
+		viewer.setEDLStrength(0.4);
+
+		/* Field of view and how many points can be shown  */
 		viewer.setFOV(60);
 		viewer.setPointBudget(1_000_000);
 		viewer.loadSettingsFromURL();
+
+		 /* variants inlcude gradient, black, white, and skybox. Write "none" to just have the render-area background */ 
+		 viewer.setBackground("none");
 		
 		viewer.setDescription("");
 		
 		viewer.loadGUI(() => {
 			viewer.setLanguage('en');
 			$("#menu_appearance").next().show();
+			$("#menu_tools").next().show();
 		});
 		
-		// Load and add point cloud to scene
-		Potree.loadPointCloud("pointclouds/lion_takanawa/cloud.js", "lion", e => {
-			let scene = viewer.scene;
-			let pointcloud = e.pointcloud;
-			let material = pointcloud.material;
+		/* The link to the model. URL and name of tomb must be fetched from the backend */
+		Potree.loadPointCloud("https://data.dh.gu.se/antarctica/models/pointclouds/CassataOpt/cloud.js", "NameOfTomb", function(e){
+			viewer.scene.addPointCloud(e.pointcloud);
+			let material = e.pointcloud.material;
+
+		 /* The size of the voxels (smaller = sharper) */
 			material.size = 1;
+
+			 /* The shape of the voxels */
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+			material.shape = Potree.PointShape.CIRCLE;
 			
-			scene.addPointCloud(pointcloud);
-			viewer.fitToScreen();
+			/*  The position of the camera: x z y. These must be fetched in the backend */
+			viewer.scene.view.position.set(4.5, -5, 1.5);
+
+			/*  The center of rotation of the camera and angle. These must be fetched in the backend */
+			viewer.scene.view.lookAt(new THREE.Vector3(1, 0, 1));
+	
+			
 		});
 	</script>
+
+<div class="title" style="position:absolute; z-index:1; max-width:350px; height:auto; top:30px; right:30px; border-radius:8px;  color:white; text-align:right; padding:15px 15px; font-family:Arial, Helvetica, sans-serif; font-weight:600; line-height:1.0; font-size:3em;">
+	<!-- Title, fetched from the backed: -->
+			Tomba Cassata
+		</div>
+	</div>
+	
+	<!-- Here we can have a floating div with instructions on how to navigate -->
+	<div class="navigation-instructions" style="display:flex; width:100%; justify-content:center;">
+		<div class="instructions" style="position:absolute; z-index:1; width:370px; height:auto;bottom:30px; border-radius:8px; background-color:rgba(0,0,0,0.8); color:white; text-align:center; padding:15px 15px; font-family:Arial, Helvetica, sans-serif; font-size:0.9em;">
+		Change point-of-interest by double-clicking. <br>
+		Click-and-drag to navigate. Right-click and drag to pan. <br>
+		Scroll to zoom in and out.
+		</div>
+	</div>
+	
 </body>
 </html>
