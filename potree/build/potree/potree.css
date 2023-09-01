@@ -176,7 +176,8 @@ h2 {
 	height:			2.5em;
 	z-index:		100;
 	cursor: 		pointer;
-	margin:			15px;
+	margin-top:			15px;
+	margin-left:			19px;
 }
 
 #potree_map_toggle{
