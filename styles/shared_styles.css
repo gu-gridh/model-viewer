@@ -1,0 +1,5 @@
+/*CSS here will be used by any file that has added the stylesheet*/
+div.title
+{
+    color: red;
+}

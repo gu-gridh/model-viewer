@@ -6,6 +6,7 @@ const app = express();
 // Serve static files
 app.use('/3dhop', express.static(path.join(__dirname, '3dhop')));
 app.use('/potree', express.static(path.join(__dirname, 'potree')));
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 // Router to handle incoming modelId
 app.get('/:type', (req, res) => {
