@@ -1,99 +1,7 @@
 
-<style>
-	.switch {
-		color:white;
-  display: flex;
-  cursor: pointer;
-  font-size: 2em;
-
-
-}
-
-.switch-button {
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-.switch-button:hover {
-  box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
-}
-
-.selected {
-  color: #47cbf6;
-  margin-right: 20px;
-  margin-left: 20px;
-
-}
-
-:root{
-	
-	--selected: 		 #47cbf6;
-	
-}
-
-</style>
-
-<script>
-    function AppearanceFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-		var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-        the_looks.style.display = "block";
-		the_tools.style.display = "none";
-		the_abouts.style.display = "none";
-		tools_menu.style.color = "white";
-		about_menu.style.color = "white";
-		looks_menu.style.color = "var(--selected)";
-		
-    
-        }
-    
-
-    function ToolsFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-        var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-		the_looks.style.display = "none";
-		the_abouts.style.display = "none";
-		the_tools.style.display = "block";
-		looks_menu.style.color = "white";
-		tools_menu.style.color = "var(--selected)";
-		about_menu.style.color = "white";
-		
- 
-    }
-
-	function AboutFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-        var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-		the_looks.style.display = "none";
-		the_abouts.style.display = "block";
-		the_tools.style.display = "none";
-		looks_menu.style.color = "white";
-		tools_menu.style.color = "white";
-		about_menu.style.color = "var(--selected)";
- 
-    }
-    
-    
-
-</script>
-
 <div id="sidebar_root" class="">
-	<div id="sidebar_header" style="display:none;">
-		<!-- <span id="potree_branding" class="potree_sidebar_brand">
+	<div id="sidebar_header">
+		<span id="potree_branding" class="potree_sidebar_brand">
 			<a href="http://potree.org" target="_blank">potree.org</a> 
 			<span style="margin: 0px 3px; color: #9AA1A4"> - </span> 
 			<a href="https://github.com/potree/potree" target="_blank">github</a>
@@ -102,47 +10,28 @@
 			<span style="flex-grow: 1"></span>
 			<span id="potree_version_number" style="color: #9AA1A4; font-size: 80%; font-weight: 100"></span>
 		</span>
-		<div id="potree_languages" style="font-family:arial;"></div> -->
+		<div id="potree_languages" style="font-family:arial;"></div>
 	</div>
 	<div> 
 
-	<div id="potree_menu">
+	<div id="potree_menu" class="accordion">
 
 		
 		<!-- APPEARANCE -->
-		<div class="switch">
-			<div id="looks_menu" style="color:var(--selected);" class="switch-button" onclick="AppearanceFunction()">
-				Appearance
-			</div>
-			<div id="tools_menu" class="switch-button" onclick="ToolsFunction()">
-				Tools
-			</div>
-			<div id="about_menu" class="switch-button" onclick="AboutFunction()">
-				About
-			</div>
-		  </div>
-		<div id="the_looks">
+		<h3 id="menu_appearance"><span data-i18n="tb.rendering_opt"></span></h3>
+		<div>
 			<ul class="pv-menu-list">
-				<h2>Quality</h2>
-				<li>
-					<selectgroup id="splat_quality_options">
-						<option id="splat_quality_options_standard" value="standard">Standard</option>
-						<option id="splat_quality_options_hq" value="hq">High</option>
-					</selectgroup>
-					<li><span data-i18n="appearance.min_node_size"></span>: <span id="lblMinNodeSize"></span><div id="sldMinNodeSize"></div></li>
-				</li>
-
 				<li><span data-i18n="appearance.nb_max_pts"></span>: <span id="lblPointBudget"></span> <div id="sldPointBudget"></div></li>
 				<li><span data-i18n="appearance.field_view"></span>: <span id="lblFOV"></span><div id="sldFOV"></div></li>
 
-				<h2>Eye-Dome-Lighting</h2>
+				<div class="divider"><span>Eye-Dome-Lighting</span></div>
 
 				<li><label><input type="checkbox" id="chkEDLEnabled"/><span data-i18n="appearance.edl_enable"></span></label></li>
 				<li><span data-i18n="appearance.edl_radius"></span>: <span id="lblEDLRadius"></span><div id="sldEDLRadius"></div></li>
 				<li><span data-i18n="appearance.edl_strength"></span>: <span id="lblEDLStrength"></span><div id="sldEDLStrength"></div></li>
-				<!-- <li><span data-i18n="appearance.edl_opacity"></span>: <span id="lblEDLOpacity"></span><div id="sldEDLOpacity"></div></li> -->
+				<li><span data-i18n="appearance.edl_opacity"></span>: <span id="lblEDLOpacity"></span><div id="sldEDLOpacity"></div></li>
 				
-				<!-- <div class="divider"><span>Background</span></div>
+				<div class="divider"><span>Background</span></div>
 
 				<li>
 					<selectgroup id="background_options">
@@ -152,36 +41,40 @@
 						<option id="background_options_white" value="white">White</option>
 						<option id="background_options_none" value="null">None</option>
 					</selectgroup>
-				</li> -->
+				</li>
 
-				<!-- <div class="divider"><span>Other</span></div> -->
+				<div class="divider"><span>Other</span></div>
+
+				<li>
+					<selectgroup id="splat_quality_options">
+						<option id="splat_quality_options_standard" value="standard">Standard</option>
+						<option id="splat_quality_options_hq" value="hq">High Quality</option>
+					</selectgroup>
+				</li>
 				
-				
-				
-				<!-- <li><label><input id="show_bounding_box" type="checkbox" /><span data-i18n="appearance.box"></span></label></li>
-				<li><label><input id="set_freeze" type="checkbox" /><span data-i18n="appearance.freeze"></span></label></li> -->
+				<li><span data-i18n="appearance.min_node_size"></span>: <span id="lblMinNodeSize"></span><div id="sldMinNodeSize"></div></li>
+				<li><label><input id="show_bounding_box" type="checkbox" /><span data-i18n="appearance.box"></span></label></li>
+				<li><label><input id="set_freeze" type="checkbox" /><span data-i18n="appearance.freeze"></span></label></li>
 			</ul>
 			
 		</div>
 		
 		<!-- TOOLS -->
-
-	
-		
-		<div id="the_tools" style="display:none;">
+		<h3 id="menu_tools"><span data-i18n="tb.tools_opt"></span></h3>
 		<div class="pv-menu-list">
-			<h2>Measurement</h2>
-			
+
+			<div class="divider"><span>Measurement</span></div>
+
 			<li id="tools"></li>
 
-		<!-- 	<li>
+			<li>
 				<selectgroup id="measurement_options_show">
 					<option id="measurement_options_show_yes" value="SHOW">Show</option>
 					<option id="measurement_options_show_no" value="HIDE">Hide</option>
 				</selectgroup>
-			</li> -->
+			</li>
 
-			<h2>Clipping</h2>
+			<div class="divider"><span>Clipping</span></div>
 
 			<li id="clipping_tools"></li>
 
@@ -194,27 +87,23 @@
 				</selectgroup>
 			</li>
 
-			<!-- <li>
+			<li>
 				<selectgroup id="clipmethod_options">
 					<option id="clipmethod_options_any" value="INSIDE_ANY">Inside Any</option>
 					<option id="clipmethod_options_all" value="INSIDE_ALL">Inside All</option>
 				</selectgroup>
-			</li> -->
+			</li>
 			
-			<h2>Navigation</h2>
-		
+			<div class="divider"><span>Navigation</span></div>
+
 			<li id="navigation"></li>
-		
-			<!-- <li><span data-i18n="appearance.move_speed"></span>: <span id="lblMoveSpeed"></span><div id="sldMoveSpeed"></div></li> -->
+
+			<li><span data-i18n="appearance.move_speed"></span>: <span id="lblMoveSpeed"></span><div id="sldMoveSpeed"></div></li>
 		</div>
 
 		<!-- SCENE -->
-		<h3 id="menu_scene" style="display:none;"><span data-i18n="tb.scene_opt"></span></h3>
-		
-		<div class="pv-menu-list" style="padding-bottom:50px;">
-			<h2><span>Properties</h2>
-
-			<div id="scene_object_properties"></div>
+		<h3 id="menu_scene"><span data-i18n="tb.scene_opt"></span></h3>
+		<div class="pv-menu-list">
 
 			<div id="scene_export"></div>
 
@@ -222,20 +111,22 @@
 
 			<div id="scene_objects"></div>
 
-		 	
-		</div> 
+			<div class="divider"><span>Properties</span></div>
+
+			<div id="scene_object_properties"></div>
+		</div>
 
 		<!-- Classification -->
-		<!-- <h3 id="menu_filters""><span data-i18n="tb.filters_opt"></span></h3>
+		<h3 id="menu_filters"><span data-i18n="tb.filters_opt"></span></h3>
 		<div>
 
 			<div class="divider"><span>Classification</span></div>
 
-			<ul id="classificationList" class="pv-menu-list"></ul> -->
+			<ul id="classificationList" class="pv-menu-list"></ul>
 
-			<!-- <div class="divider"><span>Returns</span></div> -->
+			<div class="divider"><span>Returns</span></div>
 
-			<div id="return_filter_panel" style="display:none;">
+			<div id="return_filter_panel">
 				<ul class="pv-menu-list">
 					
 					<li><span data-i18n="filters.return_number"></span>: <span id="lblReturnNumber"></span> <div id="sldReturnNumber"></div></li>
@@ -244,15 +135,15 @@
 				</ul>
 			</div>
 
-			<!-- <div class="divider"><span>Point Source ID</span></div> -->
+			<div class="divider"><span>Point Source ID</span></div>
 
-			<div style="display:none">
+			<div>
 				<ul class="pv-menu-list" id="pointsourceid_filter_panel">
 
 				</ul>
 			</div>
 
-			<!-- <div class="divider"><span>GPS Time</span></div>
+			<div class="divider"><span>GPS Time</span></div>
 
 			<div id="gpstime_filter_panel">
 
@@ -271,15 +162,13 @@
 
 				</ul>
 
-			</div> -->
-		</div>
+			</div>
 		</div>
 		
 		<!-- ABOUT -->
-		
-		<div id="the_abouts" style="display:none">
+		<h3 id="menu_about"><span data-i18n="tb.about_opt"></span></h3>
+		<div>
 			<ul class="pv-menu-list">
-				<h2>Potree</h2>
 				<li><a href="http://potree.org" target="_blank">Potree</a> is a viewer for large point cloud / LIDAR data sets, developed at the Vienna University of Technology. 
 				<a href="https://github.com/potree/potree" target="_blank">(github)</a>
 				</li>
@@ -319,7 +208,7 @@ Research projects who's funding contributes to Potree:
 </table>
 
 <br>
-<!-- Thanks to all the companies and institutions funding Potree:
+Thanks to all the companies and institutions funding Potree:
 
 <table style="width: 100%; text-align: center;">
 	<tr>
@@ -357,7 +246,7 @@ Research projects who's funding contributes to Potree:
 	<tr><td><a href="http://veesus.com">Veesus</a></td></tr>
 	<tr><td><a href="http://www.sigeom.ch">Sigeom</a></td></tr>
 </table>
-</li> -->
+</li>
 
 				
 
@@ -368,7 +257,19 @@ Research projects who's funding contributes to Potree:
 	</div>
 
 	<div>
-		
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 		</div>
 	</div>
 	

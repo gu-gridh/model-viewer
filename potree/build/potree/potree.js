@@ -79264,7 +79264,7 @@ ENDSEC
 
 			// ANGLE
 			let elToolbar = $('#tools');
-			elToolbar.append(this.createToolIcon(
+			/* elToolbar.append(this.createToolIcon(
 				Potree.resourcePath + '/icons/angle.png',
 				'[title]tt.angle_measurement',
 				() => {
@@ -79282,10 +79282,10 @@ ENDSEC
 					$.jstree.reference(jsonNode.id).deselect_all();
 					$.jstree.reference(jsonNode.id).select_node(jsonNode.id);
 				}
-			));
+			)); */
 
 			// POINT
-			elToolbar.append(this.createToolIcon(
+			/* elToolbar.append(this.createToolIcon(
 				Potree.resourcePath + '/icons/point.svg',
 				'[title]tt.point_measurement',
 				() => {
@@ -79304,7 +79304,7 @@ ENDSEC
 					$.jstree.reference(jsonNode.id).deselect_all();
 					$.jstree.reference(jsonNode.id).select_node(jsonNode.id);
 				}
-			));
+			)); */
 
 			// DISTANCE
 			elToolbar.append(this.createToolIcon(
@@ -80738,7 +80738,7 @@ ENDSEC
 
 			{
 				let elSplatQuality = $("#splat_quality_options");
-				elSplatQuality.selectgroup({title: "Splat Quality"});
+				elSplatQuality.selectgroup({title: ""});
 
 				elSplatQuality.find("input").click( (e) => {
 					if(e.target.value === "standard"){
@@ -89131,7 +89131,7 @@ ENDSEC
 			if (isVisible) {
 				renderArea.css('left', '0px');
 			} else {
-				renderArea.css('left', '300px');
+				renderArea.css('left', '420px');
 			}
 		};
 

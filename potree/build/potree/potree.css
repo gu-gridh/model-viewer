@@ -27,9 +27,9 @@
 
 :root{
 	
-	--color-0: 			rgba( 25, 40, 44, 1);
+	--color-0: 			rgba( 38, 38, 38, 1);
 	--color-1: 			rgba(122,129,132, 1);
-	--color-2: 			rgba( 57, 71, 75, 1);
+	--color-2: 			rgba( 48, 48, 48, 1);
 	--color-3: 			rgba( 45,109,130, 1);
 	--color-4: 			rgba( 16,143,185, 1);
 	
@@ -39,7 +39,7 @@
 	--bg-dark-color:	rgba( 24, 31, 33, 1);
 	--bg-hover-color:	var(--color-2);
 	
-	--font-color:		#9AA1A4;
+	--font-color:		#ffffff;
 	--font-color-2:		#ddd;
 	--font-color:		#cccccc;
 	--border-color:		black;
@@ -54,19 +54,46 @@
 #potree_sidebar_container{
 	position:	absolute;
 	z-index:	0;
-	width:		350px;
+	padding:	20px;
+	min-width:	400px;
 	height:		100%;
 	overflow-y:	scroll;
-	font-size:	85%;
-	border-right:	1px solid black;
+	font-size:	100%;
 	background-color:	var(--bg-color);
+	box-shadow: inset -2rem 0rem 2rem rgba(0, 0, 0, 0.3)!important;
 }
 
 #sidebar_root{
 	color:				var(--font-color);
-	font-family:		Arial,Helvetica,sans-serif;
+	font-family:		"Barlow Condensed", sans-serif !important;
 	font-size:			1em;
+	width:				380px;
 }
+
+h3{
+	cursor:		pointer;
+	padding:	4px 10px 4px 20px;
+	font-size:	2em;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+h2 {
+	display: 		block;
+	text-align: 	left;
+	font-size:		1.2em;
+	overflow: 		hidden;
+	white-space: 	nowrap; 
+	font-weight:	bold;
+	letter-spacing:	1px;
+	padding-left:	0px;
+	margin-right:	0px;
+	padding-top: 	20px;
+	margin-bottom: 	10px;
+}
+
+
+
 
 .potree_failpage{
 	width: 100%;
@@ -392,13 +419,14 @@ body{
 
 .pv-menu-list{
 	list-style-type:	none;
-	padding:			0;
-	margin:				15px 0px;
+	padding-bottom:		20px;
+	padding-left:		0px;
+	margin:				0px 0px;
 	overflow:			hidden;
 }
 
 .pv-menu-list > *{
-	margin: 	4px 20px;
+	margin: 	10px 20px;
 }
 
 .ui-slider {
@@ -473,6 +501,7 @@ body{
 	font-size:	1em;
 }
 
+
 .accordion > h3:hover{
 	filter: brightness(125%);
 }
@@ -528,22 +557,6 @@ body{
 }
 
 
-
-.divider {
-	display: 		block;
-	text-align: 	center;
-	overflow: 		hidden;
-	white-space: 	nowrap; 
-	font-weight:	bold;
-	font-size:		90%;
-	letter-spacing:	1px;
-	margin-left:	0px;
-	margin-right:	0px;
-	margin-top: 	1px;
-	margin-bottom: 	1px;
-	padding:		1px !important;
-}
-
 .divider > span {
 	position: 	relative;
 	display: 	inline-block;
@@ -551,12 +564,12 @@ body{
 
 .divider > span:before,
 .divider > span:after {
-	content: 	"";
+	/* content: 	"";
 	position: 	absolute;
 	top: 		50%;
 	width: 		9999px;
 	height: 	1px;
-	background: #b2b2b2;
+	background: #b2b2b2; */
 }
 
 .divider > span:before {
