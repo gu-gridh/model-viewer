@@ -173,7 +173,7 @@ background-color:rgb(48,48,48);
 <!-- Link to the common footer -->
 <div id="footer-container"></div>
 <script > $("#footer-container").load("../potree/footer.html");</script>
-   
+
 </body>
 
 <script type="text/javascript">
@@ -194,6 +194,8 @@ function setup3dhop() {
 				color : [50, 50, 50]
 			}
 		},
+
+	/* These are the numbers that we need to be able to manipulate in backend when registering the model */
 		trackball: {
 			type: TurntablePanTrackball,
       trackOptions : {
