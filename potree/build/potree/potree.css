@@ -418,17 +418,6 @@ body{
 	flex-direction: row
 }
 
-.pv-menu-list{
-	list-style-type:	none;
-	padding-bottom:		20px;
-	padding-left:		0px;
-	margin:				0px 0px;
-	overflow:			hidden;
-}
-
-.pv-menu-list > *{
-	margin: 	10px 20px;
-}
 
 .ui-slider {
 	margin-top: 5px;

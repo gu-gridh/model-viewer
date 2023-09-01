@@ -27,7 +27,141 @@
 
 
 </head>
+
+<script>
+    function AppearanceFunction() {
+		var the_looks = document.getElementById("the_looks");
+        var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		var looks_menu = document.getElementById("looks_menu");
+		var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+        the_looks.style.display = "block";
+		the_tools.style.display = "none";
+		the_abouts.style.display = "none";
+		tools_menu.style.color = "white";
+		about_menu.style.color = "white";
+		looks_menu.style.color = "var(--selected)";
+		
+    
+        }
+    
+
+    function ToolsFunction() {
+		var the_looks = document.getElementById("the_looks");
+        var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		var looks_menu = document.getElementById("looks_menu");
+        var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+		the_looks.style.display = "none";
+		the_abouts.style.display = "none";
+		the_tools.style.display = "block";
+		looks_menu.style.color = "white";
+		tools_menu.style.color = "var(--selected)";
+		about_menu.style.color = "white";
+		
+ 
+    }
+
+	function AboutFunction() {
+		var the_looks = document.getElementById("the_looks");
+        var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		var looks_menu = document.getElementById("looks_menu");
+        var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+		the_looks.style.display = "none";
+		the_abouts.style.display = "block";
+		the_tools.style.display = "none";
+		looks_menu.style.color = "white";
+		tools_menu.style.color = "white";
+		about_menu.style.color = "var(--selected)";
+    }
+    
+    
+
+</script>
 <body>
+
+	<div id="sidebar">
+		<div class="switch">
+			<div id="about_menu"  class="switch-button" onclick="AboutFunction()">
+				About
+			</div>
+			<!-- <div id="looks_menu" class="switch-button" onclick="AppearanceFunction()">
+				Appearance
+			</div> -->
+			<div id="tools_menu" style="color:var(--selected);" class="switch-button" onclick="ToolsFunction()">
+				Tools
+			</div>
+			
+		  </div>
+
+		  <div id="the_abouts" style="display:none">
+			<div class="pv-menu-list" style="line-height:1.8;">
+				<h2>Metadata</h2>
+
+				<li>Info from the backend about the model, the creator etcetera.</li>
+
+				<h2>The viewer</h2>
+				<li  style="line-height:1.2;">The viewer is built with <a href="http://potree.org" target="_blank">Potree</a>, a viewer for large point cloud / LIDAR data sets, developed at the Vienna University of Technology. 
+				<a href="https://github.com/potree/potree" target="_blank">(github)</a>
+				</li>
+				<li><b>Author: </b><a href="mailto:mschuetz@potree.org">Markus Sch&uuml;tz</a></li>
+				<li><b>License: </b><a target="_blank" href="https://github.com/potree/potree/blob/develop/LICENSE/">FreeBSD (2-clause BSD)</a></li>
+				<li><b>Dependency Licenses:</b> <a target="_blank" href="https://github.com/potree/potree/tree/develop/libs/">See github</a></li>
+			</div>
+		</div>
+
+		  <div id="the_tools" style="display:block;">
+		<div id="toolbar">
+		 <img id="home"        title="Home"                   src="skins/frame.png"/>
+	   
+	   <!--LIGHTING
+		 <img id="lighting_off" title="Enable Lighting"       src="skins/light.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="lighting"     title="Disable Lighting"      src="skins/light.png"/>-->
+	   <!--LIGHTING-->
+	   <!--LIGHT-->
+		 <img id="light_on"    title="Disable Light Control"  src="skins/light_change_on.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="light"       title="Enable Light Control"   src="skins/light_change.png"/>
+	   <!--LIGHT-->
+	   <!--MEASURE-->
+		 <img id="measure_on"  title="Disable Measure Tool"   src="skins/measure.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="measure"     title="Enable Measure Tool"    src="skins/measure.png"/>
+	   <!--MEASURE-->
+	   <!--Hotspot
+	   <img id="hotspot_on" title="Hide Hotspots"         src="skins/info.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="hotspot"    title="Show Hotspots"         src="skins/info.png"          />-->
+	   <!--SECTIONS
+		 <img id="sections_on" title="Disable Plane Sections" src="skins/planes.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="sections"    title="Enable Plane Sections"  src="skins/planes.png"/><br/>-->
+	   <!--SECTIONS-->
+	   <!--COLOR>-->
+		 <img id="color_on"    title="Disable Solid Color"    src="skins/texture_no.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="color"       title="Enable Solid Color"     src="skins/texture.png"/>
+	   <!--COLOR-->
+	   <!--CAMERA-->
+		 <img id="perspective"  title="Perspective Camera"    src="skins/perspective_no.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="orthographic" title="Orthographic Camera"   src="skins/perspective.png"/>
+	   <!--CAMERA-->
+	   <!--SCREENSHOT
+		<img id="screenshot" title="Save Screenshot"   src="skins/print.png"/>-->
+	   <!--SCREENSHOT-->
+	   <!-- FULLSCREEN -->
+		 <img id="full_on"     title="Exit Full Screen"       src="skins/expand.png" style="position:absolute; visibility:hidden;"/>
+		 <img id="full"        title="Full Screen"            src="skins/expand.png"/>
+	   <!--FULLSCREEN -->
+	   
+	   <div>
+		<h4 style="margin-right:20px;"><a onclick="log(presenter.getTrackballPosition());">Get current position</a></h4>
+		<h4><a onclick="presenter.animateToTrackballPosition([1.34,-34.72,0.37,-0.027,-0.027,0.40]);">Go to test position</a></h4>
+		<textarea id="log-text" style="focus:none; font-family:monospace; width:100%; text-align:center; height:auto; resize: none; text-align:center; border-style:none; background-color:rgb(240,240,240);" readonly></textarea>
+		</div> 
+
+		</div>
+	   </div>
+	</div>
 
 <div id="module-container">
 
@@ -39,46 +173,7 @@
 
 
 	<!-- All of this will go into the Tools in the next left pane -->
- <div id="toolbar">
-  <img id="home"        title="Home"                   src="skins/frame.png"/>
-
-<!--LIGHTING
-  <img id="lighting_off" title="Enable Lighting"       src="skins/light.png" style="position:absolute; visibility:hidden;"/>
-  <img id="lighting"     title="Disable Lighting"      src="skins/light.png"/>-->
-<!--LIGHTING-->
-<!--LIGHT-->
-  <img id="light_on"    title="Disable Light Control"  src="skins/light_change_on.png" style="position:absolute; visibility:hidden;"/>
-  <img id="light"       title="Enable Light Control"   src="skins/light_change.png"/>
-<!--LIGHT-->
-<!--MEASURE-->
-  <img id="measure_on"  title="Disable Measure Tool"   src="skins/measure.png" style="position:absolute; visibility:hidden;"/>
-  <img id="measure"     title="Enable Measure Tool"    src="skins/measure.png"/>
-<!--MEASURE-->
-<!--Hotspot
-<img id="hotspot_on" title="Hide Hotspots"         src="skins/info.png" style="position:absolute; visibility:hidden;"/>
-  <img id="hotspot"    title="Show Hotspots"         src="skins/info.png"          />-->
-<!--SECTIONS
-  <img id="sections_on" title="Disable Plane Sections" src="skins/planes.png" style="position:absolute; visibility:hidden;"/>
-  <img id="sections"    title="Enable Plane Sections"  src="skins/planes.png"/><br/>-->
-<!--SECTIONS-->
-<!--COLOR>-->
-  <img id="color_on"    title="Disable Solid Color"    src="skins/texture_no.png" style="position:absolute; visibility:hidden;"/>
-  <img id="color"       title="Enable Solid Color"     src="skins/texture.png"/>
-<!--COLOR-->
-<!--CAMERA-->
-  <img id="perspective"  title="Perspective Camera"    src="skins/perspective_no.png" style="position:absolute; visibility:hidden;"/>
-  <img id="orthographic" title="Orthographic Camera"   src="skins/perspective.png"/>
-<!--CAMERA-->
-<!--SCREENSHOT
- <img id="screenshot" title="Save Screenshot"   src="skins/print.png"/>-->
-<!--SCREENSHOT-->
-<!-- FULLSCREEN -->
-  <img id="full_on"     title="Exit Full Screen"       src="skins/expand.png" style="position:absolute; visibility:hidden;"/>
-  <img id="full"        title="Full Screen"            src="skins/expand.png"/>
-<!--FULLSCREEN -->
-
-
- </div>
+	
 
 <!--MEASURE-->
  <div id="measure-box" class="output-box">Measured length<hr/><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span></div>
@@ -116,17 +211,7 @@
 </div>
 
 
-<!-- Stuff that should go into the toolbox -->
-
- <div style="display:none; width:70%; margin-top:10px; margin-left:15%; margin-bottom:50px;">
-	<div style="width:310px; margin-left:auto; margin-right:auto;">
-	<h4 style="margin-right:20px;"><a onclick="log(presenter.getTrackballPosition());">Get current position</a></h4>
-	<h4><a onclick="presenter.animateToTrackballPosition([1.34,-34.72,0.37,-0.027,-0.027,0.40]);">Go to test position</a></h4>
-</div> 
-	<textarea id="log-text" style="focus:none; font-family:monospace; width:100%; text-align:center; height:auto; resize: none; text-align:center; border-style:none; background-color:rgb(240,240,240);" readonly></textarea>
-
-	
-   </div>  -->
+   
 
    <div class="title">
 	<!-- Title, fetched from the backed: -->

@@ -99,4 +99,21 @@ box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
 
 :root{
 --selected: 		 #47cbf6;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+.pv-menu-list{
+	list-style-type:	none;
+	padding-bottom:		20px;
+	padding-left:		0px;
+	margin:				0px 0px;
+	overflow:			hidden;
+}
+
+.pv-menu-list > *{
+	margin: 	10px 20px;
+}
+
+>>>>>>> Stashed changes
