@@ -99,9 +99,6 @@ box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
 
 :root{
 --selected: 		 #47cbf6;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 .pv-menu-list{
@@ -116,4 +113,9 @@ box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
 	margin: 	10px 20px;
 }
 
->>>>>>> Stashed changes
+@media screen and (max-width: 800px) {
+    
+    .instructions {display:none;}
+  
+}
+
