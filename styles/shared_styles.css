@@ -82,7 +82,7 @@ body {
 		display:flex; 
 		width:100%; 
 		justify-content:center;
-		position:fixed;
+		position:absolute;
 		bottom:0px;
 	}
 
