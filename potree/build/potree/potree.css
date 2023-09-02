@@ -70,30 +70,6 @@
 	width:				380px;
 }
 
-h3{
-	cursor:		pointer;
-	padding:	4px 10px 4px 20px;
-	font-size:	2em;
-	margin-bottom:0px;
-	margin-top:0px;
-}
-
-h2 {
-	display: 		block;
-	text-align: 	left;
-	font-size:		1.2em;
-	overflow: 		hidden;
-	white-space: 	nowrap; 
-	font-weight:	bold;
-	letter-spacing:	1px;
-	padding-left:	0px;
-	margin-right:	0px;
-	padding-top: 	20px;
-	margin-bottom: 	10px;
-}
-
-
-
 
 .potree_failpage{
 	width: 100%;

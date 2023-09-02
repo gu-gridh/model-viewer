@@ -1,6 +1,169 @@
 /*CSS here will be used by any file that has added the stylesheet*/
-div.title
-{
-    color: red;
+
+/* CSS - Cascading Style Sheet */
+
+
+
+:root{
+	
+	--color-0: 			rgba( 38, 38, 38, 1);
+	--color-1: 			rgba(122,129,132, 1);
+	--color-2: 			rgba( 48, 48, 48, 1);
+	--color-3: 			rgba( 45,109,130, 1);
+	--color-4: 			rgba( 16,143,185, 1);
+	
+	--bg-color:			var(--color-0);
+	--bg-color-2:		rgb(60, 80, 85);
+	--bg-light-color:	rgba( 48, 61, 65, 1);
+	--bg-dark-color:	rgba( 24, 31, 33, 1);
+	--bg-hover-color:	var(--color-2);
+	
+	--font-color:		#ffffff;
+	--font-color-2:		#ddd;
+	--font-color:		#cccccc;
+	--border-color:		black;
+	
+	--measurement-detail-node-bg-light:		var(--color-1);
+	--measurement-detail-node-bg-dark:		var(--color-2);
+	--measurement-detail-area-bg-color:		#eee;
+
+	
 }
+
+html,
+body {
+  font-family: "Barlow Condensed", sans-serif !important;
+}
+
+	.title{
+		position:absolute; 
+		z-index:1; 
+		max-width:350px; 
+		top:30px; 
+		right:30px; border-radius:8px;  
+		color:white; 
+		text-align:right; 
+		padding:15px 15px; 
+		font-weight:600; 
+		line-height:0.90; 
+		font-size:4.5em;
+		pointer-events:none;
+	}
+
+	h3{
+		cursor:		pointer;
+		padding:	4px 10px 4px 20px;
+		font-size:	2em;
+		margin-bottom:0px;
+		margin-top:0px;
+	}
+	
+	h2 {
+		display: 		block;
+		text-align: 	left;
+		font-size:		1.2em;
+		overflow: 		hidden;
+		white-space: 	nowrap; 
+		font-weight:	bold;
+		letter-spacing:	1px;
+		padding-left:	0px;
+		margin-right:	0px;
+		padding-top: 	20px;
+		margin-bottom: 	10px;
+	}
+
+	.tool-item h2{
+		padding-top: 	0px;
+		padding-left:	20px;
+	}
+	
+
+	.navigation-instructions{
+		display:flex; 
+		width:100%; 
+		justify-content:center;
+		position:fixed;
+		bottom:0px;
+	}
+
+.instructions{
+	pointer-events:none;
+	position:absolute; 
+	z-index:100; 
+	width:auto; 
+	height:auto;
+	bottom:90px; 
+	border-radius:8px; 
+	background-color:rgba(0, 0, 0, 0.8); 
+	color:white; 
+	text-align:center; 
+	padding:10px 20px; 
+	font-size:1.0em;
+	box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3)!important;
+}
+
+#footer-container{
+	position:absolute;
+	height:80px;
+	bottom:0px;
+	width:100%;
+	z-index:5;
+}
+
+.switch {
+	color:white;
+display: flex;
+cursor: pointer;
+font-size: 2em;
+}
+
+.switch-button {
+transition: all 0.2s ease-in-out;
+cursor: pointer;
+margin-right: 20px;
+margin-left: 20px;
+}
+
+.switch-button:hover {
+box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+:root{
+--selected: 		 #47cbf6;
+}
+
+.pv-menu-list{
+	list-style-type:	none;
+	padding-bottom:		20px;
+	padding-left:		0px;
+	margin:				0px 0px;
+	overflow:			hidden;
+}
+
+.pv-menu-list > *{
+	margin: 	10px 20px;
+}
+
+.tool-item{
+width:100%;
+float:left;
+}
+
+.tool-icon{
+	float:left;
+	
+}
+
+.tool-label{
+	float:left;
+	margin-left:15px;
+	margin-top:5px;
+}
+
+@media screen and (max-width: 800px) {
+    
+    .instructions {display:none;}
+  
+}
+
 

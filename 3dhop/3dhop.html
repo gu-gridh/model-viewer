@@ -1,414 +1,509 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
 <head>
-<meta content="charset=UTF-8"/>
-<title>3DHOP</title>
-<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap" rel="stylesheet">
-<!--STYLESHEET-->
-<link type="text/css" rel="stylesheet" href="stylesheet/3dmodule.css"/>
-<link type="text/css" rel="stylesheet" href="../potree/css/common.css"/>
-<link rel="stylesheet" href="/styles/shared_styles.css">
-<!--SPIDERGL-->
-<script type="text/javascript" src="js/spidergl.js"></script>
-<!--JQUERY-->
-<script type="text/javascript" src="js/jquery.js"></script>
-<!--PRESENTER-->
-<script type="text/javascript" src="js/presenter.js"></script>
-<!--3D MODELS LOADING AND RENDERING-->
-<script type="text/javascript" src="js/nexus.js"></script>
-<script type="text/javascript" src="js/ply.js"></script>
-<!--TRACKBALLS-->
-<script type="text/javascript" src="js/trackball_turntable.js"></script>
-<script type="text/javascript" src="js/trackball_turntable_pan.js"></script>
-<script type="text/javascript" src="js/trackball_pantilt.js"></script>
-<script type="text/javascript" src="js/trackball_sphere.js"></script>
-<!--UTILITY-->
-<script type="text/javascript" src="js/init.js"></script>
+	<meta content="charset=UTF-8" />
+	<title>3DHOP</title>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap"
+		rel="stylesheet">
+	<!--STYLESHEET-->
+	<link type="text/css" rel="stylesheet" href="stylesheet/3dmodule.css" />
+	<link rel="stylesheet" href="/styles/shared_styles.css">
+	<!--SPIDERGL-->
+	<script type="text/javascript" src="js/spidergl.js"></script>
+	<!--JQUERY-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!--PRESENTER-->
+	<script type="text/javascript" src="js/presenter.js"></script>
+	<!--3D MODELS LOADING AND RENDERING-->
+	<script type="text/javascript" src="js/nexus.js"></script>
+	<script type="text/javascript" src="js/ply.js"></script>
+	<!--TRACKBALLS-->
+	<script type="text/javascript" src="js/trackball_turntable.js"></script>
+	<script type="text/javascript" src="js/trackball_turntable_pan.js"></script>
+	<script type="text/javascript" src="js/trackball_pantilt.js"></script>
+	<script type="text/javascript" src="js/trackball_sphere.js"></script>
+	<!--UTILITY-->
+	<script type="text/javascript" src="js/init.js"></script>
 
 </head>
 
-<script>
-    function AppearanceFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-		var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-        the_looks.style.display = "block";
-		the_tools.style.display = "none";
-		the_abouts.style.display = "none";
-		tools_menu.style.color = "white";
-		about_menu.style.color = "white";
-		looks_menu.style.color = "var(--selected)";
-		
-        }
-    
 
-    function ToolsFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-        var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-		the_looks.style.display = "none";
-		the_abouts.style.display = "none";
-		the_tools.style.display = "block";
-		looks_menu.style.color = "white";
-		tools_menu.style.color = "var(--selected)";
-		about_menu.style.color = "white";
-		
- 
-    }
-
-	function AboutFunction() {
-		var the_looks = document.getElementById("the_looks");
-        var the_tools = document.getElementById("the_tools");
-		var the_abouts = document.getElementById("the_abouts");
-		var looks_menu = document.getElementById("looks_menu");
-        var tools_menu = document.getElementById("tools_menu");
-		var about_menu = document.getElementById("about_menu");
-		the_looks.style.display = "none";
-		the_abouts.style.display = "block";
-		the_tools.style.display = "none";
-		looks_menu.style.color = "white";
-		tools_menu.style.color = "white";
-		about_menu.style.color = "var(--selected)";
-    } 
-
-</script>
 
 <body>
+
+	<script type="text/javascript">
+
+
+
+	</script>
+
 
 	<!-- This is what happens in the sidebar -->
 
 	<div id="sidebar">
 		<div class="switch">
-			<div id="about_menu"  class="switch-button" onclick="AboutFunction()">
+			<div id="about_menu" class="switch-button" onclick="AboutFunction()"  style="color:var(--selected);">
 				About
 			</div>
-			<div id="tools_menu"  class="switch-button" onclick="ToolsFunction()" style="color:var(--selected);">
+			<div id="tools_menu" class="switch-button" onclick="ToolsFunction()">
 				Tools
 			</div>
-			
-		  </div>
 
-		  <div id="the_abouts" style="display:none">
+		</div>
+
+		<div id="the_abouts" style="display:block">
 			<div class="pv-menu-list" style="line-height:1.8;">
 				<h2>Metadata</h2>
 
 				<li>Info from the backend about the model, the creator etcetera.</li>
 
-				<h2>The viewer</h2>
-				<li  style="line-height:1.2;">The viewer is built with <a href="http://potree.org" target="_blank">Potree</a>, a viewer for large point cloud / LIDAR data sets, developed at the Vienna University of Technology. 
-				<a href="https://github.com/potree/potree" target="_blank">(github)</a>
-				</li>
-				<li><b>Author: </b><a href="mailto:mschuetz@potree.org">Markus Sch&uuml;tz</a></li>
-				<li><b>License: </b><a target="_blank" href="https://github.com/potree/potree/blob/develop/LICENSE/">FreeBSD (2-clause BSD)</a></li>
-				<li><b>Dependency Licenses:</b> <a target="_blank" href="https://github.com/potree/potree/tree/develop/libs/">See github</a></li>
-			</div>
-		</div>
-		
-		  <div id="the_tools" style="display:block; padding-top:30px;">
-			
-			<div id="toolbar">
-				<div class="tool-item">
-					<div class="tool-icon">
-				<img id="home"        title="Home"                   src="skins/frame.png"/>
-			</div>
-			<div class="tool-label">Return to start position</div>
-			</div>
-		
-		
-
-			<div class="tool-item">
-				<!--LIGHTING-->
-				<div class="tool-icon">
-				  <img id="lighting_off" title="Enable Lighting"       src="skins/light.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="lighting"     title="Disable Lighting"      src="skins/light.png"/>
-				<!--LIGHTING-->
-			</div>
-			<div class="tool-label">Turn on or off scene lighting</div>
-		</div>
-			<div class="tool-item">
-				<div class="tool-icon">
-				<!--LIGHT-->
-				  <img id="light_on"    title="Disable Light Control"  src="skins/light_change_on.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="light"       title="Enable Light Control"   src="skins/light_change.png"/>
-				<!--LIGHT-->
-			</div>
-			<div class="tool-label">Click and drag on the model to change light</div>
-		</div>
-				<div class="tool-item">
-					<div class="tool-icon">
-				<!--MEASURE-->
-				  <img id="measure_on"  title="Disable Measure Tool"   src="skins/measure.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="measure"     title="Enable Measure Tool"    src="skins/measure.png"/>
-				<!--MEASURE-->
-			</div>
-			<div class="tool-label">Measure the model between two points</div>
-		</div>
-				<div class="tool-item">
-					<div class="tool-icon">
 				<!--Hotspot-->
-				<img id="hotspot_on" title="Hide Hotspots"         src="skins/info.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="hotspot"    title="Show Hotspots"         src="skins/info.png"          />
-				  <!--Hotspot-->
-				</div>
-				<div class="tool-label">Activate hotspots</div>
+				<!-- <div class="tool-item">
+						<div class="tool-icon">
+				
+					<img id="hotspot_on" title="Hide Hotspots"         src="skins/info.png" style="position:absolute; visibility:hidden;"/>
+					  <img id="hotspot"    title="Show Hotspots"         src="skins/info.png"          />
+				
+					</div>
+					<div class="tool-label">Activate hotspots</div>
+				</div> -->
+				<!--Hotspot-->
+
+				<h2>The viewer</h2>
+				<li style="line-height:1.2;">The viewer is built with <a href="http://3dhop.net"
+						target="_blank">3DHop</a>, an open-source framework for the creation of interactive Web
+					presentations of high-resolution 3D models, oriented to the Cultural Heritage field.
+
 			</div>
-				  <div class="tool-item">
-					<div class="tool-icon">
-				<!--SECTIONS-->
-				  <img id="sections_on" title="Disable Plane Sections" src="skins/planes.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="sections"    title="Enable Plane Sections"  src="skins/planes.png"/><br/>
-				<!--SECTIONS-->
-			</div>
-			<div class="tool-label">Divide the model into sections</div>
 		</div>
-				<div class="tool-item">
-					<div class="tool-icon">
-				<!--COLOR>-->
-				  <img id="color_on"    title="Disable Solid Color"    src="skins/texture_no.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="color"       title="Enable Solid Color"     src="skins/texture.png"/>
-				<!--COLOR-->
-			</div>
-			<div class="tool-label">Activate or deactivate colours</div>
-		</div>
-				<div class="tool-item">
-					<div class="tool-icon">
-				<!--CAMERA-->
-				  <img id="perspective"  title="Perspective Camera"    src="skins/perspective_no.png" style="position:absolute; visibility:hidden;"/>
-				  <img id="orthographic" title="Orthographic Camera"   src="skins/perspective.png"/>
-				<!--CAMERA-->
-			</div>
-			<div class="tool-label">Switch between perspective or orthographic view</div>
-		</div>
-			</div>
-		<h4 style="margin-left:20px;"><a onclick="log(presenter.getTrackballPosition());">Get current position</a></h4>
-		<h4 style="margin-left:20px;"><a onclick="presenter.animateToTrackballPosition([1.34,-34.72,0.37,-0.027,-0.027,0.40]);">Go to test position</a></h4>
-		<textarea id="log-text" style="focus:none; margin-bottom:50px; font-family:monospace; margin-left:20px; width:340px; text-align:center; height:auto; resize: none; text-align:center; border-style:none; background-color:rgb(240,240,240);" readonly></textarea>
-		</div> 
 
-		</div>
-	   </div>
-	</div>
+		<div id="the_tools" style="display:none; padding-top:30px;">
 
-
-
-<div id="module-container">
-
-	
-
-
-<div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()">
-	<canvas id="draw-canvas" style=""/>
-</div>
-	
-	
-
-	<div id="menu-widget"></div>
-	
-	<!-- This is for the mobile view-->
-	<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar" src="skins/augmented-reality.svg"/></a></div>
-	
-	<div id="mobile" style="display:flex; width:100%; justify-content:center;">
-		<!-- The mobile toolbar has fewer tools due to complexity issues-->
-		<div id="toolbar_m">
 			<div id="toolbar">
-			<img id="home"        title="Home"                   src="skins/frame.png"/>
-	   
-			<!--LIGHT-->
-			  <img id="light_on"    title="Disable Light Control"  src="skins/light_change_on.png" style="position:absolute; visibility:hidden;"/>
-			  <img id="light"       title="Enable Light Control"   src="skins/light_change.png"/>
-			<!--LIGHT-->
 
-			<!--MEASURE-->
-			  <img id="measure_on"  title="Disable Measure Tool"   src="skins/measure.png" style="position:absolute; visibility:hidden;"/>
-			  <img id="measure"     title="Enable Measure Tool"    src="skins/measure.png"/>
-			<!--MEASURE-->
-			
-			<!--COLOR>-->
-			  <img id="color_on"    title="Disable Solid Color"    src="skins/texture_no.png" style="position:absolute; visibility:hidden;"/>
-			  <img id="color"       title="Enable Solid Color"     src="skins/texture.png"/>
-			<!--COLOR-->
+				<!--HOME-->
+				<div class="tool-item">
+					<div class="tool-icon">
+						<img id="home" title="Home" src="skins/frame.png" />
+					</div>
+					<div class="tool-label">Return to start position</div>
+				</div>
+				<!--HOME-->
 
-			<!--CAMERA-->
-			  <img id="perspective"  title="Perspective Camera"    src="skins/perspective_no.png" style="position:absolute; visibility:hidden;"/>
-			  <img id="orthographic" title="Orthographic Camera"   src="skins/perspective.png"/>
-			<!--CAMERA-->
-		</div> 
-		</div> 
+				<!--CAMERA-->
+				<div class="tool-item">
+					<div class="tool-icon">
+
+						<img id="perspective" title="Perspective Camera" src="skins/perspective_no.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="orthographic" title="Orthographic Camera" src="skins/perspective.png" />
+
+					</div>
+					<div class="tool-label">Switch between perspective or orthographic view</div>
+				</div>
+				<!--CAMERA-->
+
+				<div class="tool-item">
+					<h2>Texture and light</h2>
+				</div>
+
+				<!--COLOR>-->
+				<div class="tool-item">
+					<div class="tool-icon">
+
+						<img id="color_on" title="Disable Solid Color" src="skins/texture_no.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="color" title="Enable Solid Color" src="skins/texture.png" />
+
+					</div>
+					<div class="tool-label">Activate or deactivate colours</div>
+				</div>
+				<!--COLOR-->
+
+				<!--LIGHTING-->
+				<div class="tool-item">
+
+					<div class="tool-icon">
+						<img id="lighting_off" title="Enable Lighting" src="skins/light.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="lighting" title="Disable Lighting" src="skins/light.png" />
+
+					</div>
+					<div class="tool-label">Turn on or off scene lighting</div>
+				</div>
+				<!--LIGHTING-->
+
+				<!--LIGHT-->
+				<div class="tool-item">
+					<div class="tool-icon">
+
+						<img id="light_on" title="Disable Light Control" src="skins/light_change_on.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="light" title="Enable Light Control" src="skins/light_change.png" />
+
+					</div>
+					<div class="tool-label">Click and drag on the model to change light</div>
+				</div>
+				<!--LIGHT-->
+
+
+				<div class="tool-item">
+					<h2>Measurement and segmentation</h2>
+				</div>
+
+				<!--MEASURE-->
+				<div class="tool-item">
+					<div class="tool-icon">
+
+						<img id="measure_on" title="Disable Measure Tool" src="skins/measure.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="measure" title="Enable Measure Tool" src="skins/measure.png" />
+
+					</div>
+					<div class="tool-label">Measure the model between two points</div>
+				</div>
+				<!--MEASURE-->
+
+				<!--SECTIONS-->
+				<div class="tool-item">
+					<div class="tool-icon">
+
+						<img id="sections_on" title="Disable Plane Sections" src="skins/planes.png"
+							style="position:absolute; visibility:hidden;" />
+						<img id="sections" title="Enable Plane Sections" src="skins/planes.png" /><br />
+
+					</div>
+					<div class="tool-label">Divide the model into sections</div>
+				</div>
+				<!--SECTIONS-->
+
+
+
+
+
+
+			</div>
+			<h4 style="margin-left:20px;"><a onclick="log(presenter.getTrackballPosition());">Get current position</a>
+			</h4>
+			<h4 style="margin-left:20px;"><a
+					onclick="presenter.animateToTrackballPosition([1.34,-34.72,0.37,-0.027,-0.027,0.40]);">Go to test
+					position</a></h4>
+			<textarea id="log-text"
+				style="focus:none; margin-bottom:50px; font-family:monospace; margin-left:20px; width:340px; text-align:center; height:auto; resize: none; text-align:center; border-style:none; background-color:rgb(240,240,240);"
+				readonly></textarea>
+		</div>
+
+	</div>
+	</div>
 	</div>
 
-	
-</div>
 
 
+	<!-- And this is the main action -->
 
-   
+	<div id="module-container">
 
-   <div class="title">
-	<!-- Title, fetched from the backed: -->
-			Awesome Gargoyle
+		<div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()">
+			<canvas id="draw-canvas" style="" />
 		</div>
+
+		<div id="menu-widget" onclick="MenuSwitch()"></div>
+
+		<!-- This is for the mobile view-->
+		<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar"
+					src="skins/augmented-reality.svg" /></a></div>
+
+		<div id="mobile" style="display:flex; width:100%; justify-content:center;">
+			<!-- The mobile toolbar has fewer tools due to complexity issues-->
+			<div id="toolbar_m">
+				<div id="toolbar">
+					<img id="home" title="Home" src="skins/frame.png" />
+
+					<!--LIGHT-->
+					<img id="light_on" title="Disable Light Control" src="skins/light_change_on.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="light" title="Enable Light Control" src="skins/light_change.png" />
+					<!--LIGHT-->
+
+					<!--MEASURE-->
+					<img id="measure_on" title="Disable Measure Tool" src="skins/measure.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="measure" title="Enable Measure Tool" src="skins/measure.png" />
+					<!--MEASURE-->
+
+					<!--COLOR>-->
+					<img id="color_on" title="Disable Solid Color" src="skins/texture_no.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="color" title="Enable Solid Color" src="skins/texture.png" />
+					<!--COLOR-->
+
+					<!--CAMERA-->
+					<img id="perspective" title="Perspective Camera" src="skins/perspective_no.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="orthographic" title="Orthographic Camera" src="skins/perspective.png" />
+					<!--CAMERA-->
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="title">
+		<!-- Title, fetched from the backed: -->
+		Awesome Gargoyle
+	</div>
 	</div>
 
 	<!-- Here we can have a floating div with instructions on how to navigate -->
-   <div class="navigation-instructions" style="height:100vh; z-index:1000; pointer-events:none;">
-	
+	<div class="navigation-instructions" style="height:100vh; z-index:10; pointer-events:none;">
+
 		<!--MEASURE-->
-		<div id="measure-box" class="output-box">Measured length<hr/><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span></div>
+		<div id="measure-box" class="output-box">Measured length
+			<hr /><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span>
+		</div>
 		<!--MEASURE-->
 	</div>
-  <div class="navigation-instructions" style="height:300px; z-index:1000; pointer-events:none;">
+
+	<div class="navigation-instructions" style="height:300px; z-index:10; pointer-events:none;">
 		<!--SECTIONS-->
-		 <div id="sections-box" class="output-box">
-		  <table class="output-table" onmousedown="event.stopPropagation()">
-			<tr><td>Plane</td><td>Position</td><td>Flip</td></tr>
-			<tr>
-				<td><img   id="xplane_on"    title="Disable X Axis Section" src="skins/icons/sectionX_on.png" onclick="sectionxSwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
-					<img   id="xplane"       title="Enable X Axis Section"  src="skins/icons/sectionX.png"  onclick="sectionxSwitch()"/><br/></td>
-				<td><input id="xplaneSlider" class="output-input"  type="range"    title="Move X Axis Section Position"/></td>
-				<td><input id="xplaneFlip"   class="output-input"  type="checkbox" title="Flip X Axis Section Direction"/></td></tr>
-			<tr>
-				<td><img   id="yplane_on"    title="Disable Y Axis Section" src="skins/icons/sectionY_on.png" onclick="sectionySwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
-					<img   id="yplane"       title="Enable Y Axis Section"  src="skins/icons/sectionY.png"  onclick="sectionySwitch()"/><br/></td>
-				<td><input id="yplaneSlider" class="output-input"  type="range"    title="Move Y Axis Section Position"/></td>
-				<td><input id="yplaneFlip"   class="output-input"  type="checkbox" title="Flip Y Axis Section Direction"/></td></tr>
-			<tr>
-				<td><img   id="zplane_on"    title="Disable Z Axis Section" src="skins/icons/sectionZ_on.png" onclick="sectionzSwitch()" style="position:absolute; visibility:hidden; border:1px inset;"/>
-					<img   id="zplane"       title="Enable Z Axis Section"  src="skins/icons/sectionZ.png"  onclick="sectionzSwitch()"/><br/></td>
-				<td><input id="zplaneSlider" class="output-input"  type="range"    title="Move Y Axis Section Position"/></td>
-				<td><input id="zplaneFlip"   class="output-input"  type="checkbox" title="Flip Z Axis Section Direction"/></td></tr></table>
-		  <table class="output-table" onmousedown="event.stopPropagation()" style="text-align:right;">
-			<tr>
-			 <td>Show planes<input id="showPlane" class="output-input" type="checkbox" title="Show Section Planes" style="bottom:-3px;"/></td>
-			 <td>Show edges<input  id="showBorder" class="output-input" type="checkbox" title="Show Section Edges" style="bottom:-3px;"/></td></tr></table>
-		 </div>
+		<div id="sections-box" class="output-box">
+			<table class="output-table" onmousedown="event.stopPropagation()">
+				<tr>
+					<td>Plane</td>
+					<td>Position</td>
+					<td>Flip</td>
+				</tr>
+				<tr>
+					<td><img id="xplane_on" title="Disable X Axis Section" src="skins/icons/sectionX_on.png"
+							onclick="sectionxSwitch()"
+							style="position:absolute; visibility:hidden; border:1px inset;" />
+						<img id="xplane" title="Enable X Axis Section" src="skins/icons/sectionX.png"
+							onclick="sectionxSwitch()" /><br />
+					</td>
+					<td><input id="xplaneSlider" class="output-input" type="range"
+							title="Move X Axis Section Position" /></td>
+					<td><input id="xplaneFlip" class="output-input" type="checkbox"
+							title="Flip X Axis Section Direction" /></td>
+				</tr>
+				<tr>
+					<td><img id="yplane_on" title="Disable Y Axis Section" src="skins/icons/sectionY_on.png"
+							onclick="sectionySwitch()"
+							style="position:absolute; visibility:hidden; border:1px inset;" />
+						<img id="yplane" title="Enable Y Axis Section" src="skins/icons/sectionY.png"
+							onclick="sectionySwitch()" /><br />
+					</td>
+					<td><input id="yplaneSlider" class="output-input" type="range"
+							title="Move Y Axis Section Position" /></td>
+					<td><input id="yplaneFlip" class="output-input" type="checkbox"
+							title="Flip Y Axis Section Direction" /></td>
+				</tr>
+				<tr>
+					<td><img id="zplane_on" title="Disable Z Axis Section" src="skins/icons/sectionZ_on.png"
+							onclick="sectionzSwitch()"
+							style="position:absolute; visibility:hidden; border:1px inset;" />
+						<img id="zplane" title="Enable Z Axis Section" src="skins/icons/sectionZ.png"
+							onclick="sectionzSwitch()" /><br />
+					</td>
+					<td><input id="zplaneSlider" class="output-input" type="range"
+							title="Move Y Axis Section Position" /></td>
+					<td><input id="zplaneFlip" class="output-input" type="checkbox"
+							title="Flip Z Axis Section Direction" /></td>
+				</tr>
+			</table>
+			<table class="output-table" onmousedown="event.stopPropagation()" style="text-align:right;">
+				<tr>
+					<td>Show planes<input id="showPlane" class="output-input" type="checkbox"
+							title="Show Section Planes" style="bottom:-3px;" /></td>
+					<td>Show edges<input id="showBorder" class="output-input" type="checkbox" title="Show Section Edges"
+							style="bottom:-3px;" /></td>
+				</tr>
+			</table>
+		</div>
 		<!--SECTIONS-->
 
-	
-	<div class="instructions">
-	Double-click to change focus. <br>
-	Click-and-drag to navigate. Right-click and drag to pan. <br>
-	Scroll to zoom in and out.
+
+		<div class="instructions">
+			Double-click to change focus. <br>
+			Click-and-drag to navigate. Right-click and drag to pan. <br>
+			Scroll to zoom in and out.
+		</div>
 	</div>
-</div>
 
 
 
-<!-- Link to the common footer -->
-<div id="footer-container"></div>
-<script > $("#footer-container").load("../potree/footer.html");</script>
+	<!-- Link to the common footer -->
+	<div id="footer-container"></div>
+	<script> $("#footer-container").load("../potree/footer.html");</script>
 
 </body>
 
 <script type="text/javascript">
-var presenter = null;
+	var presenter = null;
 
-function setup3dhop() {
-	presenter = new Presenter("draw-canvas");
+	function setup3dhop() {
+		presenter = new Presenter("draw-canvas");
 
-	presenter.setScene({
-		meshes: {
-			"mesh_comp": {
-            url: "/3dhop/models/gargo.nxz"
-			}
-		},
-		modelInstances : {
-			"modell" : { 
-				mesh  : "mesh_comp",
-				color : [50, 50, 50]
-			}
-		},
+		presenter.setScene({
+			meshes: {
+				"mesh_comp": {
+					// This url needs to fetched from backend
+					url: "/3dhop/models/gargo.nxz"
+				}
+			},
+			modelInstances: {
+				"modell": {
+					mesh: "mesh_comp",
+					color: [50, 50, 50]
+				}
+			},
 
-	/* These are the numbers that we need to be able to manipulate in backend when registering the model */
-		trackball: {
-			type: TurntablePanTrackball,
-      trackOptions : {
-		startPhi      : 45.0,
-		startTheta    : 20.0,
-		startDistance : 1.5,
-		startPanX     : 0.0,
-		startPanY     : 0,
-		startPanZ     : 0.0,
-		minMaxPhi     : [-180, 180],
-		minMaxTheta   : [-180.0, 180.0]
+			/* These are the numbers that we need to be able to manipulate in backend when registering the model */
+			trackball: {
+				type: TurntablePanTrackball,
+				trackOptions: {
+					startPhi: 45.0,
+					startTheta: 20.0,
+					startDistance: 1.5,
+					startPanX: 0.0,
+					startPanY: 0,
+					startPanZ: 0.0,
+					minMaxPhi: [-180, 180],
+					minMaxTheta: [-180.0, 180.0]
+				}
 			}
+		});
+
+		//--MEASURE--
+		presenter._onEndMeasurement = onEndMeasure;
+		//--MEASURE--
+
+		//--SECTIONS--
+		sectiontoolInit();
+		//--SECTIONS--
+	}
+
+
+
+	function actionsToolbar(action) {
+		// This one needs to be the same one as the above start position fetched from backend
+		if (action == 'home') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
+		//--FULLSCREEN--
+		else if (action == 'full' || action == 'full_on') fullscreenSwitch();
+		//--FULLSCREEN--
+		//--ZOOM--
+		else if (action == 'zoomin') presenter.zoomIn();
+		else if (action == 'zoomout') presenter.zoomOut();
+		//--ZOOM--
+		//--LIGHTING--
+		else if (action == 'lighting' || action == 'lighting_off') { presenter.enableSceneLighting(!presenter.isSceneLightingEnabled()); lightingSwitch(); }
+		//--LIGHTING--
+		//--LIGHT--
+		else if (action == 'light' || action == 'light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
+		//--LIGHT--
+		//--CAMERA--
+		else if (action == 'perspective' || action == 'orthographic') { presenter.toggleCameraType(); cameraSwitch(); }
+		//--CAMERA--
+		//--COLOR--
+		else if (action == 'color' || action == 'color_on') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
+		//--COLOR--
+		//--MEASURE--
+		else if (action == 'measure' || action == 'measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
+		//--MEASURE--
+		//--HOTSPOT--
+		else if (action == 'hotspot' || action == 'hotspot_on') {
+			presenter.toggleSpotVisibility(HOP_ALL, true); presenter.enableOnHover(!presenter.isOnHoverEnabled());
+			hotspotSwitch();
 		}
+		//--HOTSPOT--
+		//--SCREENSHOT--
+		else if (action == 'screenshot') presenter.saveScreenshot();
+		//--SCREENSHOT--
+		//--SECTIONS--
+		else if (action == 'sections' || action == 'sections_on') { sectiontoolReset(); sectiontoolSwitch(); }
+		//--SECTIONS--
+	}
+
+	function log(msg) {
+		document.getElementById("log-text").innerHTML = "https://shfa.dh.gu.se/objectid/?" + msg + "\n";
+		document.getElementById("log-text").scrollTop = document.getElementById("log-text").scrollHeight;
+	}
+
+
+	//--MEASURE--
+	function onEndMeasure(measure) {
+		// measure.toFixed(2) sets the number of decimals when displaying the measure
+		// depending on the model measure units, use "mm","m","km" or whatever you have
+		$('#measure-output').html(measure.toFixed(2) + "dm");
+	}
+	//--MEASURE--
+
+
+	$(document).ready(function () {
+		init3dhop();
+		setup3dhop();
 	});
 
-//--MEASURE--
-	presenter._onEndMeasurement = onEndMeasure;
-//--MEASURE--
 
-//--SECTIONS--
-	sectiontoolInit();
-//--SECTIONS--
+	function AppearanceFunction() {
+		var the_looks = document.getElementById("the_looks");
+		var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		var looks_menu = document.getElementById("looks_menu");
+		var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+		the_looks.style.display = "block";
+		the_tools.style.display = "none";
+		the_abouts.style.display = "none";
+		tools_menu.style.color = "white";
+		about_menu.style.color = "white";
+		looks_menu.style.color = "var(--selected)";
+
+	}
+
+
+	function ToolsFunction() {
+		//var the_looks = document.getElementById("the_looks");
+		var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		//var looks_menu = document.getElementById("looks_menu");
+		var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+		//the_looks.style.display = "none";
+		the_abouts.style.display = "none";
+		the_tools.style.display = "block";
+		//looks_menu.style.color = "white";
+		tools_menu.style.color = "var(--selected)";
+		about_menu.style.color = "white";
+
+
+	}
+
+	function AboutFunction() {
+		//var the_looks = document.getElementById("the_looks");
+		var the_tools = document.getElementById("the_tools");
+		var the_abouts = document.getElementById("the_abouts");
+		//var looks_menu = document.getElementById("looks_menu");
+		var tools_menu = document.getElementById("tools_menu");
+		var about_menu = document.getElementById("about_menu");
+		//the_looks.style.display = "none";
+		the_abouts.style.display = "block";
+		the_tools.style.display = "none";
+		//looks_menu.style.color = "white";
+		tools_menu.style.color = "white";
+		about_menu.style.color = "var(--selected)";
+	}
+
+	function MenuSwitch() {
+  var x = document.getElementById("module-container");
+  if (x.style.width === "calc(100% - 420px)") {
+    x.style.width = "100%";
+  } else {
+    x.style.width = "calc(100% - 420px)";
+  }
 }
 
-$(document).ready(function() {
-  $('#menu-widget').click(fullscreenSwitch);
-});
-
-function actionsToolbar(action) {
-	// This one needs to be the same one as the above start position fetched from backend
-	if(action=='home') presenter.animateToTrackballPosition([45,20,0,0,0,1.5]);
-//--FULLSCREEN--
-	else if(action=='full'  || action=='full_on') fullscreenSwitch();
-//--FULLSCREEN--
-//--ZOOM--
-	else if(action=='zoomin') presenter.zoomIn();
-	else if(action=='zoomout') presenter.zoomOut();
-//--ZOOM--
-//--LIGHTING--
-	else if(action=='lighting' || action=='lighting_off') { presenter.enableSceneLighting(!presenter.isSceneLightingEnabled()); lightingSwitch(); }
-//--LIGHTING--
-//--LIGHT--
-	else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
-//--LIGHT--
-//--CAMERA--
-	else if(action=='perspective' || action=='orthographic') { presenter.toggleCameraType(); cameraSwitch(); }
-//--CAMERA--
-//--COLOR--
-	else if(action=='color' || action=='color_on') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
-//--COLOR--
-//--MEASURE--
-	else if(action=='measure' || action=='measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
-//--MEASURE--
-//--HOTSPOT--
-	else if(action=='hotspot'|| action=='hotspot_on') {
-    presenter.toggleSpotVisibility(HOP_ALL, true); presenter.enableOnHover(!presenter.isOnHoverEnabled());
-    hotspotSwitch(); }
-//--HOTSPOT--
-//--SCREENSHOT--
-	else if(action=='screenshot') presenter.saveScreenshot();
-//--SCREENSHOT--
-//--SECTIONS--
-	else if(action=='sections' || action=='sections_on') { sectiontoolReset(); sectiontoolSwitch(); }
-//--SECTIONS--
-}
-
-function log(msg) {
-	document.getElementById("log-text").innerHTML = "https://shfa.dh.gu.se/objectid/?" + msg + "\n";
-	document.getElementById("log-text").scrollTop = document.getElementById("log-text").scrollHeight;
-}
-
-
-//--MEASURE--
-function onEndMeasure(measure) {
-	// measure.toFixed(2) sets the number of decimals when displaying the measure
-	// depending on the model measure units, use "mm","m","km" or whatever you have
-	$('#measure-output').html(measure.toFixed(2) + "dm");
-}
-//--MEASURE--
-
-
-$(document).ready(function(){
-	init3dhop();
-	setup3dhop();
-});
 </script>
+
 </html>
