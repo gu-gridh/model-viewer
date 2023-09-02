@@ -176,8 +176,8 @@
 	right: 		0px;
 	overflow: 	hidden;
 	z-index: 	1;
-	-webkit-transition: left .35s;
-	transition: left .35s;
+	-webkit-transition: left .5s;
+	transition: left .5s;
 }
 
 .potree-panel {
