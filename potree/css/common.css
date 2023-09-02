@@ -53,6 +53,8 @@ body {
 		display:flex; 
 		width:100%; 
 		justify-content:center;
+		position:fixed;
+		bottom:0px;
 	}
 
 .instructions{
@@ -111,6 +113,22 @@ box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
 
 .pv-menu-list > *{
 	margin: 	10px 20px;
+}
+
+.tool-item{
+width:100%;
+float:left;
+}
+
+.tool-icon{
+	float:left;
+	
+}
+
+.tool-label{
+	float:left;
+	margin-left:30px;
+	margin-top:5px;
 }
 
 @media screen and (max-width: 800px) {
