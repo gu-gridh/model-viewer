@@ -37,7 +37,7 @@ body {
 
 	.title{
 		position:absolute; 
-		z-index:1; 
+		z-index:1000; 
 		max-width:350px; 
 		top:30px; 
 		right:20px;
@@ -52,7 +52,7 @@ body {
 
     .subtitle{
 		position:absolute; 
-		z-index:1; 
+		z-index:1000; 
 		max-width:auto; 
 		bottom:90px; 
 		right:20px; 
@@ -99,12 +99,13 @@ body {
 		justify-content:center;
 		position:absolute;
 		bottom:0px;
+      
 	}
 
 .instructions{
 	pointer-events:none;
 	position:absolute; 
-	z-index:100; 
+    z-index:100000;
 	width:auto; 
 	height:auto;
 	bottom:90px; 
@@ -122,7 +123,7 @@ body {
 	height:80px;
 	bottom:0px;
 	width:100%;
-	z-index:5;
+	z-index:1000;
 }
 
 .switch {
