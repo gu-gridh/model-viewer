@@ -73,7 +73,7 @@
 		});
 		
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
-		Potree.loadPointCloud("https://data.dh.gu.se/antarctica/models/pointclouds/CassataOpt/cloud.js", "NameOfTomb", function(e){
+		Potree.loadPointCloud("https://data.dh.gu.se/antarctica/models/pointclouds/tobin93/cloud.js", "NameOfTomb", function(e){
 			viewer.scene.addPointCloud(e.pointcloud);
 			let material = e.pointcloud.material;
 
@@ -85,10 +85,10 @@
 			material.shape = Potree.PointShape.CIRCLE;
 			
 			/*  The position of the camera: x z y. These must be fetched in the backend */
-			viewer.scene.view.position.set(4.5, -5, 1.5);
+			viewer.scene.view.position.set(0.2, -4.5, 3.8);
 
 			/*  The center of rotation of the camera and angle. These must be fetched in the backend */
-			viewer.scene.view.lookAt(new THREE.Vector3(0, 0, 1));
+			viewer.scene.view.lookAt(new THREE.Vector3(0, 2, 1.8));
 	
 			
 		});
@@ -96,7 +96,7 @@
 
 	<div class="title">
 	<!-- Title, fetched from the backed: -->
-			Tomba Cassata	
+			Tomba Tobin 93	
 	</div>
 
 	<div class="subtitle">

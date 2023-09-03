@@ -42,7 +42,7 @@ body {
 .title {
     position: absolute;
     z-index: 1000;
-    max-width: 250px;
+    max-width: 200px;
     top: 20px;
     right: 20px;
     color: white;
