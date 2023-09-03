@@ -54,7 +54,7 @@ body {
     pointer-events: none;
 }
 
-.subtitle {
+.model-viewer-id {
     position: absolute;
     z-index: 1000;
     max-width: auto;
@@ -97,7 +97,7 @@ h2 {
 }
 
 
-.navigation-instructions {
+.ui-overlay-container {
     display: flex;
     width: 100%;
     justify-content: center;

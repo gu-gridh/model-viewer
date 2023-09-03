@@ -30,7 +30,7 @@
 
 <body>
 
-	<!-- This is what happens in the sidebar -->
+	<!-- The content of the sidebar is fetched from the file sidebar.html -->
 	<div id="sidebar" style="background-color:var(--sidebar-bg)"></div>
 	<script> $("#sidebar").load("sidebar.html");</script>
 
@@ -40,19 +40,23 @@
 	<div id="module-container" style="background-color:var(--viewer-bg)">
 
 		<div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()">
+
+			<!-- The draw canvas is the home of the 3d-model-->
 			<canvas id="draw-canvas" style="" />
 		</div>
 
+		<!-- This is the toogle for the sidebar and is hidden on mobile-->
 		<div id="menu-widget" onclick="MenuSwitch()"></div>
 
-		<!-- This is for the mobile view-->
+		<!-- This is for the mobile view and should only be visible if there is a link to an AR-model-->
 		<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar"
 					src="skins/augmented-reality.svg" /></a></div>
 
 
-		<!-- The mobile toolbar has fewer tools due to complexity issues-->
+		<!-- The mobile toolbar has fewer tools due to complexity issues. 
+		Perhaps these should also go into their own docuemnt to keep this document more focuses-->
 		<div id="mobile" style="display:flex; width:100%; justify-content:center;">
-			
+
 			<div id="toolbar_m">
 				<div id="toolbar">
 					<img id="home_m" title="Home" src="skins/frame.png" />
@@ -87,20 +91,19 @@
 
 	</div>
 
+	<!-- Title, fetched from the backed -->
 	<div class="title">
-		<!-- Title, fetched from the backed: -->
 		Awesome Gargoyle
 	</div>
 
-	<div class="subtitle">
-		<!-- Title, fetched from the backed: -->
+	<!-- This can probably be static -->
+	<div class="model-viewer-id">
 		Mesh Model <br> visualisation tool
 	</div>
 
 
-	<!-- Here we can have a floating div with instructions on how to navigate -->
-	<div class="navigation-instructions" style="height:100vh; z-index:1000; pointer-events:none;">
 
+	<div class="ui-overlay-container" style="height:100vh; z-index:1000; pointer-events:none;">
 		<!--MEASURE-->
 		<div id="measure-box" class="output-box">Measured length
 			<hr /><span id="measure-output" class="output-text" onmousedown="event.stopPropagation()">0.0</span>
@@ -108,7 +111,8 @@
 		<!--MEASURE-->
 	</div>
 
-	<div class="navigation-instructions" style="height:300px; z-index:1000; pointer-events:none; ">
+	<!-- Here we  have a floating div with instructions on how to navigate -->
+	<div class="ui-overlay-container" style="height:300px; z-index:1000; pointer-events:none; ">
 
 		<div class="instructions">
 			Double-click to change focus. <br>
@@ -169,7 +173,7 @@
 	}
 
 
-
+// Most of the functions have mobile variaitons, otherwise the buttons break
 	function actionsToolbar(action) {
 		// This one needs to be the same one as the above start position fetched from backend
 		if (action == 'home') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
