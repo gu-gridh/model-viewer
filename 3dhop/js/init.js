@@ -169,12 +169,16 @@ function lightSwitch(on) {
   if(on){
     jQuery('#light').css("visibility", "hidden");
     jQuery('#light_on').css("visibility", "visible");
+	jQuery('#light_m').css("visibility", "hidden");
+    jQuery('#light_on_m').css("visibility", "visible");
     jQuery('#lighting_off').css("visibility", "hidden");	//manage lighting combined interface
     jQuery('#lighting').css("visibility", "visible");	//manage lighting combined interface
   }
   else{
     jQuery('#light_on').css("visibility", "hidden");
     jQuery('#light').css("visibility", "visible");
+	jQuery('#light_on_m').css("visibility", "hidden");
+    jQuery('#light_m').css("visibility", "visible");
   }
 }
 
@@ -232,6 +236,8 @@ function measureSwitch(on) {
   if(on){  
     jQuery('#measure').css("visibility", "hidden");
     jQuery('#measure_on').css("visibility", "visible");
+	jQuery('#measure_m').css("visibility", "hidden");
+    jQuery('#measure_on_m').css("visibility", "visible");
     jQuery('#measure-box').fadeIn().css("display","table");
     jQuery('#draw-canvas').css("cursor","crosshair");
   }
@@ -239,7 +245,9 @@ function measureSwitch(on) {
     if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
     else if (document.selection && document.selection.createRange()!='') document.selection.empty();
     jQuery('#measure_on').css("visibility", "hidden");
+	jQuery('#measure_on_m').css("visibility", "hidden");
     jQuery('#measure').css("visibility", "visible");
+	jQuery('#measure_m').css("visibility", "visible");
     jQuery('#measure-box').css("display","none");
     jQuery('#measure-output').html("0.0");
     if (!presenter.isAnyMeasurementEnabled()) jQuery('#draw-canvas').css("cursor","default");
@@ -248,27 +256,37 @@ function measureSwitch(on) {
 
 function colorSwitch(on) {
   if(on === undefined) on = jQuery('#color').css("visibility")=="visible";
+  if(on === undefined) on = jQuery('#color_m').css("visibility")=="visible";
 
   if(on) {
 	jQuery('#color').css("visibility", "hidden");
 	jQuery('#color_on').css("visibility", "visible");
+	jQuery('#color_m').css("visibility", "hidden");
+	jQuery('#color_on_m').css("visibility", "visible");
   }
   else {
 	jQuery('#color_on').css("visibility", "hidden");
 	jQuery('#color').css("visibility", "visible");
+	jQuery('#color_on_m').css("visibility", "hidden");
+	jQuery('#color_m').css("visibility", "visible");
   }
 }
 
 function cameraSwitch(on) {
   if(on === undefined) on = jQuery('#perspective').css("visibility")=="visible";
+  if(on === undefined) on = jQuery('#perspective_m').css("visibility")=="visible";
 
   if(on){
     jQuery('#perspective').css("visibility", "hidden");
     jQuery('#orthographic').css("visibility", "visible");
+	jQuery('#perspective_m').css("visibility", "hidden");
+    jQuery('#orthographic_m').css("visibility", "visible");
   }
   else{
     jQuery('#orthographic').css("visibility", "hidden");
     jQuery('#perspective').css("visibility", "visible");
+	jQuery('#orthographic_m').css("visibility", "hidden");
+    jQuery('#perspective_m').css("visibility", "visible");
   }
 }
 

@@ -49,37 +49,36 @@
 		<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar"
 					src="skins/augmented-reality.svg" /></a></div>
 
+
+		<!-- The mobile toolbar has fewer tools due to complexity issues-->
 		<div id="mobile" style="display:flex; width:100%; justify-content:center;">
-			<!-- The mobile toolbar has fewer tools due to complexity issues-->
+			
 			<div id="toolbar_m">
 				<div id="toolbar">
-					<img id="home" title="Home" src="skins/frame.png" />
+					<img id="home_m" title="Home" src="skins/frame.png" />
 
 					<!--COLOR>-->
-					<img id="color_on" title="Disable Solid Color" src="skins/colour_off.png"
+					<img id="color_on_m" title="Disable Solid Color" src="skins/colour_off.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="color" title="Enable Solid Color" src="skins/colour_on.png" />
+					<img id="color_m" title="Enable Solid Color" src="skins/colour_on.png" />
 					<!--COLOR-->
 
 					<!--LIGHT-->
-					<img id="light_on" title="Disable Light Control" src="skins/move_on.png"
+					<img id="light_on_m" title="Disable Light Control" src="skins/move_on.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="light" title="Enable Light Control" src="skins/move_off.png" />
+					<img id="light_m" title="Enable Light Control" src="skins/move_off.png" />
 					<!--LIGHT-->
 
 					<!--MEASURE-->
-					<img id="measure_on" title="Disable Measure Tool" src="skins/measure_on.png"
+					<img id="measure_on_m" title="Disable Measure Tool" src="skins/measure_on.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="measure" title="Enable Measure Tool" src="skins/measure_off.png" />
+					<img id="measure_m" title="Enable Measure Tool" src="skins/measure_off.png" />
 					<!--MEASURE-->
 
-					
-					
-
 					<!--CAMERA-->
-					<img id="perspective" title="Perspective Camera" src="skins/perspective_no.png"
+					<img id="perspective_m" title="Perspective Camera" src="skins/perspective_no.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="orthographic" title="Orthographic Camera" src="skins/perspective.png" />
+					<img id="orthographic_m" title="Orthographic Camera" src="skins/perspective.png" />
 					<!--CAMERA-->
 				</div>
 			</div>
@@ -174,6 +173,7 @@
 	function actionsToolbar(action) {
 		// This one needs to be the same one as the above start position fetched from backend
 		if (action == 'home') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
+		if (action == 'home_m') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
 		//--FULLSCREEN--
 		else if (action == 'full' || action == 'full_on') fullscreenSwitch();
 		//--FULLSCREEN--
@@ -186,15 +186,19 @@
 		//--LIGHTING--
 		//--LIGHT--
 		else if (action == 'light' || action == 'light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
+		else if (action == 'light_m' || action == 'light_on_m') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
 		//--LIGHT--
 		//--CAMERA--
 		else if (action == 'perspective' || action == 'orthographic') { presenter.toggleCameraType(); cameraSwitch(); }
+		else if (action == 'perspective_m' || action == 'orthographic_m') { presenter.toggleCameraType(); cameraSwitch(); }
 		//--CAMERA--
 		//--COLOR--
 		else if (action == 'color' || action == 'color_on') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
+		else if (action == 'color_m' || action == 'color_on_m') { presenter.toggleInstanceSolidColor(HOP_ALL, true); colorSwitch(); }
 		//--COLOR--
 		//--MEASURE--
 		else if (action == 'measure' || action == 'measure_on') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
+		else if (action == 'measure_m' || action == 'measure_on_m') { presenter.enableMeasurementTool(!presenter.isMeasurementToolEnabled()); measureSwitch(); }
 		//--MEASURE--
 		//--HOTSPOT--
 		else if (action == 'hotspot' || action == 'hotspot_on') {
