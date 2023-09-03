@@ -26,12 +26,12 @@ function init3dhop() {
 	jQuery('#toolbar img')
 		.mouseenter(function(e) {
 			id = jQuery(this).attr('id');
-			if(!ismousedown) jQuery(this).css("opacity","0.8");
+			if(!ismousedown) jQuery(this).css("opacity","1.0");
 			else jQuery(this).css("opacity","1.0");
 		})
 		.mouseout(function(e) {
 			clearInterval(interval); 
-			jQuery(this).css("opacity","0.5");
+			jQuery(this).css("opacity","0.9");
 		})
 		.mousedown(function(e) {
 			id = jQuery(this).attr('id');
@@ -65,7 +65,7 @@ function init3dhop() {
 			button=0;
 		});
 
-	jQuery('.output-table td:has(.output-text,.output-input)').css("border-radius", "5px").css("background-color", "rgba(125,125,125,0.25)");
+	jQuery('.output-table td:has(.output-text,.output-input)').css("border-radius", "0px").css("background-color", "rgba(125,125,125,0.0)");
 
 	jQuery('#3dhop')
 		.on('touchstart pointerdown', function(e) {
@@ -89,7 +89,7 @@ function init3dhop() {
 			jQuery('#toolbar img').css("opacity","0.5");
 		})
 		.mousedown(function(e) { 
-			jQuery('#toolbar img').css("opacity","0.5"); 
+			jQuery('#toolbar img').css("opacity","0.91"); 
 			if(e.preventDefault) e.preventDefault(); 
 			if (window.getSelection && window.getSelection()!='') window.getSelection().removeAllRanges();
 			else if (document.selection && document.selection.createRange()!='') document.selection.empty();

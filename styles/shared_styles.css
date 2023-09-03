@@ -134,7 +134,7 @@ h2 {
     color: white;
     display: flex;
     cursor: pointer;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .switch-button {
@@ -183,6 +183,10 @@ h2 {
     }
 
     .subtitle {
+        display: none;
+    }
+
+    .potree_menu_toggle{
         display: none;
     }
 

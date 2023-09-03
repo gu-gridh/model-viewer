@@ -109,9 +109,9 @@
 			<div class="tool-item">
 				<div class="tool-icon">
 
-					<img id="color_on" title="Disable Solid Color" src="skins/texture_no.png"
+					<img id="color_on" title="Disable Solid Color" src="skins/colour_off.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="color" title="Enable Solid Color" src="skins/texture.png" />
+					<img id="color" title="Enable Solid Color" src="skins/colour_on.png" />
 
 				</div>
 				<div class="tool-label">Activate or deactivate colours</div>
@@ -122,9 +122,9 @@
 			<div class="tool-item">
 
 				<div class="tool-icon">
-					<img id="lighting_off" title="Enable Lighting" src="skins/light.png"
+					<img id="lighting_off" title="Enable Lighting" src="skins/light_off.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="lighting" title="Disable Lighting" src="skins/light.png" />
+					<img id="lighting" title="Disable Lighting" src="skins/light_on.png" />
 
 				</div>
 				<div class="tool-label">Turn on or off scene lighting</div>
@@ -135,12 +135,12 @@
 			<div class="tool-item">
 				<div class="tool-icon">
 
-					<img id="light_on" title="Disable Light Control" src="skins/light_change_on.png"
+					<img id="light_on" title="Disable Light Control" src="skins/move_on.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="light" title="Enable Light Control" src="skins/light_change.png" />
+					<img id="light" title="Enable Light Control" src="skins/move_off.png" />
 
 				</div>
-				<div class="tool-label">Click and drag on the model to change light</div>
+				<div class="tool-label">Click and drag on the model to move the light source</div>
 			</div>
 			<!--LIGHT-->
 
@@ -153,9 +153,9 @@
 			<div class="tool-item">
 				<div class="tool-icon">
 
-					<img id="measure_on" title="Disable Measure Tool" src="skins/measure.png"
+					<img id="measure_on" title="Disable Measure Tool" src="skins/measure_on.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="measure" title="Enable Measure Tool" src="skins/measure.png" />
+					<img id="measure" title="Enable Measure Tool" src="skins/measure_off.png" />
 
 				</div>
 				<div class="tool-label">Measure the model between two points</div>
@@ -174,38 +174,40 @@
 							<td>Flip</td>
 						</tr>
 						<tr>
-							<td><img id="xplane_on" title="Disable X Axis Section" src="skins/icons/sectionX_on.png"
+							<td class="output-input-icon"><img id="xplane_on" title="Disable X Axis Section" src="skins/icons/sectionX_on.png"
 									onclick="sectionxSwitch()"
-									style="position:absolute; visibility:hidden; border:1px inset;" />
+									style="position:absolute; visibility:hidden;" />
 								<img id="xplane" title="Enable X Axis Section" src="skins/icons/sectionX.png"
 									onclick="sectionxSwitch()" /><br />
 							</td>
-							<td><input id="xplaneSlider" class="output-input" type="range" style="height:15px;"
+							<td><input id="xplaneSlider" class="output-input-slider" type="range"
 									title="Move X Axis Section Position" /></td>
 
-							<td><input id="xplaneFlip" class="output-input" type="checkbox" style="height:15px;"
+							<td><input id="xplaneFlip" class="output-input" type="checkbox"
 									title="Flip X Axis Section Direction" /></td>
 						</tr>
 						<tr>
-							<td><img id="yplane_on" title="Disable Y Axis Section" src="skins/icons/sectionY_on.png"
+							<td class="output-input-icon"><img id="yplane_on" title="Disable Y Axis Section" src="skins/icons/sectionY_on.png"
 									onclick="sectionySwitch()"
-									style="position:absolute; visibility:hidden; border:1px inset;" />
+									style="position:absolute; visibility:hidden;" />
 								<img id="yplane" title="Enable Y Axis Section" src="skins/icons/sectionY.png"
 									onclick="sectionySwitch()" /><br />
 							</td>
-							<td><input id="yplaneSlider" class="output-input" type="range"
+
+							<td><input id="yplaneSlider" class="output-input-slider" type="range"
 									title="Move Y Axis Section Position" /></td>
+
 							<td><input id="yplaneFlip" class="output-input" type="checkbox"
 									title="Flip Y Axis Section Direction" /></td>
 						</tr>
 						<tr>
-							<td><img id="zplane_on" title="Disable Z Axis Section" src="skins/icons/sectionZ_on.png"
+							<td class="output-input-icon"><img id="zplane_on" title="Disable Z Axis Section" src="skins/icons/sectionZ_on.png"
 									onclick="sectionzSwitch()"
-									style="position:absolute; visibility:hidden; border:1px inset;" />
+									style="position:absolute; visibility:hidden;" />
 								<img id="zplane" title="Enable Z Axis Section" src="skins/icons/sectionZ.png"
 									onclick="sectionzSwitch()" /><br />
 							</td>
-							<td><input id="zplaneSlider" class="output-input" type="range"
+							<td><input id="zplaneSlider" class="output-input-slider" type="range"
 									title="Move Y Axis Section Position" /></td>
 							<td><input id="zplaneFlip" class="output-input" type="checkbox"
 									title="Flip Z Axis Section Direction" /></td>
@@ -213,9 +215,9 @@
 					</table>
 					<table class="output-table" onmousedown="event.stopPropagation()" style="text-align:center;">
 						<tr>
-							<td>Show planes<input id="showPlane" class="output-input" type="checkbox"
+							<td>Show planes&#32;<input id="showPlane" class="output-input" type="checkbox"
 									title="Show Section Planes" style="bottom:-3px;" /></td>
-							<td>Show edges<input id="showBorder" class="output-input" type="checkbox"
+							<td>Show edges&#32;<input id="showBorder" class="output-input" type="checkbox"
 									title="Show Section Edges" style="bottom:-3px;" /></td>
 						</tr>
 					</table>
@@ -243,7 +245,7 @@
 					<img id="orthographic" title="Orthographic Camera" src="skins/perspective.png" />
 
 				</div>
-				<div class="tool-label">Switch between perspective or orthographic view</div>
+				<div class="tool-label">Switch between perspective and orthographic view</div>
 			</div>
 			<!--CAMERA-->
 

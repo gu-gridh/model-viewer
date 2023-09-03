@@ -55,23 +55,26 @@
 				<div id="toolbar">
 					<img id="home" title="Home" src="skins/frame.png" />
 
-					<!--LIGHT-->
-					<img id="light_on" title="Disable Light Control" src="skins/light_change_on.png"
-						style="position:absolute; visibility:hidden;" />
-					<img id="light" title="Enable Light Control" src="skins/light_change.png" />
-					<!--LIGHT-->
-
-					<!--MEASURE-->
-					<img id="measure_on" title="Disable Measure Tool" src="skins/measure.png"
-						style="position:absolute; visibility:hidden;" />
-					<img id="measure" title="Enable Measure Tool" src="skins/measure.png" />
-					<!--MEASURE-->
-
 					<!--COLOR>-->
-					<img id="color_on" title="Disable Solid Color" src="skins/texture_no.png"
+					<img id="color_on" title="Disable Solid Color" src="skins/colour_off.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="color" title="Enable Solid Color" src="skins/texture.png" />
+					<img id="color" title="Enable Solid Color" src="skins/colour_on.png" />
 					<!--COLOR-->
+
+					<!--LIGHT-->
+					<img id="light_on" title="Disable Light Control" src="skins/move_on.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="light" title="Enable Light Control" src="skins/move_off.png" />
+					<!--LIGHT-->
+
+					<!--MEASURE-->
+					<img id="measure_on" title="Disable Measure Tool" src="skins/measure_on.png"
+						style="position:absolute; visibility:hidden;" />
+					<img id="measure" title="Enable Measure Tool" src="skins/measure_off.png" />
+					<!--MEASURE-->
+
+					
+					
 
 					<!--CAMERA-->
 					<img id="perspective" title="Perspective Camera" src="skins/perspective_no.png"
@@ -229,10 +232,10 @@
 
 	function MenuSwitch() {
 		var x = document.getElementById("module-container");
-		if (x.style.width === "calc(100% - 420px)") {
-			x.style.width = "100%";
+		if (x.style.left === "420px") {
+			x.style.left = "0px";
 		} else {
-			x.style.width = "calc(100% - 420px)";
+			x.style.left = "420px";
 		}
 	}
 

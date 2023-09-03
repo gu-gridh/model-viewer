@@ -25,8 +25,10 @@ body {
     z-index: 100;
     transition: all 0.4s ease-in-out;
     position: absolute;
-    right: 0px;
-    width: 100%;
+    top: 		0px;
+	bottom: 	0px;
+	left: 		0px;
+	right: 		0px;
     height: calc(100% - 80px);
     overflow: hidden;
 }
@@ -43,8 +45,6 @@ body {
     user-select: none;
     touch-action: none;
     -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
 }
 
 #toolbar_m {
@@ -66,8 +66,7 @@ body {
     user-select: none;
     touch-action: none;
     -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
+
 }
 
 #toolbar_m img {
@@ -76,7 +75,7 @@ body {
     margin-bottom: 35px;
     width: 30px;
     height: 30px;
-    opacity: 0.5;
+    opacity: 0.9;
     cursor: pointer;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -86,21 +85,19 @@ body {
     user-select: none;
     touch-action: none;
     -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
 }
 
 #toolbar_m img:hover {
-    opacity: 0.9;
+    opacity: 1.0;
 }
 
-#the_tools img {
-    margin-left: 15px;
+.tool-icon img {
+    margin-left: 20px;
     margin-top: 0px;
     margin-bottom: 15px;
     width: 30px;
     height: 30px;
-    opacity: 0.5;
+    opacity: 0.9;
     cursor: pointer;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -110,12 +107,10 @@ body {
     user-select: none;
     touch-action: none;
     -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
 }
 
 #the_tools img:hover {
-    opacity: 0.9;
+    opacity: 1.0;
 }
 
 .output-box {
@@ -126,28 +121,16 @@ body {
     margin-left: 20px;
     margin-top: 10px;
     width: 335px;
-    height: 220px;
+    height: auto;
     border-radius: 8px;
-    padding: 0px 5px 2px 5px;
+    padding: 5px 5px 5px 5px;
     cursor: default;
-    background-color: rgba(125, 125, 125, 0.5);
-    color: #f8f8f8;
+    background-color: rgba(225, 225, 225, 1.0);
     text-decoration: none;
     text-align: center;
-    font-family: verdana;
-    font-style: italic;
     font-size: 12px;
     line-height: 20px;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    touch-action: none;
-    -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
+
 }
 
 .output-text {
@@ -161,72 +144,75 @@ body {
     user-select: text;
 }
 
-.output-input {
+.output-input-icon {
     vertical-align: middle;
     cursor: pointer;
-    height: 15px;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    touch-action: none;
-    -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-}
+    background-color:none;
+    padding-top:0px;
+    padding-right:0px;
+    opacity:1.0;
+  
 
-.output-table {
-    padding-top: 5px;
-    width: 100%;
-    color: #E5F2FF;
-    text-align: center;
-    font-style: italic;
-    font-size: 12px;
-    line-height: 15px;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    touch-action: none;
-    -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
 }
 
 .output-table img {
-    height: 12px;
+height:28px;
+width:30px;
+    vertical-align: middle;
     cursor: pointer;
-    background-color: rgba(20, 125, 125, 0.25);
-    border: 1px outset;
+    background-color: rgba(83, 83, 83, 1.0);
+    border: 1px;
+    opacity:1.0;
     border-radius: 5px;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    touch-action: none;
-    -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-    user-drag: none;
-    -webkit-user-drag: none;
 }
 
 .output-table img:hover {
-    background-color: rgba(20, 125, 125, 0.8);
+    background-color: rgba(83, 83, 83, 0.9);
 }
 
-.output-box hr {
-    margin: 3px 0 3px 0;
+.output-input-slider {
+    cursor: pointer;
+    width:230px;
+    color:black;
+    background-color:none;
+}
+
+
+.output-input {
+    vertical-align: middle;
+    cursor: pointer;
+    padding-left:20px;
+    background-color:none;
+}
+
+
+
+
+.output-table {  
+    padding-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+
+
+.output-box hr { 
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(225, 225, 225, 0.75), rgba(0, 0, 0, 0));
+    height:1px; background-image:linear-gradient(to right, rgba(0, 0, 0, 0), rgba(225, 225, 225, 0.75), rgba(0, 0, 0, 0));
 }
+
+table, th, td, tr {
+    border: 0px solid;
+    min-height:15px;
+    color:black;
+    background-color:none;
+
+  }
+
+
 
 #draw-canvas {
     width: 100%;
@@ -246,11 +232,11 @@ body {
     user-select: none;
     touch-action: none;
     -ms-touch-action: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
 }
 
 #measure-box {
+    color: white;
+    font-size: 14px;
     position: absolute;
     width: 160px;
     height: auto;
@@ -299,7 +285,7 @@ body {
     color: rgb(210, 210, 210);
     padding: 20px;
     padding-right: 30px;
-    width: 380px;
+    width: 390px;
     height: calc(100% - 80px);
     overflow-y: scroll;
     box-shadow: inset -2rem 0rem 2rem rgba(0, 0, 0, 0.2) !important;
@@ -307,10 +293,9 @@ body {
 
 @media screen and (max-width: 800px) {
     #module-container {
-        margin-top: 0vh;
-        margin-left: 0vh;
-        width: 100%;
-        border-radius: 0px;
+    
+        left: 0px;
+
     }
 
     #ar-widget {
