@@ -32,8 +32,6 @@
 
 	<!-- The content of the sidebar is fetched from the file sidebar.html -->
 	<div id="sidebar" style="background-color:var(--sidebar-bg)"></div>
-	<script> $("#sidebar").load("sidebar.html");</script>
-
 
 	<!-- And this is the main action -->
 
@@ -232,12 +230,6 @@
 	}
 	//--MEASURE--
 
-
-	$(document).ready(function () {
-		init3dhop();
-		setup3dhop();
-	});
-
 	function MenuSwitch() {
 		var x = document.getElementById("module-container");
 		if (x.style.left === "420px") {
@@ -246,6 +238,14 @@
 			x.style.left = "420px";
 		}
 	}
+
+	$(document).ready(function() {
+            // Sidebar loading moved here
+            $("#sidebar").load("sidebar.html", function() {
+				init3dhop();
+				setup3dhop();
+		});
+	});
 
 </script>
 
