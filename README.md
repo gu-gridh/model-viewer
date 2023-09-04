@@ -13,9 +13,11 @@ npm start
 
 ## Usage
 
-http://localhost:5173/ directs to the home page
-http://localhost:5173/potree directs to the point cloud viewer
+http://localhost:5173/ directs to the Home Page
+http://localhost:5173/potree directs to the Pointcloud Viewer
 http://localhost:5173/3dhop directs to the 3dhop 
+
+A sample url would look like http://localhost:5173/potree/?q=tobin93 for Potree links
 
 ## Installation
 

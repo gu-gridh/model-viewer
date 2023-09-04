@@ -73,7 +73,8 @@
 		});
 		
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
-		Potree.loadPointCloud("https://data.dh.gu.se/antarctica/models/pointclouds/tobin93/cloud.js", "NameOfTomb", function(e){
+		const queryName = 'PLACEHOLDER_QUERY'; //replaced by the routing ?q=
+  		Potree.loadPointCloud(`https://data.dh.gu.se/antarctica/models/pointclouds/${queryName}/cloud.js`, "NameOfTomb", function(e){
 			viewer.scene.addPointCloud(e.pointcloud);
 			let material = e.pointcloud.material;
 
