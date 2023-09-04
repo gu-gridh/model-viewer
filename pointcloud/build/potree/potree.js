@@ -80638,12 +80638,7 @@ ENDSEC
 			let sldMoveSpeed = $('#sldMoveSpeed');
 			let lblMoveSpeed = $('#lblMoveSpeed');
 
-			let elCameraProjection = $(`
-			<selectgroup id="camera_projection_options">
-				<option id="camera_projection_options_perspective" value="PERSPECTIVE">Perspective</option>
-				<option id="camera_projection_options_orthigraphic" value="ORTHOGRAPHIC">Orthographic</option>
-			</selectgroup>
-		`);
+		
 
 		let elCameraSetting = $(`
 			<selectgroup id="camera_settings_options">
@@ -80659,6 +80654,13 @@ ENDSEC
 			});
 		
 			elNavigation.append("<br>");
+
+			let elCameraProjection = $(`
+			<selectgroup id="camera_projection_options">
+				<option id="camera_projection_options_perspective" value="PERSPECTIVE">Perspective</option>
+				<option id="camera_projection_options_orthigraphic" value="ORTHOGRAPHIC">Orthographic</option>
+			</selectgroup>
+		`);
 
 		elNavigation.append(elCameraProjection);
 		elCameraProjection.selectgroup({ title: "" });
@@ -80783,18 +80785,6 @@ ENDSEC
 			)); */
 
 			elOrientation.append(this.createToolIconTop(
-				Potree.resourcePath + "/icons/left.svg",
-				"[title]tt.left_view_control",
-				() => { this.viewer.setLeftView(); }
-			));
-
-			elOrientation.append(this.createToolIconTop(
-				Potree.resourcePath + "/icons/right.svg",
-				"[title]tt.right_view_control",
-				() => { this.viewer.setRightView(); }
-			));
-
-			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/front.svg",
 				"[title]tt.front_view_control",
 				() => { this.viewer.setFrontView(); }
@@ -80804,6 +80794,18 @@ ENDSEC
 				Potree.resourcePath + "/icons/back.svg",
 				"[title]tt.back_view_control",
 				() => { this.viewer.setBackView(); }
+			));
+
+			elOrientation.append(this.createToolIconTop(
+				Potree.resourcePath + "/icons/left.svg",
+				"[title]tt.left_view_control",
+				() => { this.viewer.setLeftView(); }
+			));
+
+			elOrientation.append(this.createToolIconTop(
+				Potree.resourcePath + "/icons/right.svg",
+				"[title]tt.right_view_control",
+				() => { this.viewer.setRightView(); }
 			));
 
 			elOrientation.append(this.createToolIconTop(
