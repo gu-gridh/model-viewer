@@ -1,4 +1,26 @@
 <style>
+.tool-button-container{
+
+}
+
+.tool-label-button{
+	position:relative;
+	width:110px;
+	height:auto;
+	background-color:rgb(190,190,190);
+	border-radius:4px;
+	color:black;
+	text-align:center;
+	padding:2px 0px;
+	cursor:pointer;
+	font-weight:400;
+	font-size:1em;
+}
+
+.tool-label-button:hover{
+	opacity:0.8;
+}
+
 
 
 </style>
@@ -143,17 +165,14 @@
 
 
 			<div id="the_tools" style="display:none;">
+				
 				<div class="pv-menu-list" style="line-height:1.8;">
-					<h2>Orientation</h2>
-
-					<li id="orientation"></li>
-
-					<h2>Navigation</h2>
-
-					<li id="navigation"></li>
+					<h2>Camera Settings</h2>
+					<div class="tool-button-container">
+					<div id="navigation"></div>
+					</div>
+					<h2 style="width:100%;">Measurement</h2>
 					
-					<h2>Measurement</h2>
-
 					<li id="tools"></li>
 
 					<!-- 	<li>

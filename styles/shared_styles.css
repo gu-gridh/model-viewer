@@ -44,7 +44,7 @@ body {
     position: absolute;
     z-index: 1000;
     max-width: 200px;
-    top: 20px;
+    top: 10px;
     right: 20px;
     color: white;
     text-align: right;
@@ -106,6 +106,7 @@ h2 {
     justify-content: center;
     position: absolute;
     bottom: 0px;
+    pointer-events:none;
 
 }
 

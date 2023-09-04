@@ -79272,13 +79272,36 @@ ENDSEC
 		createToolIcon(icon, title, callback) {
 			let element = $(`
 			<img src="${icon}"
-				style="width: 32px; height: 32px"
+				style="width: 32px; height: 32px; margin-right:10px;"
 				class="button-icon"
 				data-i18n="${title}" />
 		`);
 
 			element.click(callback);
 
+			return element;
+		}
+
+		createToolIconTop(icon, title, callback) {
+			let element = $(`
+			<img src="${icon}"
+				style="width: 32px; height: 32px;"
+				class="button-icon"
+				data-i18n="${title}" />
+		`);
+
+			element.click(callback);
+
+			return element;
+		}
+
+		createDivIcon(icon, title, callback) {
+			let element = $(`
+			<div class="tool-label-button" 
+			data-i18n="${title}">${title}</div>
+		`);
+
+			element.click(callback);
 			return element;
 		}
 
@@ -80621,15 +80644,35 @@ ENDSEC
 				<option id="camera_projection_options_orthigraphic" value="ORTHOGRAPHIC">Orthographic</option>
 			</selectgroup>
 		`);
-			elNavigation.append(elCameraProjection);
-			elCameraProjection.selectgroup({ title: "" });
-			elCameraProjection.find("input").click((e) => {
-				this.viewer.setCameraMode(CameraMode[e.target.value]);
-			});
-			let cameraMode = Object.keys(CameraMode)
-				.filter(key => CameraMode[key] === this.viewer.scene.cameraMode);
-			elCameraProjection.find(`input[value=${cameraMode}]`).trigger("click");
 
+		let elCameraSetting = $(`
+			<selectgroup id="camera_settings_options">
+				<option id="camera_settings_options_orbit" selected="true" value="orbitControls">Orbit Camera</option>
+				<option id="camera_settings_options_fp" value="fpControls">Static Camera</option>
+			</selectgroup>
+		`);
+
+		elNavigation.append(elCameraSetting);
+		elCameraSetting.selectgroup({ title: "" });
+		elCameraSetting.find("input").click((e) => {
+			this.viewer.setControls(this.viewer[e.target.value]);
+			});
+		
+			elNavigation.append("<br>");
+
+		elNavigation.append(elCameraProjection);
+		elCameraProjection.selectgroup({ title: "" });
+		elCameraProjection.find("input").click((e) => {
+			this.viewer.setCameraMode(CameraMode[e.target.value]);
+		});
+
+		let cameraMode = Object.keys(CameraMode)
+			.filter(key => CameraMode[key] === this.viewer.scene.cameraMode);
+		elCameraProjection.find(`input[value=${cameraMode}]`).trigger("click");
+
+
+	
+			
 
 
 			let speedRange = new Vector2(1, 10 * 1000);
@@ -80658,23 +80701,40 @@ ENDSEC
 
 			lblMoveSpeed.html(this.viewer.getMoveSpeed().toFixed(1));
 
-			elNavigation.append("<br>");
+			
 
-			elNavigation.append(this.createToolIcon(
+
+			
+
+		
+
+
+			/* elNavigation.append(this.createDivIcon(
 				Potree.resourcePath + '/icons/orbit_controls.svg',
-				'[title]tt.orbit_control',
+				'Orbit Camera',
 				() => { this.viewer.setControls(this.viewer.orbitControls); }
 			));
 
-
-			elNavigation.append(this.createToolIcon(
+			elNavigation.append(this.createDivIcon(
 				Potree.resourcePath + '/icons/fps_controls.svg',
-				'[title]tt.flight_control',
+				'Static Camera',
 				() => {
 					this.viewer.setControls(this.viewer.fpControls);
 					this.viewer.fpControls.lockElevation = false;
 				}
-			));
+			)); */
+
+			
+
+		/* 	elNavigation.append(this.createToolIcon(
+				Potree.resourcePath + "/icons/camera_animation.svg",
+				"Animate Camera",
+				() => {
+					const animation = CameraAnimation.defaultFromView(this.viewer);
+
+					viewer.scene.addCameraAnimation(animation);
+				}
+			)); */
 
 			/* 	elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/helicopter_controls.svg',
@@ -80707,15 +80767,7 @@ ENDSEC
 				}
 			)); */
 
-			elNavigation.append(this.createToolIcon(
-				Potree.resourcePath + "/icons/camera_animation.svg",
-				"[title]tt.camera_animation",
-				() => {
-					const animation = CameraAnimation.defaultFromView(this.viewer);
-
-					viewer.scene.addCameraAnimation(animation);
-				}
-			));
+			
 		}
 
 
@@ -80724,45 +80776,43 @@ ENDSEC
 			let sldMoveSpeed = $('#sldMoveSpeed');
 			let lblMoveSpeed = $('#lblMoveSpeed');
 
-
-
-			elOrientation.append(this.createToolIcon(
+		/* 	elOrientation.append(this.createToolIcon(
 				Potree.resourcePath + '/icons/focus.svg',
 				'[title]tt.focus_control',
 				() => { this.viewer.fitToScreen(); }
-			));
+			)); */
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/left.svg",
 				"[title]tt.left_view_control",
 				() => { this.viewer.setLeftView(); }
 			));
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/right.svg",
 				"[title]tt.right_view_control",
 				() => { this.viewer.setRightView(); }
 			));
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/front.svg",
 				"[title]tt.front_view_control",
 				() => { this.viewer.setFrontView(); }
 			));
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/back.svg",
 				"[title]tt.back_view_control",
 				() => { this.viewer.setBackView(); }
 			));
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/top.svg",
 				"[title]tt.top_view_control",
 				() => { this.viewer.setTopView(); }
 			));
 
-			elOrientation.append(this.createToolIcon(
+			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/bottom.svg",
 				"[title]tt.bottom_view_control",
 				() => { this.viewer.setBottomView(); }
