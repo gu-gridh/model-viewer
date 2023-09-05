@@ -79295,6 +79295,24 @@ ENDSEC
 			return element;
 		}
 
+		createToolIconExpanded(icon, title, callback) {
+			let element = $(`
+			<div class="tool-icon-expanded">
+			<div class="tool-icon-image">
+			<img src="${icon}"
+				style="width: 32px; height: 32px; margin-right:10px;"
+				class="button-icon"
+				data-i18n="${title}" />
+				</div>
+				<div class="tool-icon-label">${title}</div>
+				</div>
+		`);
+
+			element.click(callback);
+
+			return element;
+		}
+
 		createDivIcon(icon, title, callback) {
 			let element = $(`
 			<div class="tool-label-button" 
@@ -79369,9 +79387,9 @@ ENDSEC
 			)); */
 
 			// DISTANCE
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/distance.svg',
-				'[title]tt.distance_measurement',
+				'Measure the distance between points',
 				() => {
 					$('#menu_measurements').next().slideDown();
 					let measurement = this.measuringTool.startInsertion({
@@ -79389,9 +79407,9 @@ ENDSEC
 			));
 
 			// HEIGHT
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/height.svg',
-				'[title]tt.height_measurement',
+				'Measure the height between points',
 				() => {
 					$('#menu_measurements').next().slideDown();
 					let measurement = this.measuringTool.startInsertion({
@@ -79411,9 +79429,9 @@ ENDSEC
 			));
 
 			// CIRCLE
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/circle.svg',
-				'[title]tt.circle_measurement',
+				'Measure the radius of a circular area',
 				() => {
 					$('#menu_measurements').next().slideDown();
 					let measurement = this.measuringTool.startInsertion({
@@ -79435,9 +79453,9 @@ ENDSEC
 			));
 
 			// AZIMUTH
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/azimuth.svg',
-				'Azimuth',
+				'Measure the azimuth of a circular area',
 				() => {
 					$('#menu_measurements').next().slideDown();
 					let measurement = this.measuringTool.startInsertion({
@@ -79460,9 +79478,9 @@ ENDSEC
 			));
 
 			// AREA
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/area.svg',
-				'[title]tt.area_measurement',
+				'Measure an area by drawing a polygon',
 				() => {
 					$('#menu_measurements').next().slideDown();
 					let measurement = this.measuringTool.startInsertion({
@@ -79480,9 +79498,9 @@ ENDSEC
 			));
 
 			// VOLUME
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/volume.svg',
-				'[title]tt.volume_measurement',
+				'Measure an area volume with a cube',
 				() => {
 					let volume = this.volumeTool.startInsertion();
 
@@ -79494,9 +79512,9 @@ ENDSEC
 			));
 
 			// SPHERE VOLUME
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/sphere_distances.svg',
-				'[title]tt.volume_measurement',
+				'Measure an area volume with a sphere',
 				() => {
 					let volume = this.volumeTool.startInsertion({ type: SphereVolume });
 
@@ -79508,9 +79526,9 @@ ENDSEC
 			));
 
 			// PROFILE
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/profile.svg',
-				'[title]tt.height_profile',
+				'Highlight a profile',
 				() => {
 					$('#menu_measurements').next().slideDown();;
 					let profile = this.profileTool.startInsertion();
@@ -79523,9 +79541,9 @@ ENDSEC
 			));
 
 			// ANNOTATION
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/annotation.svg',
-				'[title]tt.annotation',
+				'Annotate the model',
 				() => {
 					$('#menu_measurements').next().slideDown();;
 					let annotation = this.viewer.annotationTool.startInsertion();
@@ -79538,9 +79556,9 @@ ENDSEC
 			));
 
 			// REMOVE ALL
-			elToolbar.append(this.createToolIcon(
+			elToolbar.append(this.createToolIconExpanded(
 				Potree.resourcePath + '/icons/reset_tools.svg',
-				'[title]tt.remove_all_measurement',
+				'Remove all measurements',
 				() => {
 					this.viewer.scene.removeAllMeasurements();
 				}
@@ -80725,8 +80743,6 @@ ENDSEC
 					this.viewer.fpControls.lockElevation = false;
 				}
 			)); */
-
-			
 
 		/* 	elNavigation.append(this.createToolIcon(
 				Potree.resourcePath + "/icons/camera_animation.svg",
