@@ -60,7 +60,7 @@
 
 		/* Field of view and how many points can be shown  */
 		viewer.setFOV(40);
-		viewer.setPointBudget(10_000_000);
+		viewer.setPointBudget(100_000);
 		viewer.loadSettingsFromURL();
 
 		 /* variants inlcude gradient, black, white, and skybox. Write "none" to just have the render-area background */ 
@@ -73,30 +73,38 @@
 		});
 		
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
-		const queryName = 'PLACEHOLDER_QUERY'; //replaced by the routing ?q=
-  		Potree.loadPointCloud(`https://data.dh.gu.se/antarctica/models/pointclouds/${queryName}/cloud.js`, "NameOfTomb", function(e){
+		const queryName = 'PLACEHOLDER_QUERY'; // This will be replaced dynamically
+
+		Potree.loadPointCloud(
+		`https://data.dh.gu.se/antarctica/models/pointclouds/${queryName}/cloud.js`,
+		"NameOfTomb",
+		function (e) {			
 			viewer.scene.addPointCloud(e.pointcloud);
 			let material = e.pointcloud.material;
 
-		 /* The size of the voxels (smaller = sharper) */
+			/* The size of the voxels (smaller = sharper) */
 			material.size = 1;
 
-			 /* The shape of the voxels */
+			/* The shape of the voxels */
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
 			material.shape = Potree.PointShape.CIRCLE;
+
+			const cameraPosition = PLACEHOLDER_CAMERAPOSITION; // Will be replaced dynamically
 			
 			/*  The position of the camera: x z y. These must be fetched in the backend */
-			viewer.scene.view.position.set(0.2, -4.5, 3.8);
+			viewer.scene.view.position.set(cameraPosition[0], cameraPosition[1], cameraPosition[2]);
 
 			/*  The center of rotation of the camera. These must be fetched in the backend. 
 			If these values are set to be identical to those of the position of the camera 
 			the user will be able to look around from a static point of view which is good for small spaces.
 			The user exits this mode by a double click to change focus point. 
 			Suggest intitial viewing direction by making a decimal or smaller deviation from the camera position */
-			viewer.scene.view.lookAt(new THREE.Vector3(0, 2, 1.8));
-	
-			
-		});
+			const lookAtPosition = PLACEHOLDER_LOOKAT; // Will be replaced dynamically
+
+			viewer.scene.view.lookAt(new THREE.Vector3(lookAtPosition[0], lookAtPosition[1], lookAtPosition[2]));
+		}
+		);
+
 	</script>
 
 	<!-- Title, fetched from the backed: -->

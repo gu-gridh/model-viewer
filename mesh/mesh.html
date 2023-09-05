@@ -135,7 +135,7 @@
 			meshes: {
 				"mesh_comp": {
 					// This url needs to fetched from backend
-					url: "/mesh/models/gargo.nxz"
+					url: PLACEHOLDER_MESHURL,
 				}
 			},
 			modelInstances: {
@@ -149,14 +149,14 @@
 			trackball: {
 				type: TurntablePanTrackball,
 				trackOptions: {
-					startPhi: 45.0,
-					startTheta: 20.0,
-					startDistance: 1.5,
-					startPanX: 0.0,
-					startPanY: 0,
-					startPanZ: 0.0,
-					minMaxPhi: [-180, 180],
-					minMaxTheta: [-180.0, 180.0]
+					startPhi: PLACEHOLDER_STARTPHI,
+					startTheta: PLACEHOLDER_STARTTHETA,
+					startDistance: PLACEHOLDER_STARTDISTANCE,
+					startPanX: PLACEHOLDER_STARTPAN[0],
+					startPanY: PLACEHOLDER_STARTPAN[1],
+					startPanZ: PLACEHOLDER_STARTPAN[2],
+					minMaxPhi: PLACEHOLDER_MINMAXPHI,
+					minMaxTheta: PLACEHOLDER_MINMAXTHETA
 				}
 			}
 		});
@@ -174,8 +174,8 @@
 // Most of the functions have mobile variaitons, otherwise the buttons break
 	function actionsToolbar(action) {
 		// This one needs to be the same one as the above start position fetched from backend
-		if (action == 'home') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
-		if (action == 'home_m') presenter.animateToTrackballPosition([45, 20, 0, 0, 0, 1.5]);
+		if (action == 'home') presenter.animateToTrackballPosition(PLACEHOLDER_TRACKBALLSTART);
+		if (action == 'home_m') presenter.animateToTrackballPosition(PLACEHOLDER_TRACKBALLSTART);
 		//--FULLSCREEN--
 		else if (action == 'full' || action == 'full_on') fullscreenSwitch();
 		//--FULLSCREEN--
