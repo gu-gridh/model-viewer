@@ -659,7 +659,7 @@ body{
 
 .ui-state-active{
 	background: #c6c9ca !important;
-	color: black !important;
+	color: rgb(255, 255, 255) !important;
 }
 
 .cesium-viewer .cesium-viewer-cesiumWidgetContainer{

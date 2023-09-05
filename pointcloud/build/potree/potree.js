@@ -80665,6 +80665,15 @@ ENDSEC
 			</selectgroup>
 		`);
 
+		$(document).ready(function() {
+			// After buttons have been populated, set the Orbit Camera button to the active state by default
+			// Set the static camera to unactive state
+			let orbitalCameraLabel = $('label[for="camera_settings_options_orbit"]');
+			let staticCameraLabel = $('label[for="camera_settings_options_fp"]');
+			orbitalCameraLabel.addClass("ui-state-active");		
+			staticCameraLabel.addClass("ui-state-default");		
+		});		
+
 		elNavigation.append(elCameraSetting);
 		elCameraSetting.selectgroup({ title: "" });
 		elCameraSetting.find("input").click((e) => {
