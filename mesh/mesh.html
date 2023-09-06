@@ -91,7 +91,6 @@
 
 	<!-- Title, fetched from the backed -->
 	<div class="title">
-		Awesome Gargoyle
 	</div>
 
 	<!-- This can probably be static -->
@@ -127,6 +126,7 @@
 
 <script type="text/javascript">
 	var presenter = null;
+	document.querySelector('.title').textContent = PLACEHOLDER_TITLE; //set Title
 
 	function setup3dhop() {
 		presenter = new Presenter("draw-canvas");

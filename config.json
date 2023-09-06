@@ -2,12 +2,14 @@
 {
     "pointcloud": {
       "tobin93": {
+        "title": "Tobin 93",
         "cameraPosition": [0.2, -4.5, 3.8],
         "lookAt": [0, 2, 1.8]
       }
     },
     "mesh": {
       "gargo": {
+        "title": "Awesome Gargolye",
         "trackballStart": [45, 20, 0, 0, 0, 1.5],
         "meshURL": "/mesh/models/gargo.nxz",
         "startPhi": 45.0,

@@ -74,6 +74,7 @@
 		
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
 		const queryName = 'PLACEHOLDER_QUERY'; // This will be replaced dynamically
+		document.querySelector('.title').textContent = PLACEHOLDER_TITLE; //set Title
 
 		Potree.loadPointCloud(
 		`https://data.dh.gu.se/antarctica/models/pointclouds/${queryName}/cloud.js`,
@@ -109,7 +110,6 @@
 
 	<!-- Title, fetched from the backed: -->
 	<div class="title">
-			Tomba Tobin 93	
 	</div>
 
 	<div class="model-viewer-id">
