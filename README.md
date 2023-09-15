@@ -13,9 +13,9 @@ npm start
 
 ## Usage
 
-http://localhost:5173/ directs to the Home Page
-http://localhost:5173/pointcloud/?q=tobin93 directs to the Pointcloud Viewer
-http://localhost:5173/mesh/?q=gargo directs to the 3dhop Viewer
+http://localhost:5177/ directs to the Home Page
+http://localhost:5177/pointcloud/?q=tobin93 directs to the Pointcloud Viewer
+http://localhost:5177/mesh/?q=gargo directs to the 3dhop Viewer
 
 ## Installation
 
