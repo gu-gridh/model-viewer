@@ -73,11 +73,17 @@
 		});
 		
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
-		const queryName = 'PLACEHOLDER_QUERY'; // This will be replaced dynamically
-		document.querySelector('.title').textContent = PLACEHOLDER_TITLE; //set Title
+		const queryName = 'PLACEHOLDER_QUERY';
+		const pointCloudUrl = 'PLACEHOLDER_URL_PUBLIC';
+		
+		console.log('Query Name: ', queryName);
+		console.log('Point Cloud URL: ', pointCloudUrl);
+
+		document.querySelector('.title').textContent = PLACEHOLDER_TITLE; 
+		console.log('Title: ', PLACEHOLDER_TITLE);
 
 		Potree.loadPointCloud(
-		`https://data.dh.gu.se/antarctica/models/pointclouds/${queryName}/cloud.js`,
+		pointCloudUrl,
 		"NameOfTomb",
 		function (e) {			
 			viewer.scene.addPointCloud(e.pointcloud);
@@ -90,7 +96,7 @@
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
 			material.shape = Potree.PointShape.CIRCLE;
 
-			const cameraPosition = PLACEHOLDER_CAMERAPOSITION; // Will be replaced dynamically
+			const cameraPosition = PLACEHOLDER_CAMERA_POSITION;
 			
 			/*  The position of the camera: x z y. These must be fetched in the backend */
 			viewer.scene.view.position.set(cameraPosition[0], cameraPosition[1], cameraPosition[2]);
@@ -100,7 +106,7 @@
 			the user will be able to look around from a static point of view which is good for small spaces.
 			The user exits this mode by a double click to change focus point. 
 			Suggest intitial viewing direction by making a decimal or smaller deviation from the camera position */
-			const lookAtPosition = PLACEHOLDER_LOOKAT; // Will be replaced dynamically
+			const lookAtPosition = PLACEHOLDER_LOOK_AT;
 
 			viewer.scene.view.lookAt(new THREE.Vector3(lookAtPosition[0], lookAtPosition[1], lookAtPosition[2]));
 		}
@@ -113,7 +119,7 @@
 	</div>
 
 	<div class="model-viewer-id">
-				Point Cloud <br> visualisation tool	
+				Point Cloud <br> visualisation tool
 	</div>
 	<div class="ui-overlay-container" style="position:absolute;  height:300px; top:25px; z-index:1000;">
 	<div id="orientation" style="display:flex; flex-direction: row; justify-content: space-between; pointer-events:auto;width:230px; height:30px; border-radius:8px; background-color:rgba(0,0,0,0.8); padding:10px 15px; box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;">

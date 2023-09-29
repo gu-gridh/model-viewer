@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const axios = require('axios');
 
 const app = express();
 
@@ -9,22 +10,38 @@ app.use('/mesh', express.static(path.join(__dirname, 'mesh')));
 app.use('/pointcloud', express.static(path.join(__dirname, 'pointcloud')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
-// Change the variables here:
-const configData = require('./config.json'); // Load the configuration file for testing. 
-// Will be replaced by API call...
-
 /*
 Sample URLs for testing:
-http://localhost:5173/pointcloud/?q=tobin93 directs to the Pointcloud Viewer
-http://localhost:5173/mesh/?q=gargo directs to the 3dhop Viewer 
+http://localhost:5177/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
+http://localhost:5177/mesh/?q=gargo directs to the 3dhop Viewer 
 */
 
 // Router to handle incoming modelId
-app.get('/:type', (req, res) => {
+app.get('/:type', async (req, res) => {
   const queryName = req.query.q; // Fetch the 'q' parameter
   const modelType = req.params.type; // "pointcloud" or "mesh"
 
-  if (modelType === 'pointcloud' || modelType === 'mesh') {
+
+  let apiUrl = '';
+  console.log(modelType)
+
+  // Set the API URL based on the modelType
+  if (modelType === 'pointcloud') {
+    apiUrl = `https://diana.dh.gu.se/api/etruscantombs/objectpointcloud/?id=${queryName}`;
+  } else if (modelType === 'mesh') {
+    apiUrl = `https://diana.dh.gu.se/api/etruscantombs/objectmesh/?id=${queryName}`;
+  } else {
+    res.status(400).send('Invalid model type');
+    return;
+  }
+
+  try {
+    const apiResponse = await axios.get(apiUrl);
+
+    if(apiResponse.data.results && apiResponse.data.results.length > 0) {
+
+    const modelData = apiResponse.data.results[0];
+
     fs.readFile(path.join(__dirname, modelType, `${modelType}.html`), 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading the file:', err);
@@ -32,17 +49,23 @@ app.get('/:type', (req, res) => {
         return;
       }
 
-      let modifiedData = data.replace('PLACEHOLDER_QUERY', queryName || '');
-    
-      if (configData[modelType] && configData[modelType][queryName]) {
-        for (const [key, value] of Object.entries(configData[modelType][queryName])) {
-          modifiedData = modifiedData.replace(new RegExp(`PLACEHOLDER_${key.toUpperCase()}`, 'g'), JSON.stringify(value));
-        }
-      }
+      // Replacing placeholders with actual data fetched from API
+      let modifiedData = data;
+      modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+      modifiedData = modifiedData.replace(/PLACEHOLDER_CAMERA_POSITION/g, JSON.stringify(modelData.camera_position) || '[]');
+      modifiedData = modifiedData.replace(/PLACEHOLDER_LOOK_AT/g, JSON.stringify(modelData.look_at) || '[]');
+      modifiedData = modifiedData.replace(/PLACEHOLDER_URL_PUBLIC/g, modelData.url_public);
       res.send(modifiedData);
     });
-  } else {
-    res.status(400).send('Invalid model type');
+  }
+  else {
+    console.error('No results found in API response.');
+    res.status(404).send('Not Found');
+    return;
+    }
+  } catch (error) {
+    console.error('Error fetching data from API:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
