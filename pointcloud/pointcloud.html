@@ -75,12 +75,8 @@
 		/* The link to the model. URL and name of tomb must be fetched from the backend */
 		const queryName = 'PLACEHOLDER_QUERY';
 		const pointCloudUrl = 'PLACEHOLDER_URL_PUBLIC';
-		
-		console.log('Query Name: ', queryName);
-		console.log('Point Cloud URL: ', pointCloudUrl);
 
 		document.querySelector('.title').textContent = PLACEHOLDER_TITLE; 
-		console.log('Title: ', PLACEHOLDER_TITLE);
 
 		Potree.loadPointCloud(
 		pointCloudUrl,

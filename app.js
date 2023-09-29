@@ -13,7 +13,7 @@ app.use('/styles', express.static(path.join(__dirname, 'styles')));
 /*
 Sample URLs for testing:
 http://localhost:5177/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
-http://localhost:5177/mesh/?q=gargo directs to the 3dhop Viewer 
+http://localhost:5177/mesh/?q=1 directs to the 3dhop Viewer 
 */
 
 // Router to handle incoming modelId
@@ -29,7 +29,7 @@ app.get('/:type', async (req, res) => {
   if (modelType === 'pointcloud') {
     apiUrl = `https://diana.dh.gu.se/api/etruscantombs/objectpointcloud/?id=${queryName}`;
   } else if (modelType === 'mesh') {
-    apiUrl = `https://diana.dh.gu.se/api/etruscantombs/objectmesh/?id=${queryName}`;
+    apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`;
   } else {
     res.status(400).send('Invalid model type');
     return;
@@ -51,10 +51,23 @@ app.get('/:type', async (req, res) => {
 
       // Replacing placeholders with actual data fetched from API
       let modifiedData = data;
-      modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
-      modifiedData = modifiedData.replace(/PLACEHOLDER_CAMERA_POSITION/g, JSON.stringify(modelData.camera_position) || '[]');
-      modifiedData = modifiedData.replace(/PLACEHOLDER_LOOK_AT/g, JSON.stringify(modelData.look_at) || '[]');
-      modifiedData = modifiedData.replace(/PLACEHOLDER_URL_PUBLIC/g, modelData.url_public);
+      if (modelType === 'pointcloud') {
+        modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_CAMERA_POSITION/g, JSON.stringify(modelData.camera_position) || '[]');
+        modifiedData = modifiedData.replace(/PLACEHOLDER_LOOK_AT/g, JSON.stringify(modelData.look_at) || '[]');
+        modifiedData = modifiedData.replace(/PLACEHOLDER_URL_PUBLIC/g, modelData.url_public);
+      }
+      else if (modelType === 'mesh') {
+        modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_URL_PUBLIC/g, JSON.stringify(modelData.url_public || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_STARTPHI/g, JSON.stringify(modelData.start_angle[0] || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_STARTTHETA/g, JSON.stringify(modelData.start_angle[1] || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_STARTDISTANCE/g, JSON.stringify(modelData.start_distance || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_STARTPAN/g, JSON.stringify(modelData.start_pan || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_MINMAXPHI/g, JSON.stringify(modelData.min_max_phi || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_MINMAXTHETA/g, JSON.stringify(modelData.min_max_theta || ''));
+        modifiedData = modifiedData.replace(/PLACEHOLDER_TRACKBALLSTART/g, JSON.stringify(modelData.trackball_start || ''));
+      }
       res.send(modifiedData);
     });
   }
