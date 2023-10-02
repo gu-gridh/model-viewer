@@ -12,8 +12,8 @@ app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 /*
 Sample URLs for testing:
-http://localhost:5177/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
-http://localhost:5177/mesh/?q=1 directs to the 3dhop Viewer 
+http://localhost:8094/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
+http://localhost:8094/mesh/?q=1 directs to the 3dhop Viewer 
 */
 
 // Router to handle incoming modelId

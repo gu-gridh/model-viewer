@@ -13,11 +13,11 @@ npm start
 
 ## Usage
 
-http://localhost:5177/ directs to the Home Page
+http://localhost:8094/ directs to the Home Page
 
-http://localhost:5177/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
+http://localhost:8094/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
 
-http://localhost:5177/mesh/?q=1 directs to the 3dhop Viewer where q is the id of the mesh
+http://localhost:8094/mesh/?q=1 directs to the 3dhop Viewer where q is the id of the mesh
 
 ## Installation
 
