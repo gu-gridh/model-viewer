@@ -29,6 +29,61 @@
 
 </style>
 <script>
+	async function fetchTitleAndUpdate() {
+		try {
+			const qValue = getQueryParameter('q');
+			const response = await fetch(`https://diana.dh.gu.se/api/etruscantombs/objectpointcloud/?id=${qValue}`);
+			
+			if (response.ok) {
+			const data = await response.json();
+			const title = data.results[0].title; 
+			const points_optimized = data.results[0].points_optimized;
+			const points_full_resolution = data.results[0].points_full_resolution;
+			const description = data.results[0].description;
+
+			// Update the title
+			if (document.getElementById("backend-info")) {
+				document.getElementById("backend-info").textContent = title;
+			} else {
+				console.error('Element with id "backend-info" not found.');
+			}
+			
+			// Update points optimized
+			if (document.getElementById("points-optimized-info")) {
+				document.getElementById("points-optimized-info").textContent = points_optimized;
+			} else {
+				console.error('Element with id "triangles-optimized-info" not found.');
+			}
+
+			// Update points full resolution
+			if (document.getElementById("points-full-res-info")) {
+				document.getElementById("points-full-res-info").textContent = points_full_resolution;
+			} else {
+				console.error('Element with id "triangles-full-res-info" not found.');
+			}
+
+			// Update description
+			if (document.getElementById("description")) {
+				document.getElementById("description").innerHTML = description;
+			} else {
+				console.error('Element with id "triangles-full-res-info" not found.');
+			}
+
+			} else {
+				console.error('Failed to fetch data:', response.status, response.statusText);
+			}
+		} catch (error) {
+			console.error('An error occurred:', error);
+		}
+	}
+
+	fetchTitleAndUpdate();
+
+	function getQueryParameter(paramName) {
+		const urlParams = new URLSearchParams(window.location.search);
+		return urlParams.get(paramName);
+	}
+
 	function AppearanceFunction() {
 		var the_looks = document.getElementById("the_looks");
 		var the_tools = document.getElementById("the_tools");
@@ -289,7 +344,34 @@
 			<div class="pv-menu-list" style="line-height:1.8;">
 				<h2>Metadata</h2>
 
-				<li>Info from the backend about the model, the creator etcetera.</li>
+			<div class="flex-container" style="
+				display: flex;
+				margin-bottom: 10px;
+				gap: 5px;
+			">
+				Title: <li id="backend-info">Title.</li>
+			</div>
+			<div class="flex-container" style="
+				display: flex;
+				margin-bottom: 10px;
+				gap: 5px;
+			">
+				Points optimized: <li id="points-optimized-info">Triangular data optimized.</li>
+			</div>
+			<div class="flex-container" style="
+				display: flex;
+				margin-bottom: 10px;
+				gap: 5px;
+			">
+				Points full resolution: <li id="points-full-res-info">Triangular data full resolution.</li>
+			</div>
+			<div class="flex-container" style="
+				display: flex;
+				margin-bottom: 10px;
+				flex-direction: column;
+			">
+				<li id="description">Description.</li>
+			</div>	
 
 				<h2>The viewer</h2>
 				<li style="line-height:1.2;">The viewer is built with <a href="http://potree.org"
