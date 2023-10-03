@@ -79331,6 +79331,7 @@ ENDSEC
 			this.initScene();
 			this.initNavigation();
 			this.initOrientation();
+			this.initLOD();
 			this.initFilters();
 			this.initClippingTool();
 			this.initSettings();
@@ -80556,9 +80557,8 @@ ENDSEC
 			// $("#menu_tools").next().show()
 		}
 
-		initAppearance() {
-
-			const sldPointBudget = this.dom.find('#sldPointBudget');
+		initLOD() {
+			const sldPointBudget = $('#sldPointBudget');
 
 			sldPointBudget.slider({
 				value: this.viewer.getPointBudget(),
@@ -80567,7 +80567,9 @@ ENDSEC
 				step: 1000,
 				slide: (event, ui) => { this.viewer.setPointBudget(ui.value); }
 			});
+		}
 
+		initAppearance() {
 			this.dom.find('#sldFOV').slider({
 				value: this.viewer.getFOV(),
 				min: 20,
