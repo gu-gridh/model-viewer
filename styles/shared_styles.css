@@ -143,6 +143,30 @@ h2 {
     box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
 }
 
+.instructions .close{
+    width:20px;
+    height:20px;
+    margin-top:-4px;
+    margin-right:8px;
+    border-radius:50%;
+    position:absolute;
+    right:0px;
+    color:white;
+background-image:url("close.png");
+background-size:18px 18px;
+background-repeat:no-repeat;
+background-position:center;
+    
+    line-height:0;
+    font-size:40px;
+    pointer-events:auto;
+    cursor:pointer;
+}
+
+.instructions .close:hover{
+  background-color:rgb(60,60,60);
+}
+
 .LODtool {
     pointer-events: auto;
     position: absolute;
