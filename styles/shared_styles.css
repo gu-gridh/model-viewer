@@ -201,6 +201,34 @@ h2 {
     margin: 10px 20px;
 }
 
+/* Potree UI stuff */
+
+.LODtool .ui-slider-horizontal{
+height:4px;
+}
+
+.ui-slider-horizontal{
+    height:6px;
+    }
+
+.LODtool .ui-slider-handle {
+margin-top: -0.3em;
+margin-left: -.6em;
+width: 1.2em !important;
+height: 1.2em !important;
+border-radius:50% !important;
+}
+
+.ui-slider-handle {
+    margin-top: -0.15em;
+    margin-left: -.6em;
+    width: 1.1em !important;
+    height: 1.1em !important;
+    border-radius:50% !important;
+    }
+
+
+
 /* 3d hop tool layout*/
 .tool-item {
     width: 100%;
