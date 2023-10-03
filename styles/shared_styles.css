@@ -121,7 +121,7 @@ h2 {
     width: 100%;
     justify-content: center;
     position: absolute;
-    bottom: 0px;
+    bottom: 60px;
     pointer-events:none;
 
 }

@@ -41,7 +41,7 @@
 	<!-- Title, fetched from the backed: -->
 	<div class="title">
 	</div>
-	
+
 	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
 	<!-- INCLUDE SETTINGS HERE -->
 	
@@ -124,12 +124,7 @@
 </div>
 </div>
 	<!-- Here we can have a floating div with instructions on how to navigate -->
-	<div class="ui-overlay-container" style="position:absolute; height:200px; bottom:80px; z-index:1000; color:white">
-		<div class="LODtool">
-		<span>Max points:</span> <span id="lblPointBudget"></span>
-		<div id="sldPointBudget"></div>
-	</div>
-	</div>
+
 		<div class="ui-overlay-container" style="position:absolute;">
 		<div class="instructions">
 		Double-click to change focus. <br>
@@ -137,6 +132,14 @@
 		Scroll to zoom in and out.
 		</div>
 	</div>
+
+	<div class="ui-overlay-container" style="position:absolute; height:50px; bottom:0px; z-index:1000; color:white">
+		<div class="LODtool">
+		<span>Max points:</span> <span id="lblPointBudget"></span>
+		<div id="sldPointBudget"></div>
+	</div>
+	</div>
+	
 <div id="footer-container"></div>
 	<script > $("#footer-container").load("footer.html");</script>
 </body>
