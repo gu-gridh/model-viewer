@@ -211,6 +211,26 @@ background-position:center;
     box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.05);
 }
 
+
+/* Metadata classes */
+
+.flex-container{
+    font-size:1.2em;
+}
+
+.flex-container .metadata {
+color:hsl(195, 70%, 72%)!important;
+}
+
+a:link {
+    color:hsl(195, 70%, 72%)!important;
+    }
+
+.flex-container .description{
+    line-height:1.2 !important;
+    font-size:0.9em !important;
+}
+
 /* Potree sidebar lists*/
 .pv-menu-list {
     list-style-type: none;
@@ -250,6 +270,27 @@ border-radius:50% !important;
     border-radius:50% !important;
     }
 
+
+    .ui-state-active{
+        color:rgb(0, 113, 150)!important;
+        font-weight:600!important;
+        border-radius:5px!important;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+        transform:scale(1.03);
+        z-index:20!important;
+        border-style:none!important;
+        border-width:0px!important;
+    }
+
+    .ui-state-active:hover{
+        font-weight:600!important;
+    }
+
+    .ui-state-default{
+        border-style:none!important;
+
+
+    }
 
 
 /* 3d hop tool layout*/

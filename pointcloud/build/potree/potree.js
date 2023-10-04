@@ -81852,7 +81852,7 @@ ENDSEC
 			this.scene = null;
 			this.sceneControls = new Scene();
 
-			this.rotationSpeed = 5;
+			this.rotationSpeed = 4;
 
 			this.fadeFactor = 20;
 			this.yawDelta = 0;
@@ -81900,7 +81900,7 @@ ENDSEC
 			let scroll = (e) => {
 				let resolvedRadius = this.scene.view.radius + this.radiusDelta;
 
-				this.radiusDelta += -e.delta * resolvedRadius * 0.1;
+				this.radiusDelta += -e.delta * resolvedRadius * 0.002;
 
 				this.stopTweens();
 			};
@@ -81997,9 +81997,9 @@ ENDSEC
 				return;
 			}
 
-			let targetRadius = 0;
+			let targetRadius = 10;
 			{
-				let minimumJumpDistance = 0.2;
+				let minimumJumpDistance = 1.0;
 
 				let domElement = this.renderer.domElement;
 				let ray = Utils.mouseToRay(mouse, camera, domElement.clientWidth, domElement.clientHeight);
@@ -88241,7 +88241,7 @@ ENDSEC
 
 				this.classifications = ClassificationScheme.DEFAULT;
 
-				this.moveSpeed = 10;
+				this.moveSpeed = 100;
 
 				this.lengthUnit = LengthUnits.METER;
 				this.lengthUnitDisplay = LengthUnits.METER;
