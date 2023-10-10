@@ -81900,7 +81900,7 @@ ENDSEC
 			let scroll = (e) => {
 				let resolvedRadius = this.scene.view.radius + this.radiusDelta;
 
-				this.radiusDelta += -e.delta * resolvedRadius * 0.002;
+				this.radiusDelta += -e.delta * resolvedRadius * 0.005;
 
 				this.stopTweens();
 			};
