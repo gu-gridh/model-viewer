@@ -18,6 +18,20 @@
 			const title = data.results[0].title; 
 			const trianglesOptimized = data.results[0].triangles_optimized;
 			const trianglesFullResolution = data.results[0].triangles_full_resolution;
+            const urlOptimized = data.results[0].url_optimized;
+
+			if (urlOptimized) {
+				const downloadButton = document.getElementById("download-button");
+				downloadButton.classList.add("theme-button");
+				downloadButton.style.display = 'block'; // show the download button
+				downloadButton.setAttribute('href', urlOptimized);
+				downloadButton.setAttribute('download', '');
+			} else {
+				// Hide the button
+				const downloadButton = document.getElementById("download-button");
+				downloadButton.style.display = 'none';
+				console.error('url_optimized is null or undefined.');
+			}
 
 			// Update the title
 			if (document.getElementById("backend-info")) {
@@ -143,7 +157,8 @@
 				gap: 5px;
 			">
 				Triangules full resolution: <li id="triangles-full-res-info">Triangular data full resolution.</li>
-			</div>			
+			</div>
+			<a id="download-button" style="display: none;">Download Optimized Mesh</a>
 
 			<!--Hotspot-->
 			<!-- <div class="tool-item">

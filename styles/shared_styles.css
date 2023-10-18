@@ -311,6 +311,15 @@ border-radius:50% !important;
     margin-top: 5px;
 }
 
+.theme-button {
+    background-color:var(--color-4);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    width: 150px;
+    color: var( --font-color) !important;
+}
+
 /* Hide away complexities on mobile */
 
 @media screen and (max-width: 800px) {

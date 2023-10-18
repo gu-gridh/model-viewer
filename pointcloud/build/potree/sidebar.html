@@ -40,6 +40,20 @@
 			const points_optimized = data.results[0].points_optimized;
 			const points_full_resolution = data.results[0].points_full_resolution;
 			const description = data.results[0].description;
+			const urlOptimized = data.results[0].url_optimized;
+
+			if (urlOptimized) {
+				const downloadButton = document.getElementById("download-button");
+				downloadButton.classList.add("theme-button");
+				downloadButton.style.display = 'block'; // show the download button
+				downloadButton.setAttribute('href', urlOptimized);
+				downloadButton.setAttribute('download', '');
+			} else {
+				// Hide the button
+				const downloadButton = document.getElementById("download-button");
+				downloadButton.style.display = 'none';
+				console.error('url_optimized is null or undefined.');
+			}
 
 			// Update the title
 			if (document.getElementById("backend-info")) {
@@ -371,7 +385,9 @@
 				flex-direction: column;
 			">
 				<li id="description" class="description">Description.</li>
-			</div>	
+			</div>
+			
+			<a id="download-button" style="display: none;">Download Optimized Mesh</a>
 
 				<h2>The viewer</h2>
 				<li style="line-height:1.2;">The Point Cloud Visualisation Tool is built with <a href="http://potree.org"
