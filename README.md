@@ -15,7 +15,7 @@ npm start
 
 http://localhost:8094/ directs to the Home Page
 
-http://localhost:8094/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
+http://localhost:8094/pointcloud/?q=13 directs to the Pointcloud Viewer where q is the id of the pointcloud
 
 http://localhost:8094/mesh/?q=1 directs to the 3dhop Viewer where q is the id of the mesh
 

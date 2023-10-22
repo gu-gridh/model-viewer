@@ -56,8 +56,9 @@
 		import * as THREE from "./libs/three.js/build/three.module.js";
 
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
+		viewer.setMinNodeSize(0);
 
-		viewer.setEDLEnabled(true);
+		viewer.setEDLEnabled(false);
 
 		/* higher numbers for these leads to greater contrasts  */
 		viewer.setEDLRadius(1.0);
