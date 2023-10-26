@@ -58,11 +58,11 @@
 		window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
 		viewer.setMinNodeSize(0);
 
-		viewer.setEDLEnabled(false);
+		viewer.setEDLEnabled(true);
 
 		/* higher numbers for these leads to greater contrasts  */
-		viewer.setEDLRadius(1.0);
-		viewer.setEDLStrength(0.2);
+		viewer.setEDLRadius(0.0);
+		viewer.setEDLStrength(0.0);
 
 		/* Field of view and how many points can be shown  */
 		viewer.setFOV(40);
