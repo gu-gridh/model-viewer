@@ -42,10 +42,10 @@ body {
 /* The title of the model */
 .title {
     display:table-caption;
-    position: relative;
+    position: absolute;
     z-index: 1000;
-    width:100vw;
-    word-spacing: 100vw;
+    width:300px;
+    /* word-spacing: 100vw; */
     margin: auto;
     top: 30px;
     right: 30px;
@@ -54,7 +54,7 @@ body {
     padding: 0px;
     font-weight: 500;
     line-height: 0.90;
-    font-size: 4.5vw;
+    font-size: 3.5vw;
     pointer-events: none;
 }
 
@@ -78,7 +78,7 @@ body {
 
 @media screen and (max-width: 1900px) {
     .title {
-        font-size: 4.0em;
+        font-size: 3.0em;
     }
 
     .model-viewer-id {
