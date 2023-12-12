@@ -298,6 +298,14 @@ border-radius:50% !important;
     }
 
 
+    .potree_failpage{
+        color:white;
+        text-align:center;
+        background-color:var(--viewer-bg);
+        padding-top:15%;
+    }
+
+
 /* 3d hop tool layout*/
 .tool-item {
     width: 100%;
