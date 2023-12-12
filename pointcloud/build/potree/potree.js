@@ -12191,7 +12191,7 @@
 			Camera.prototype.copy.call(this, source, recursive);
 
 			this.fov = source.fov;
-			this.zoom = source.zoom;
+			//this.zoom = source.zoom;
 
 			this.near = source.near;
 			this.far = source.far;
@@ -80662,18 +80662,22 @@ ENDSEC
 
 		let elCameraSetting = $(`
 			<selectgroup id="camera_settings_options">
-				<option id="camera_settings_options_orbit" selected="true" value="orbitControls">Orbit Camera</option>
-				<option id="camera_settings_options_fp" value="fpControls">Static Camera</option>
+			<option id="camera_settings_options_fp" selected="true" value="fpControls">Explore Camera</option>
+			<option id="camera_settings_options_orbit" selected="false" value="orbitControls">Orbit Camera</option>
+				
 			</selectgroup>
 		`);
+
+		
 
 		$(document).ready(function() {
 			// After buttons have been populated, set the Orbit Camera button to the active state by default
 			// Set the static camera to unactive state
 			let orbitalCameraLabel = $('label[for="camera_settings_options_orbit"]');
-			let staticCameraLabel = $('label[for="camera_settings_options_fp"]');
-			orbitalCameraLabel.addClass("ui-state-active");		
-			staticCameraLabel.addClass("ui-state-default");		
+			let fpCameraLabel = $('label[for="camera_settings_options_fp"]');
+			fpCameraLabel.addClass("ui-state-active");		
+			orbitalCameraLabel.addClass("ui-state-default");		
+			
 		});		
 
 		elNavigation.append(elCameraSetting);
@@ -80706,7 +80710,7 @@ ENDSEC
 			
 
 
-			let speedRange = new Vector2(1, 10 * 1000);
+			let speedRange = new Vector2(1, 10);
 
 			let toLinearSpeed = (value) => {
 				return Math.pow(value, 4) * speedRange.y + speedRange.x;
@@ -80718,8 +80722,8 @@ ENDSEC
 
 			sldMoveSpeed.slider({
 				value: toExpSpeed(this.viewer.getMoveSpeed()),
-				min: 0,
-				max: 1,
+				min: 0.1,
+				max: 1.0,
 				step: 0.01,
 				slide: (event, ui) => { this.viewer.setMoveSpeed(toLinearSpeed(ui.value)); }
 			});
@@ -80765,7 +80769,7 @@ ENDSEC
 				}
 			)); */
 
-			/* 	elNavigation.append(this.createToolIcon(
+			 /* 	elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/helicopter_controls.svg',
 					'[title]tt.heli_control',
 					() => { 
@@ -80773,6 +80777,16 @@ ENDSEC
 						this.viewer.fpControls.lockElevation = true;
 					}
 				)); */
+
+				/* elNavigation.append(this.createToolIcon(
+					Potree.resourcePath + '/icons/fps_controls.svg',
+					'[title]tt.flight_control',
+					() => {
+						this.viewer.setControls(this.viewer.fpControls);
+						this.viewer.fpControls.lockElevation = false;
+					}
+				));
+				*/
 
 			/* 	elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/earth_controls_1.png',
@@ -81025,7 +81039,7 @@ ENDSEC
 
 			this.wheelDelta = 0;
 
-			this.speed = 1;
+			this.speed = 0.1;
 
 			this.logMessages = false;
 
@@ -82142,7 +82156,7 @@ ENDSEC
 			this.sceneControls = new Scene();
 
 			this.rotationSpeed = 200;
-			this.moveSpeed = 10;
+			this.moveSpeed = 1;
 			this.lockElevation = false;
 
 			this.keys = {
@@ -82184,8 +82198,8 @@ ENDSEC
 					this.yawDelta += ndrag.x * this.rotationSpeed;
 					this.pitchDelta += ndrag.y * this.rotationSpeed;
 				} else if (e.drag.mouse === MOUSE$1.RIGHT) {
-					this.translationDelta.x -= ndrag.x * moveSpeed * 100;
-					this.translationDelta.z += ndrag.y * moveSpeed * 100;
+					this.translationDelta.x -= ndrag.x * moveSpeed * 10;
+					this.translationDelta.z += ndrag.y * moveSpeed * 1;
 				}
 			};
 
@@ -82193,19 +82207,18 @@ ENDSEC
 				this.dispatchEvent({ type: 'end' });
 			};
 
-			let scroll = (e) => {
-				let speed = this.viewer.getMoveSpeed();
+			// let scroll = (e) => {
+			// 	let speed = this.viewer.getMoveSpeed();
+			// 	if (e.delta < 0) {
+			// 		speed = speed / 0.9;
+			// 	} else if (e.delta > 0) {
+			// 		speed = speed * 0.9;
+			// 	}
 
-				if (e.delta < 0) {
-					speed = speed * 0.9;
-				} else if (e.delta > 0) {
-					speed = speed / 0.9;
-				}
+			// 	speed = Math.max(speed, 0.1);
 
-				speed = Math.max(speed, 0.1);
-
-				this.viewer.setMoveSpeed(speed);
-			};
+			// 	this.viewer.setMoveSpeed(speed);
+			// };
 
 			let dblclick = (e) => {
 				this.zoomToLocation(e.mouse);
@@ -82279,7 +82292,7 @@ ENDSEC
 					this.scene.view.position.z = (1 - t) * startPos.z + t * targetPos.z;
 
 					this.scene.view.radius = (1 - t) * startRadius + t * targetRadius;
-					this.viewer.setMoveSpeed(this.scene.view.radius / 2.5);
+					this.viewer.setMoveSpeed(1.0);
 				});
 
 				tween.onComplete(() => {
@@ -87937,18 +87950,18 @@ ENDSEC
 
 
 
-			// if(this.mode === this.mode_fly){
-			// 	let ray = new THREE.Ray(origin, direction);
+			 if(this.mode === this.mode_fly){
+			 	let ray = new THREE.Ray(origin, direction);
 
-			// 	for(let object of this.selectables){
+			 	for(let object of this.selectables){
 
-			// 		if(object.intersectsRay(ray)){
-			// 			object.onHit(ray);
-			// 		}
+			 		if(object.intersectsRay(ray)){
+			 			object.onHit(ray);
+			 		}
 
-			// 	}
+			 	}
 
-			// }
+			 }
 
 			this.mode.update(this, delta);
 
@@ -88241,7 +88254,7 @@ ENDSEC
 
 				this.classifications = ClassificationScheme.DEFAULT;
 
-				this.moveSpeed = 100;
+				this.moveSpeed = 1.0;
 
 				this.lengthUnit = LengthUnits.METER;
 				this.lengthUnitDisplay = LengthUnits.METER;
@@ -88366,8 +88379,8 @@ ENDSEC
 
 					let onPointcloudAdded = (e) => {
 						if (this.scene.pointclouds.length === 1) {
-							let speed = e.pointcloud.boundingBox.getSize(new Vector3()).length();
-							speed = speed / 5;
+							let speed = 1.0;
+							speed = speed;
 							this.setMoveSpeed(speed);
 						}
 					};
@@ -88405,7 +88418,7 @@ ENDSEC
 					this.setPointBudget(1 * 1000 * 1000);
 					this.setShowBoundingBox(false);
 					this.setFreeze(false);
-					this.setControls(this.orbitControls);
+					this.setControls(this.fpControls);
 					this.setBackground('gradient');
 
 					this.scaleFactor = 1;
