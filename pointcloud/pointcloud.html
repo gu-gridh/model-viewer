@@ -10,6 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<title>GRIDH Point Cloud Viewer</title>
 
+
+
 	<!-- CSS files -->
 	<link rel="stylesheet" type="text/css" href="build/potree/potree.css">
 	<link rel="stylesheet" type="text/css" href="libs/jquery-ui/jquery-ui.min.css">
@@ -92,7 +94,7 @@
 				let material = e.pointcloud.material;
 
 				/* The size of the voxels (smaller = sharper) */
-				material.size = 1;
+				material.size = 0.3;
 
 				/* The shape of the voxels */
 				material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
@@ -127,10 +129,10 @@
 	<!-- Here we can have a floating div with instructions on how to navigate -->
 
 	<div class="ui-overlay-container" style="position:absolute;">
-		<div id="instructions" >
-				<div class="instruction-closer" onclick="$('#instructions').hide();"></div>
-			Move with WASD- or Arrow-keys. <br>
+		<div id="instructions" class="short">
+			<div class="instruction-closer" onclick="$('#instructions').hide();"></div>
 			Click-and-drag to change direction. <br>
+			Move with WASD- or Arrow-keys. <br>
 			Double-click to focus.
 		</div>
 	</div>
@@ -143,7 +145,20 @@
 	</div>
 
 	<div id="footer-container"></div>
-	<script> $("#footer-container").load("footer.html");</script>
+	<script>
+		$("#footer-container").load("footer.html");
+
+		function sleep(ms) {
+			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+		sleep(2000).then(() => {
+			console.log('Hello');
+			$("#potree_render_area").focus();
+			console.log('focused: ', document.activeElement);
+		});
+
+
+	</script>
 </body>
 
 </html>

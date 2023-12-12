@@ -383,6 +383,8 @@
 	const DynamicCopyUsage = 35050;
 	const StreamCopyUsage = 35042;
 
+	const FirstPersonSpeed = 1.0;
+
 	const GLSL1 = '100';
 	const GLSL3 = '300 es';
 
@@ -82156,7 +82158,7 @@ ENDSEC
 			this.sceneControls = new Scene();
 
 			this.rotationSpeed = 200;
-			this.moveSpeed = 1;
+			this.moveSpeed = FirstPersonSpeed;
 			this.lockElevation = false;
 
 			this.keys = {
@@ -82187,7 +82189,7 @@ ENDSEC
 					this.dispatchEvent({ type: 'start' });
 				}
 
-				let moveSpeed = this.viewer.getMoveSpeed();
+				let moveSpeed = FirstPersonSpeed;
 
 				let ndrag = {
 					x: e.drag.lastDrag.x / this.renderer.domElement.clientWidth,
@@ -82292,7 +82294,7 @@ ENDSEC
 					this.scene.view.position.z = (1 - t) * startPos.z + t * targetPos.z;
 
 					this.scene.view.radius = (1 - t) * startRadius + t * targetRadius;
-					this.viewer.setMoveSpeed(1.0);
+					this.viewer.setMoveSpeed(FirstPersonSpeed);
 				});
 
 				tween.onComplete(() => {
@@ -82344,26 +82346,26 @@ ENDSEC
 					if (moveForward && moveBackward) {
 						this.translationDelta.y = 0;
 					} else if (moveForward) {
-						this.translationDelta.y = this.viewer.getMoveSpeed();
+						this.translationDelta.y = FirstPersonSpeed;
 					} else if (moveBackward) {
-						this.translationDelta.y = -this.viewer.getMoveSpeed();
+						this.translationDelta.y = -FirstPersonSpeed;
 					}
 				}
 
 				if (moveLeft && moveRight) {
 					this.translationDelta.x = 0;
 				} else if (moveLeft) {
-					this.translationDelta.x = -this.viewer.getMoveSpeed();
+					this.translationDelta.x = -FirstPersonSpeed;
 				} else if (moveRight) {
-					this.translationDelta.x = this.viewer.getMoveSpeed();
+					this.translationDelta.x = FirstPersonSpeed;
 				}
 
 				if (moveUp && moveDown) {
 					this.translationWorldDelta.z = 0;
 				} else if (moveUp) {
-					this.translationWorldDelta.z = this.viewer.getMoveSpeed();
+					this.translationWorldDelta.z = FirstPersonSpeed;
 				} else if (moveDown) {
-					this.translationWorldDelta.z = -this.viewer.getMoveSpeed();
+					this.translationWorldDelta.z = -FirstPersonSpeed;
 				}
 			}
 
@@ -88379,7 +88381,7 @@ ENDSEC
 
 					let onPointcloudAdded = (e) => {
 						if (this.scene.pointclouds.length === 1) {
-							let speed = 1.0;
+							let speed = FirstPersonSpeed;
 							speed = speed;
 							this.setMoveSpeed(speed);
 						}

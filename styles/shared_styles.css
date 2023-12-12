@@ -144,6 +144,10 @@ h2 {
     box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
 }
 
+.short{
+    width: 260px!important;
+}
+
 #instructions .instruction-closer{
     width:20px;
     height:20px;
@@ -171,7 +175,7 @@ background-position:center;
     pointer-events: auto;
     position: absolute;
     z-index: 100000;
-    width: 320px;
+    width: 240px;
     height: auto;
     bottom: 90px;
     border-radius: 8px;
