@@ -82194,7 +82194,7 @@ ENDSEC
 					this.dispatchEvent({ type: 'start' });
 				}
 
-				let moveSpeed = 100;
+				let moveSpeed = 150;
 
 				let ndrag = {
 					x: e.drag.lastDrag.x / this.renderer.domElement.clientWidth,
