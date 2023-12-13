@@ -388,6 +388,7 @@
 	const DynamicCopyUsage = 35050;
 	const StreamCopyUsage = 35042;
 
+	// GRIDH: Define the move speed for fpControls #explore
 	const FirstPersonSpeed = 1.0;
 
 	const GLSL1 = '100';
@@ -80665,9 +80666,9 @@ ENDSEC
 			let sldMoveSpeed = $('#sldMoveSpeed');
 			let lblMoveSpeed = $('#lblMoveSpeed');
 
-		
 
-		let elCameraSetting = $(`
+			// GRIDH: Navigation settings button #explore #Orbit
+			let elCameraSetting = $(`
 			<selectgroup id="camera_settings_options">
 			<option id="camera_settings_options_fp" selected="true" value="fpControls">Explore Camera</option>
 			<option id="camera_settings_options_orbit" selected="false" value="orbitControls">Orbit Camera</option>
@@ -80675,24 +80676,24 @@ ENDSEC
 			</selectgroup>
 		`);
 
-		
 
-		$(document).ready(function() {
-			// After buttons have been populated, set the Orbit Camera button to the active state by default
-			// Set the static camera to unactive state
-			let orbitalCameraLabel = $('label[for="camera_settings_options_orbit"]');
-			let fpCameraLabel = $('label[for="camera_settings_options_fp"]');
-			fpCameraLabel.addClass("ui-state-active");		
-			orbitalCameraLabel.addClass("ui-state-default");	
-			$('#potree_render_area canvas').focus();
-		});		
 
-		elNavigation.append(elCameraSetting);
-		elCameraSetting.selectgroup({ title: "" });
-		elCameraSetting.find("input").click((e) => {
-			this.viewer.setControls(this.viewer[e.target.value]);
+			$(document).ready(function () {
+				// After buttons have been populated, set the Orbit Camera button to the active state by default
+				// Set the static camera to unactive state
+				let orbitalCameraLabel = $('label[for="camera_settings_options_orbit"]');
+				let fpCameraLabel = $('label[for="camera_settings_options_fp"]');
+				fpCameraLabel.addClass("ui-state-active");
+				orbitalCameraLabel.addClass("ui-state-default");
+				$('#potree_render_area canvas').focus();
 			});
-		
+
+			elNavigation.append(elCameraSetting);
+			elCameraSetting.selectgroup({ title: "" });
+			elCameraSetting.find("input").click((e) => {
+				this.viewer.setControls(this.viewer[e.target.value]);
+			});
+
 			elNavigation.append("<br>");
 
 			let elCameraProjection = $(`
@@ -80702,19 +80703,19 @@ ENDSEC
 			</selectgroup>
 		`);
 
-		elNavigation.append(elCameraProjection);
-		elCameraProjection.selectgroup({ title: "" });
-		elCameraProjection.find("input").click((e) => {
-			this.viewer.setCameraMode(CameraMode[e.target.value]);
-		});
+			elNavigation.append(elCameraProjection);
+			elCameraProjection.selectgroup({ title: "" });
+			elCameraProjection.find("input").click((e) => {
+				this.viewer.setCameraMode(CameraMode[e.target.value]);
+			});
 
-		let cameraMode = Object.keys(CameraMode)
-			.filter(key => CameraMode[key] === this.viewer.scene.cameraMode);
-		elCameraProjection.find(`input[value=${cameraMode}]`).trigger("click");
+			let cameraMode = Object.keys(CameraMode)
+				.filter(key => CameraMode[key] === this.viewer.scene.cameraMode);
+			elCameraProjection.find(`input[value=${cameraMode}]`).trigger("click");
 
 
-	
-			
+
+
 
 
 			let speedRange = new Vector2(1, 10);
@@ -80743,13 +80744,9 @@ ENDSEC
 
 			lblMoveSpeed.html(this.viewer.getMoveSpeed().toFixed(1));
 
-			
 
 
-			
-
-		
-
+			// GRIDH: inactivated navigation controls
 
 			/* elNavigation.append(this.createDivIcon(
 				Potree.resourcePath + '/icons/orbit_controls.svg',
@@ -80764,9 +80761,9 @@ ENDSEC
 					this.viewer.setControls(this.viewer.fpControls);
 					this.viewer.fpControls.lockElevation = false;
 				}
-			)); */
-
-		/* 	elNavigation.append(this.createToolIcon(
+			));  	
+			
+				elNavigation.append(this.createToolIcon(
 				Potree.resourcePath + "/icons/camera_animation.svg",
 				"Animate Camera",
 				() => {
@@ -80774,18 +80771,18 @@ ENDSEC
 
 					viewer.scene.addCameraAnimation(animation);
 				}
-			)); */
-
-			 /* 	elNavigation.append(this.createToolIcon(
+			)); 
+			
+				elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/helicopter_controls.svg',
 					'[title]tt.heli_control',
 					() => { 
 						this.viewer.setControls(this.viewer.fpControls);
 						this.viewer.fpControls.lockElevation = true;
 					}
-				)); */
+				)); 
 
-				/* elNavigation.append(this.createToolIcon(
+				 elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/fps_controls.svg',
 					'[title]tt.flight_control',
 					() => {
@@ -80793,22 +80790,22 @@ ENDSEC
 						this.viewer.fpControls.lockElevation = false;
 					}
 				));
-				*/
+				
 
-			/* 	elNavigation.append(this.createToolIcon(
+				elNavigation.append(this.createToolIcon(
 					Potree.resourcePath + '/icons/earth_controls_1.png',
 					'[title]tt.earth_control',
 					() => { this.viewer.setControls(this.viewer.earthControls); }
-				)); */
+				)); 
 
 
-			/* elNavigation.append(this.createToolIcon(
+				 elNavigation.append(this.createToolIcon(
 				Potree.resourcePath + "/icons/navigation_cube.svg",
 				"[title]tt.navigation_cube_control",
 				() => {this.viewer.toggleNavigationCube();}
-			)); */
+				)); 
 
-			/* elNavigation.append(this.createToolIcon(
+			 elNavigation.append(this.createToolIcon(
 				Potree.resourcePath + "/images/compas.svg",
 				"[title]tt.compass",
 				() => {
@@ -80817,7 +80814,7 @@ ENDSEC
 				}
 			)); */
 
-			
+
 		}
 
 
@@ -80826,11 +80823,11 @@ ENDSEC
 			let sldMoveSpeed = $('#sldMoveSpeed');
 			let lblMoveSpeed = $('#lblMoveSpeed');
 
-		/* 	elOrientation.append(this.createToolIcon(
-				Potree.resourcePath + '/icons/focus.svg',
-				'[title]tt.focus_control',
-				() => { this.viewer.fitToScreen(); }
-			)); */
+			/* 	elOrientation.append(this.createToolIcon(
+					Potree.resourcePath + '/icons/focus.svg',
+					'[title]tt.focus_control',
+					() => { this.viewer.fitToScreen(); }
+				)); */
 
 			elOrientation.append(this.createToolIconTop(
 				Potree.resourcePath + "/icons/front.svg",
@@ -82152,6 +82149,8 @@ ENDSEC
 	 */
 
 
+	// GRIDH: Define what keyboard keys to use when navigating for fpControls #explore
+
 	class FirstPersonControls extends EventDispatcher {
 		constructor(viewer) {
 			super();
@@ -82182,6 +82181,9 @@ ENDSEC
 			this.translationWorldDelta = new Vector3(0, 0, 0);
 
 			this.tweens = [];
+
+
+			// GRIDH: To change the pan and rotation speed change the MoveSpeed here #pan-speed / panspeed / rotation-speed
 
 			let drag = (e) => {
 				if (e.drag.object !== null) {
@@ -87957,18 +87959,18 @@ ENDSEC
 
 
 
-			 if(this.mode === this.mode_fly){
-			 	let ray = new THREE.Ray(origin, direction);
+			if (this.mode === this.mode_fly) {
+				let ray = new THREE.Ray(origin, direction);
 
-			 	for(let object of this.selectables){
+				for (let object of this.selectables) {
 
-			 		if(object.intersectsRay(ray)){
-			 			object.onHit(ray);
-			 		}
+					if (object.intersectsRay(ray)) {
+						object.onHit(ray);
+					}
 
-			 	}
+				}
 
-			 }
+			}
 
 			this.mode.update(this, delta);
 
