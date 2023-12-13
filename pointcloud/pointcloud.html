@@ -147,17 +147,6 @@
 	<div id="footer-container"></div>
 	<script>
 		$("#footer-container").load("footer.html");
-
-		function sleep(ms) {
-			return new Promise(resolve => setTimeout(resolve, ms));
-		}
-		sleep(2000).then(() => {
-			console.log('Hello');
-			$("#potree_render_area").focus();
-			console.log('focused: ', document.activeElement);
-		});
-
-
 	</script>
 </body>
 
