@@ -145,7 +145,7 @@ h2 {
 }
 
 .short{
-    width: 260px!important;
+    width: 290px!important;
 }
 
 #instructions .instruction-closer{
@@ -175,7 +175,7 @@ background-position:center;
     pointer-events: auto;
     position: absolute;
     z-index: 100000;
-    width: 240px;
+    width: 270px;
     height: auto;
     bottom: 90px;
     border-radius: 8px;

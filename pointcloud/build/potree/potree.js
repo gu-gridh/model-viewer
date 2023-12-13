@@ -82194,7 +82194,7 @@ ENDSEC
 					this.dispatchEvent({ type: 'start' });
 				}
 
-				let moveSpeed = FirstPersonSpeed;
+				let moveSpeed = 100;
 
 				let ndrag = {
 					x: e.drag.lastDrag.x / this.renderer.domElement.clientWidth,
@@ -82205,7 +82205,7 @@ ENDSEC
 					this.yawDelta += ndrag.x * this.rotationSpeed;
 					this.pitchDelta += ndrag.y * this.rotationSpeed;
 				} else if (e.drag.mouse === MOUSE$1.RIGHT) {
-					this.translationDelta.x -= ndrag.x * moveSpeed * 10;
+					this.translationDelta.x -= ndrag.x * moveSpeed * 1;
 					this.translationDelta.z += ndrag.y * moveSpeed * 1;
 				}
 			};
