@@ -80683,8 +80683,8 @@ ENDSEC
 			let orbitalCameraLabel = $('label[for="camera_settings_options_orbit"]');
 			let fpCameraLabel = $('label[for="camera_settings_options_fp"]');
 			fpCameraLabel.addClass("ui-state-active");		
-			orbitalCameraLabel.addClass("ui-state-default");		
-			
+			orbitalCameraLabel.addClass("ui-state-default");	
+			$('#potree_render_area canvas').focus();
 		});		
 
 		elNavigation.append(elCameraSetting);
