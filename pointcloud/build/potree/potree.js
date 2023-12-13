@@ -12,6 +12,11 @@
 	 * 
 	 */
 
+	/**
+	 * And additional slight modifications by Jonathan Westin for the GRIDH-implementation
+	 */
+
+
 	// The MIT License
 	// 
 	// Copyright (c) 2011 Mr.doob
@@ -88457,12 +88462,11 @@ ENDSEC
 				
 				<h1>The model viewer encountered an error </h1>
 
-				<p>
-				This might have happened for a number of reasons. Please visit <a href="http://webglreport.com/" target="_blank">webglreport.com</a> and 
+				<p style="padding-right:40px;padding-left:10px;">
+				This might have happened for a number of reasons, all technical and if we understood why we would have fixed this. <br> 
+				Reload page to restart. If the problem persists, try with Google Chrome. You might also want to visit <a href="http://webglreport.com/" target="_blank">webglreport.com</a> and 
 				check whether your system supports WebGL.
 				</p>
-				
-
 				
 			</div>`);
 
@@ -88990,7 +88994,7 @@ ENDSEC
 			return range;
 		}
 
-		fitToScreen(factor = 1, animationDuration = 0) {
+		fitToScreen(factor = 0.4, animationDuration = 1) {
 			let box = this.getBoundingBox(this.scene.pointclouds);
 
 			let node = new Object3D();
