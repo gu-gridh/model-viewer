@@ -80888,6 +80888,9 @@ ENDSEC
 				});
 				$('#lblMinNodeSize').html(parseInt(this.viewer.getMinNodeSize()));
 
+
+				// GRIDH: point size slider
+
 				$('#sldPointSize').slider({
 					value: 0.3, // Default starting value
 					min: 0.1,
