@@ -80887,6 +80887,19 @@ ENDSEC
 					$('#sldMinNodeSize').slider({ value: this.viewer.getMinNodeSize() });
 				});
 				$('#lblMinNodeSize').html(parseInt(this.viewer.getMinNodeSize()));
+
+				$('#sldPointSize').slider({
+					value: 0.3, // Default starting value
+					min: 0.1,
+					max: 2.0,
+					step: 0.01,
+					slide: (event, ui) => {
+						let material = viewer.scene.pointclouds[0].material;
+						material.size = ui.value;
+						$('#lblPointSize').html(ui.value.toFixed(2));
+					}
+				});
+				$('#lblPointSize').html($('#sldPointSize').slider("value").toFixed(2));
 			}
 
 			{
