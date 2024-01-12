@@ -8,18 +8,20 @@ const app = express();
 // Serve static files
 app.use('/mesh', express.static(path.join(__dirname, 'mesh')));
 app.use('/pointcloud', express.static(path.join(__dirname, 'pointcloud')));
+app.use('/relight', express.static(path.join(__dirname, 'relight')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 /*
 Sample URLs for testing:
 http://localhost:8094/pointcloud/?q=2 directs to the Pointcloud Viewer where q is the id of the pointcloud
-http://localhost:8094/mesh/?q=1 directs to the 3dhop Viewer 
+http://localhost:8094/mesh/?q=1 directs to the 3dhop Viewer
+http://localhost:8094/relight/?q=1 directs to the Relight Viewer
 */
 
 // Router to handle incoming modelId
 app.get('/:type', async (req, res) => {
   const queryName = req.query.q; // Fetch the 'q' parameter
-  const modelType = req.params.type; // "pointcloud" or "mesh"
+  const modelType = req.params.type; // "pointcloud" or "mesh" or "relight"
 
 
   let apiUrl = '';
@@ -30,7 +32,11 @@ app.get('/:type', async (req, res) => {
     apiUrl = `https://diana.dh.gu.se/api/etruscantombs/objectpointcloud/?id=${queryName}`;
   } else if (modelType === 'mesh') {
     apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`;
-  } else {
+  } 
+  else if (modelType === 'relight') {
+    apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`; //to fix
+  }
+  else {
     res.status(400).send('Invalid model type');
     return;
   }
@@ -67,6 +73,9 @@ app.get('/:type', async (req, res) => {
         modifiedData = modifiedData.replace(/PLACEHOLDER_MINMAXPHI/g, JSON.stringify(modelData.min_max_phi || ''));
         modifiedData = modifiedData.replace(/PLACEHOLDER_MINMAXTHETA/g, JSON.stringify(modelData.min_max_theta || ''));
         modifiedData = modifiedData.replace(/PLACEHOLDER_TRACKBALLSTART/g, JSON.stringify(modelData.trackball_start || ''));
+      }
+      else if (modelType === 'relight') {
+        modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
       }
       res.send(modifiedData);
     });
