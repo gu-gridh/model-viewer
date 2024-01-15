@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" href="css/relight.css">
-  <style>
-    html, body, .relight { width: 100%; height: 100%; padding: 0px; margin: 0px; }
-  </style>
-  <script src="js/hammer.min.js"></script>
-  <script src="js/relight-viewer.min.js"></script>
-</head>
+  <head>
+    <link  rel="stylesheet" href="css/relight.css">
+    <style>
+      html, body, .relight { width:100%; height:100%; padding:0px; margin:0px; }
+    </style>
+    <script src="js/hammer.min.js"></script>
+    <script src="js/relight-viewer.min.js"></script>
+  </head>
 <body>
-    <div class="title">
-    </div>
+  <div class="title">
+  </div>
   <div class="relight"></div>
   <script>
-    var Relight = new RelightViewer('.relight', { url: "rti-folder", layout: "deepzoom" });
+    var Relight = new RelightViewer('.relight', { url: "rti-folder" });
     document.querySelector('.title').textContent = PLACEHOLDER_TITLE;
   </script>
 </body>
