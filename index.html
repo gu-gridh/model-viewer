@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<title>Home</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="/styles/shared_styles.css">
-<style>
-</style>
-<script src=""></script>
+<!doctype html>
+<html>
+<head>
+    <title>Content Display</title>
+    <style>
+        #relightContent, #dynamicContent {
+            width: 50%;
+            height: 100vh;
+            float: left;
+        }
+        body { margin: 0; padding: 0; display: flex; }
+    </style>
+</head>
 <body>
-
-<div class="title">
-    GRIDH Model Viewer
-</div>
-
+    <div id="relightContent">
+        <iframe src="/relight/relight.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
+    </div>
+    <div id="dynamicContent">
+        <iframe src="/relight/metadata.html" style="width:100%; height:100vh; border:none;"></iframe>
+    </div>
 </body>
 </html>

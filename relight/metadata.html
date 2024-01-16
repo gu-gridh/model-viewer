@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .toggle-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #2e2e2e;
+            color: white;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        .edit-button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-container {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toggle-button" id="toggleButton">Toggle: Meta Data</div>
+        <div class="image-container">
+            <p>Image goes here</p>
+        </div>
+        <div class="content" id="content">
+            <h1>Title</h1>
+            <p>Type:</p>
+            <p>Language:</p>
+            <p>Transcription::</p>
+            <p>Text:</p>
+            <div class="edit-button">
+                <button>Edit Inscription</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+
+        toggleButton.addEventListener('click', () => {
+            if (toggleButton.textContent === 'Toggle: Meta Data') {
+                toggleButton.textContent = 'Toggle: Spatial Context';
+            } else {
+                toggleButton.textContent = 'Toggle: Meta Data';
+            }
+        });
+    </script>
+</body>
+</html>
