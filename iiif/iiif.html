@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IIIF Image Viewer</title>
+    <!-- Include OpenSeadragon CSS -->
+    <link rel="stylesheet" type="text/css" href="https://openseadragon.github.io/openseadragon/images/openseadragon.css">
+    <!-- Include OpenSeadragon JS from CDN -->
+    <script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+</head>
+<body>
+    <!-- Container for OpenSeadragon -->
+    <div id="openseadragon" style="width: 800px; height: 600px;"></div>
+
+    <script>
+        // Placeholder for IIIF image URL
+        var iiifImageUrl = 'PLACEHOLDER_IIIF_IMAGE_URL';
+    
+        var viewer = OpenSeadragon({
+            id: "openseadragon",
+            prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+            tileSources: iiifImageUrl
+        });
+    </script>
+</body>
+</html>

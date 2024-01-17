@@ -32,13 +32,19 @@
         <button onclick="changeViewer('relight')">Relight Viewer</button>
         <button onclick="changeViewer('pointcloud')">Pointcloud Viewer</button>
         <button onclick="changeViewer('mesh')">Mesh Viewer</button>
+        <button onclick="changeViewer('iiif')">IIIF Viewer</button>
     </div>
 
     <script>
         function changeViewer(viewerType) {
             var iframe = document.getElementById('mainIframe');
-            iframe.src = '/' + viewerType + '/' + viewerType + '.html?q=1';
+            if (viewerType === 'iiif') {
+                iframe.src = '/iiif/iiif.html?q=125560'; // Specific URL for IIIF Viewer
+            } else {
+                iframe.src = '/' + viewerType + '/' + viewerType + '.html?q=1';
+            }
         }
     </script>
+    
 </body>
 </html>

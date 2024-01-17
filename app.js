@@ -28,8 +28,11 @@ app.use('/:type/:file', async (req, res, next) => {
     } else if (type === 'mesh') {
       apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`;
     } else if (type === 'relight') {
-      apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`;
-    } else {
+      apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`; //to fix
+    } else if (type === 'iiif') {
+      apiUrl = `https://diana.dh.gu.se/api/shfa/image/?id=${queryName}`; //to fix
+    } 
+    else {
       return res.status(400).send('Invalid model type');
     }
 
@@ -69,6 +72,10 @@ app.use('/:type/:file', async (req, res, next) => {
         else if (type === 'relight') {
           modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
         }
+        else if (type === 'iiif') {
+          modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+          modifiedData = modifiedData.replace(/'PLACEHOLDER_IIIF_IMAGE_URL'/g, `"${modelData.iiif_file}/info.json"`);
+        }
         res.send(modifiedData);
       });
     }
@@ -88,6 +95,7 @@ app.use('/:type/:file', async (req, res, next) => {
 app.use('/mesh', express.static(path.join(__dirname, 'mesh')));
 app.use('/pointcloud', express.static(path.join(__dirname, 'pointcloud')));
 app.use('/relight', express.static(path.join(__dirname, 'relight')));
+app.use('/iiif', express.static(path.join(__dirname, 'iiif')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 // Router to handle incoming modelId
@@ -107,6 +115,9 @@ app.get('/:type', async (req, res) => {
   } 
   else if (modelType === 'relight') {
     apiUrl = `https://diana.dh.gu.se/api/etruscantombs/object3dhop/?id=${queryName}`; //to fix
+  }
+  else if (modelType === 'iiif') {
+    apiUrl = `https://diana.dh.gu.se/api/shfa/image/?id=${queryName}`; //to fix
   }
   else {
     res.status(400).send('Invalid model type');
@@ -148,6 +159,10 @@ app.get('/:type', async (req, res) => {
       }
       else if (modelType === 'relight') {
         modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+      }
+      else if (modelType === 'iiif') {
+        modifiedData = modifiedData.replace(/PLACEHOLDER_TITLE/g, JSON.stringify(modelData.title || ''));
+        modifiedData = modifiedData.replace(/'PLACEHOLDER_IIIF_IMAGE_URL'/g, `"${modelData.iiif_file}/info.json"`);
       }
       res.send(modifiedData);
     });
