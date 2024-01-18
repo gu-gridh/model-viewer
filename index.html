@@ -8,7 +8,12 @@
             height: 100vh;
             float: left;
         }
-        body { margin: 0; padding: 0; display: flex; }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
         #buttonContainer {
             position: absolute;
             top: 10px;
@@ -19,6 +24,35 @@
             padding: 10px;
             margin: 5px;
         }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .toggle-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #2e2e2e;
+            color: white;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        .edit-button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .image-container {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+            height: 300px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -26,7 +60,23 @@
         <iframe id="mainIframe" src="/relight/relight.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
     </div>
     <div id="dynamicContent">
-        <iframe src="/relight/metadata.html" style="width:100%; height:100vh; border:none;"></iframe>
+        <div class="container">
+            <div class="toggle-button" id="toggleButton">Toggle: Meta Data</div>
+            <div class="image-container">
+                <p>Image goes here</p>
+            </div>
+            <div class="content" id="content">
+                <h1>Title</h1>
+                <p>Type:</p>
+                <p>Language:</p>
+                <p>Tags:</p>
+                <p>Transcription:</p>
+                <p>Translation:</p>
+                <div class="edit-button">
+                    <button>Edit Inscription</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="buttonContainer">
         <button onclick="changeViewer('relight')">Relight Viewer</button>
@@ -44,6 +94,15 @@
                 iframe.src = '/' + viewerType + '/' + viewerType + '.html?q=1';
             }
         }
+        const toggleButton = document.getElementById('toggleButton');
+
+        toggleButton.addEventListener('click', () => {
+            if (toggleButton.textContent === 'Toggle: Meta Data') {
+                toggleButton.textContent = 'Toggle: Spatial Context';
+            } else {
+                toggleButton.textContent = 'Toggle: Meta Data';
+            }
+        });
     </script>
     
 </body>
