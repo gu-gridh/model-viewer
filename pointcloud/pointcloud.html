@@ -47,7 +47,7 @@
 	<!-- INCLUDE SETTINGS HERE -->
 
 	<div class="potree_container"
-		style="position: absolute; width: 100%; height: calc(100%); left: 0px; top: 0px; bottom:200px;">
+		style="position: relative; width: 100%; height: calc(100% - 80px); left: 0px; top: 0px; bottom:200px;">
 
 		<!--  specify the bakground-color -->
 		<div id="potree_render_area" style="background-color:var(--viewer-bg)"></div>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 
-	<div class="ui-overlay-container" style="position:absolute; height:50px; bottom:0px; z-index:1000; color:white">
+	<div class="ui-overlay-container" style="position:absolute; height:50px; bottom:80px; z-index:1000; color:white">
 		<div class="LODtool">
 			<span>Max points:</span> <span id="lblPointBudget"></span>
 			<div id="sldPointBudget"></div>

@@ -134,7 +134,7 @@ h2 {
     z-index: 100000;
     width: 340px;
     height: auto;
-    bottom: 35px;
+    bottom: 110px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -186,15 +186,6 @@ background-position:center;
     font-size: 1.0em;
     line-height:2.0;
     box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
-}
-
-
-#footer-container {
-    position: absolute;
-    height: 80px;
-    bottom: 0px;
-    width: 100%;
-    z-index: 1000;
 }
 
 /* The switch between the different "tabs" in the sidebar */
