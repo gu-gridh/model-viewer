@@ -2,15 +2,10 @@
 .DS_Store
 node_modules/.package-lock.json
 node_modules/.yarn-integrity
-.DS_Store
 *.lock
 node_modules/send/node_modules/.bin/mime
 *.json
 !config.json
 !annotations.w3c.json
-.DS_Store
+!relight/rti-folder/*.json
 node_modules/.package-lock.json
-.DS_Store
-.DS_Store
-.DS_Store
-.DS_Store
