@@ -2,13 +2,15 @@
 <html>
     <head>
         <title>IIIF Image Viewer</title>
+        <link  rel="stylesheet" href="iiif.css">
+        <link  rel="stylesheet" href="../styles/shared_styles.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.14/dist/annotorious.min.css">
         <script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.14/dist/openseadragon-annotorious.min.js"></script>
     </head>
     <body>
         <!-- Container for OpenSeadragon -->
-        <div id="openseadragon" style="width: 800px; height: 600px;"></div>
+        <div id="openseadragon" style="width: 100%; height: calc(100vh - 80px); background-color:var(--color-0);"></div>
         <!-- <button onclick="viewAnnotations()">View Annotations</button>
         <div id="annotationsJson" style="white-space: pre;"></div> -->
 
