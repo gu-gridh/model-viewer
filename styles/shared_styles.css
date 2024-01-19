@@ -371,8 +371,8 @@ border-radius:50% !important;
 	padding:		0px!important;
 	border:			1px solid rgba(255, 255, 255, 0.2) !important;
 	font-size:		0.0em !important;
-   
     box-shadow:     none!important;
+
  
 }
 
@@ -382,6 +382,8 @@ border-radius:50% !important;
     color:			white;
 	background-color:black;
 	border-radius:	6px !important;
+    min-height:         20px!important;
+    min-width:         20px!important;
     height:         auto!important;
     width:          auto!important;
 	padding:		5px 10px!important;
@@ -389,6 +391,7 @@ border-radius:50% !important;
 	font-size:		1.0em !important;
     transform:		translate(0px, -5px)!important;
     box-shadow:none!important;
+    transition: all 0.2s ease-in-out;
 }
 
 .annotation-expand{
