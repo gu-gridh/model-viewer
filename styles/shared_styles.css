@@ -349,3 +349,146 @@ border-radius:50% !important;
     }
 
 }
+
+
+/* Point cloud annotation style */
+
+.annotation{
+    position:		absolute;
+	padding:		20px !important;
+	opacity:		0.8!important;
+	transform:		translate(-50%, -30px);
+	will-change:	left, top;
+}
+
+.annotation-titlebar{
+    font-family:    "Barlow Condensed", sans-serif !important;
+    font-weight:    200 !important;
+    color:			white;
+	background-color:rgb(180,50,50);
+	border-radius:	50% !important;
+    height:         20px!important;
+    width:          20px!important;
+	padding:		0px!important;
+	border:			1px solid rgba(255, 255, 255, 0.2) !important;
+	font-size:		0.0em !important;
+   
+    box-shadow:     none!important;
+ 
+}
+
+.annotation-titlebar:hover{
+    font-family:    "Barlow Condensed", sans-serif !important;
+    font-weight:    200 !important;
+    color:			white;
+	background-color:black;
+	border-radius:	6px !important;
+    height:         auto!important;
+    width:          auto!important;
+	padding:		5px 10px!important;
+	border:			0px solid rgba(255, 255, 255, 0.0) !important;
+	font-size:		1.0em !important;
+    transform:		translate(0px, -5px)!important;
+    box-shadow:none!important;
+}
+
+.annotation-expand{
+	color:			white;
+	font-size:		0.6em;
+	opacity:		1;
+}
+
+.annotation-action-icon{
+	width:			20px;
+	height:			20px;
+	display:		none!important;
+	vertical-align:	middle;
+	line-height:	1.5em;
+	text-align:		center;
+	font-family:	inherit!important;
+	font-weight:	inherit!important;
+	cursor: 		pointer;
+}
+
+.annotation-action-icon:hover{
+	filter:			drop-shadow(0px 0px 0px black)!important;
+	width:			24px;
+	height:			24px;
+	cursor: 		pointer;
+	
+}
+
+.annotation-item {
+	color:			white;
+	background-color: 	black;
+	opacity:		0.0 !important;
+	border-radius:	1.5em;
+	font-size:		1em;
+	line-height:	1.5em;
+	padding:		5px 15px 5px 15px !important;
+	font-weight:	200 !important;
+	display:		flex;
+	cursor:			default;
+}
+
+.annotation-item:hover {
+	box-shadow:		0 0 0px #000000 !important;
+	opacity:		1.0;
+    
+    color:			white;
+	background-color: 	black;
+	opacity:		1.0 !important;
+	border-radius:	1.5em;
+	font-size:		1em;
+	line-height:	1.5em;
+	padding:		5px 15px 5px 15px !important;
+	font-weight:	200 !important;
+	display:		flex;
+	cursor:			default;
+}
+
+.annotation-main{
+	display:		flex;
+	flex-grow:		1;
+}
+
+.annotation-label{
+	display:		inline-block;
+	height:			100%;
+	flex-grow:		1;
+	user-select:	none;
+	-moz-user-select: none;
+	z-index:		100;
+	vertical-align:	middle;
+	line-height:	1.5em;
+	cursor: 		pointer;
+	white-space:	nowrap;
+    font-family:	inherit!important;
+	font-weight:	inherit!important;
+}
+
+.annotation-description{
+	opacity: 		0;
+    pointer-events: none;
+}
+
+.annotation-description-close{
+	filter:			invert(100%);
+	float:			right;
+	opacity:		0.5;
+	margin:			0px 0px 8px 8px;
+}
+
+	
+.annotation-description-content{
+	color:			white;
+}
+
+.annotation-icon{
+	width:		20px;
+	height:		20px;
+	filter:		invert(100%);
+	margin:		2px 2px;
+	opacity:	1.0;
+}
+
