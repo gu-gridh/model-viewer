@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap"
     rel="stylesheet" />
     <style>
-        #viewerContent, #dynamicContent {
+        #left-pane, #right-pane {
             width: 50%;
             height: 100vh;
             float: left;
@@ -18,23 +18,23 @@
         }
 
         .ui-module-container{
-            position: absolute;
-            top: 26px;
-            width:100vh;
+       
+            width:100%;
             z-index: 1000;
             display:flex;
             flex-direction: row;
             justify-content:center;
         }
 
-        #ui-module {
+        .ui-module {
+            top: 26px;
             font-family: "Barlow Condensed", sans-serif !important;
             position: absolute;
             background-color:black;
             border-radius:8px;
             padding:0px 10px;
         }
-        #ui-module .ui-module-item {
+        .ui-module .ui-module-item {
             padding: 5px;
             margin: 5px;
             color:white;
@@ -74,21 +74,29 @@
     </style>
 </head>
 <body>
-    <div id="viewerContent">
-        <iframe id="mainIframe" src="/relight/relight.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
-    </div>
-    <div id="dynamicContent">
+    <div id="left-pane">
         <div class="ui-module-container">
-            <div id="ui-module">
-                <div class="ui-module-item" onclick="changeViewer('metadata')">Metadata</div>
-                <div class="ui-module-item"onclick="changeViewer('pointcloud')">Spatial context</div> 
-        
-               
+            <div class="ui-module">
+                <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Inscriptions</div>
+                <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Topography</div>
+                <div class="ui-module-item" onclick="changeLeftViewer('mesh')">Surface Model</div>
+                <div class="ui-module-item" onclick="changeLeftViewer('relight')">RTI</div>
             </div>
             </div>
+        <iframe id="leftIframe" src="/mesh/mesh.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
+    </div>
+    <div id="right-pane">
+        <div class="ui-module-container">
+            <div class="ui-module">
+                <div class="ui-module-item" onclick="changeRightViewer('metadata')">Metadata</div>
+                <div class="ui-module-item"onclick="changeRightViewer('pointcloud')">Spatial context</div>    
+            </div>
+        </div>
+      <iframe id="rightIframe" src="/pointcloud/pointcloud.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
+    </div>
 
-        <div class="container">
-            <!-- <div class="toggle-button" id="toggleButton">Toggle: Meta Data</div> -->
+       <!--  <div class="container">
+            <div class="toggle-button" id="toggleButton">Toggle: Meta Data</div>
             <div class="image-container">
                 <p>Image goes here</p>
             </div>
@@ -103,20 +111,30 @@
                     <button>Edit Inscription</button>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="ui-module-container">
-    <div id="ui-module">
-        <div class="ui-module-item" onclick="changeViewer('iiif')">Incriptions</div>
-        <div class="ui-module-item" onclick="changeViewer('iiif')">Topography</div>
-        <div class="ui-module-item" onclick="changeViewer('mesh')">Surface</div>
-        <div class="ui-module-item" onclick="changeViewer('relight')">RTI</div>
-    </div>
+        </div> -->
+
+        <div id="footer-container"></div>
+	<script>
+		$("#footer-container").load("footer.html");
+	</script>
+
     </div>
 
+
+
+
     <script>
-        function changeViewer(viewerType) {
-            var iframe = document.getElementById('mainIframe');
+        function changeLeftViewer(viewerType) {
+            var iframe = document.getElementById('leftIframe');
+            if (viewerType === 'iiif') {
+                iframe.src = '/iiif/iiif.html?q=125560'; // Specific URL for IIIF Viewer
+            } else {
+                iframe.src = '/' + viewerType + '/' + viewerType + '.html?q=1';
+            }
+        }
+
+        function changeRightViewer(viewerType) {
+            var iframe = document.getElementById('rightIframe');
             if (viewerType === 'iiif') {
                 iframe.src = '/iiif/iiif.html?q=125560'; // Specific URL for IIIF Viewer
             } else {

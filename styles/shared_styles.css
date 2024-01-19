@@ -134,7 +134,7 @@ h2 {
     z-index: 100000;
     width: 340px;
     height: auto;
-    bottom: 95px;
+    bottom: 35px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -177,7 +177,7 @@ background-position:center;
     z-index: 100000;
     width: 270px;
     height: auto;
-    bottom: 90px;
+    bottom: 20px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -330,6 +330,10 @@ border-radius:50% !important;
     margin-top: 20px;
     width: 150px;
     color: var( --font-color) !important;
+}
+
+.potree_menu_toggle{
+    display: none;
 }
 
 /* Hide away complexities on mobile */

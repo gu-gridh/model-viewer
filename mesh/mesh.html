@@ -44,11 +44,11 @@
 		</div>
 
 		<!-- This is the toogle for the sidebar and is hidden on mobile-->
-		<div id="menu-widget" onclick="MenuSwitch()"></div>
+		<!-- <div id="menu-widget" onclick="MenuSwitch()"></div> -->
 
 		<!-- This is for the mobile view and should only be visible if there is a link to an AR-model-->
-		<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar"
-					src="skins/augmented-reality.svg" /></a></div>
+	<!-- 	<div id="ar-widget"><a rel="ar" href="models/nordenskjoldcairnpreview.usdz"><img id="ar"
+					src="skins/augmented-reality.svg" /></a></div> -->
 
 
 		<!-- The mobile toolbar has fewer tools due to complexity issues. 
@@ -78,9 +78,9 @@
 					<!--MEASURE-->
 
 					<!--CAMERA-->
-					<img id="perspective_m" title="Perspective Camera" src="skins/perspective_no.png"
+					<!-- <img id="perspective_m" title="Perspective Camera" src="skins/perspective_no.png"
 						style="position:absolute; visibility:hidden;" />
-					<img id="orthographic_m" title="Orthographic Camera" src="skins/perspective.png" />
+					<img id="orthographic_m" title="Orthographic Camera" src="skins/perspective.png" /> -->
 					<!--CAMERA-->
 				</div>
 			</div>
@@ -89,14 +89,16 @@
 
 	</div>
 
-	<!-- Title, fetched from the backed -->
+	<!-- Title, fetched from the backed
 	<div class="title">
 	</div>
+	 -->
 
-	<!-- This can probably be static -->
+	<!-- This can probably be static 
 	<div class="model-viewer-id">
 		Mesh Model <br> visualisation tool
 	</div>
+	-->
 
 
 
@@ -118,11 +120,6 @@
 			Scroll to zoom in and out.
 		</div>
 	</div>
-
-	<!-- Link to the common footer -->
-	<div id="footer-container"></div>
-	<script> $("#footer-container").load("../pointcloud/footer.html");</script>
-
 </body>
 
 <script type="text/javascript">
@@ -171,7 +168,7 @@
 	}
 
 
-// Most of the functions have mobile variaitons, otherwise the buttons break
+// Most of the functions have mobile variations, otherwise the buttons break
 	function actionsToolbar(action) {
 		// This one needs to be the same one as the above start position fetched from backend
 		if (action == 'home') presenter.animateToTrackballPosition(PLACEHOLDER_TRACKBALLSTART);

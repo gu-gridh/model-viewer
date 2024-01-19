@@ -47,7 +47,7 @@
 	<!-- INCLUDE SETTINGS HERE -->
 
 	<div class="potree_container"
-		style="position: absolute; width: 100%; height: calc(100% - 80px); left: 0px; top: 0px; bottom:200px;">
+		style="position: absolute; width: 100%; height: calc(100%); left: 0px; top: 0px; bottom:200px;">
 
 		<!--  specify the bakground-color -->
 		<div id="potree_render_area" style="background-color:var(--viewer-bg)"></div>
@@ -118,10 +118,10 @@
 	</script>
 
 
-	<div class="model-viewer-id">
+	<!-- <div class="model-viewer-id">
 		Point Cloud <br> visualisation tool
-	</div>
-	<div class="ui-overlay-container" style="position:absolute;  height:300px; top:25px; z-index:1000;">
+	</div> -->
+	<div class="ui-overlay-container" style="position:absolute;  height:300px; top:25px; z-index:1000; display:none;">
 		<div id="orientation"
 			style="display:flex; flex-direction: row; justify-content: space-between; pointer-events:auto;width:230px; height:30px; border-radius:8px; background-color:rgba(0,0,0,0.8); padding:10px 15px; box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;">
 		</div>
@@ -143,11 +143,6 @@
 			<div id="sldPointBudget"></div>
 		</div>
 	</div>
-
-	<div id="footer-container"></div>
-	<script>
-		$("#footer-container").load("footer.html");
-	</script>
 </body>
 
 </html>
