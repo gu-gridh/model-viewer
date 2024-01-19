@@ -1,52 +1,73 @@
 <!doctype html>
 <html>
+
 <head>
+
     <title>Content Display</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100,200,300,400,500,600&display=swap"
-    rel="stylesheet" />
+        rel="stylesheet" />
+    <script src="pointcloud/libs/jquery/jquery-3.1.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <style>
-        #left-pane, #right-pane {
-            width: 50%;
+        html,
+        body {
             height: 100vh;
-            float: left;
-        }
-        body { 
-            margin: 0; 
-            padding: 0; 
-            display: flex;
-            font-family: Arial, sans-serif;
+            width: 100vw;
+            margin: 0 !important;
+            overflow: hidden !important;
+            font-family: "Barlow Condensed", sans-serif !important;
+            background-color: green;
+            -ms-overflow-style: none;
         }
 
-        .ui-module-container{
-       
-            width:100%;
+        #main-content {
+            height: calc(100vh - 80px) !important;
+            width: 100vw;
+            display: flex;
+        }
+
+        #left-pane,
+        #right-pane {
+            width: 50%;
+            height: 100%;
+        }
+
+        .ui-module-container {
+            width: 100%;
             z-index: 1000;
-            display:flex;
+            display: flex;
             flex-direction: row;
-            justify-content:center;
+            justify-content: center;
         }
 
         .ui-module {
             top: 26px;
-            font-family: "Barlow Condensed", sans-serif !important;
+
             position: absolute;
-            background-color:black;
-            border-radius:8px;
-            padding:0px 10px;
+            background-color: black;
+            border-radius: 8px;
+            padding: 0px 10px;
         }
+
         .ui-module .ui-module-item {
             padding: 5px;
             margin: 5px;
-            color:white;
-            background-color:none;
-            float:left;
-            cursor:pointer;
+            color: white;
+            background-color: none;
+            float: left;
+            cursor: pointer;
         }
+
         .container {
             max-width: auto;
             margin: 0 auto;
             padding: 20px;
         }
+
         .toggle-button {
             display: inline-block;
             padding: 5px 10px;
@@ -54,16 +75,19 @@
             color: white;
             cursor: pointer;
         }
+
         .content {
             padding: 20px;
             border: 1px solid #ccc;
             background-color: white;
         }
+
         .edit-button {
             display: block;
             margin-top: 20px;
             text-align: center;
         }
+
         .image-container {
             background-color: #f0f0f0;
             text-align: center;
@@ -73,29 +97,32 @@
         }
     </style>
 </head>
-<body>
-    <div id="left-pane">
-        <div class="ui-module-container">
-            <div class="ui-module">
-                <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Inscriptions</div>
-                <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Topography</div>
-                <div class="ui-module-item" onclick="changeLeftViewer('mesh')">Surface Model</div>
-                <div class="ui-module-item" onclick="changeLeftViewer('relight')">RTI</div>
-            </div>
-            </div>
-        <iframe id="leftIframe" src="/mesh/mesh.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
-    </div>
-    <div id="right-pane">
-        <div class="ui-module-container">
-            <div class="ui-module">
-                <div class="ui-module-item" onclick="changeRightViewer('metadata')">Metadata</div>
-                <div class="ui-module-item"onclick="changeRightViewer('pointcloud')">Spatial Context</div>    
-            </div>
-        </div>
-      <iframe id="rightIframe" src="/pointcloud/pointcloud.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
-    </div>
 
-       <!--  <div class="container">
+<body>
+    <div id="main-content">
+        <div id="left-pane">
+            <div class="ui-module-container">
+                <div class="ui-module">
+                    <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Inscriptions</div>
+                    <div class="ui-module-item" onclick="changeLeftViewer('iiif')">Topography</div>
+                    <div class="ui-module-item" onclick="changeLeftViewer('mesh')">Surface Model</div>
+                    <div class="ui-module-item" onclick="changeLeftViewer('relight')">RTI</div>
+                </div>
+            </div>
+            <iframe id="left-Iframe" src="/mesh/mesh.html?q=1" style="width:100%; height:100vh; border:none;"></iframe>
+        </div>
+        <div id="right-pane">
+            <div class="ui-module-container">
+                <div class="ui-module">
+                    <div class="ui-module-item" onclick="changeRightViewer('metadata')">Metadata</div>
+                    <div class="ui-module-item" onclick="changeRightViewer('pointcloud')">Spatial Context</div>
+                </div>
+            </div>
+            <iframe id="right-Iframe" src="/pointcloud/pointcloud.html?q=1"
+                style="width:100%; height:100vh; border:none;"></iframe>
+        </div>
+
+        <!--  <div class="container">
             <div class="toggle-button" id="toggleButton">Toggle: Meta Data</div>
             <div class="image-container">
                 <p>Image goes here</p>
@@ -112,20 +139,16 @@
                 </div>
             </div>
         </div> -->
-
-        <div id="footer-container"></div>
-	<script>
-		$("#footer-container").load("footer.html");
-	</script>
-
     </div>
 
-
-
+    <div id="footer-container"></div>
+    <script>
+        $("#footer-container").load("footer.html");
+    </script>
 
     <script>
         function changeLeftViewer(viewerType) {
-            var iframe = document.getElementById('leftIframe');
+            var iframe = document.getElementById('left-Iframe');
             if (viewerType === 'iiif') {
                 iframe.src = '/iiif/iiif.html?q=125560'; // Specific URL for IIIF Viewer
             } else {
@@ -134,12 +157,8 @@
         }
 
         function changeRightViewer(viewerType) {
-            var iframe = document.getElementById('rightIframe');
-            if (viewerType === 'iiif') {
-                iframe.src = '/iiif/iiif.html?q=125560'; // Specific URL for IIIF Viewer
-            } else {
+            var iframe = document.getElementById('right-Iframe');
                 iframe.src = '/' + viewerType + '/' + viewerType + '.html?q=1';
-            }
         }
         const toggleButton = document.getElementById('toggleButton');
 
@@ -151,6 +170,7 @@
             }
         });
     </script>
-    
+
 </body>
+
 </html>
