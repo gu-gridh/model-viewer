@@ -2834,7 +2834,7 @@ onMouseWheel: function (wheelDelta, x, y, e) {
 
 		var testValue = this._scene.config.pointSize;
 
-		this._scene.config.pointSize += wheelDelta/10;
+		this._scene.config.pointSize += wheelDelta/100;
 
 		if (this._scene.config.pointSize < this._scene.config.pointSizeMinMax[0]) this._scene.config.pointSize = this._scene.config.pointSizeMinMax[0];
 		else if (this._scene.config.pointSize > this._scene.config.pointSizeMinMax[1]) this._scene.config.pointSize = this._scene.config.pointSizeMinMax[1];

@@ -20,7 +20,8 @@
 	position: absolute; 
 	bottom:20px; 
 	width:auto; 
-	padding:5px 10px; 
+	padding:0px 10px; 
+	padding-top:5px;
 	background-color:rgba(0,0,0,0.8); 
 	box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
 	border-radius:8px;
@@ -36,14 +37,14 @@
 	float:left;
 }
 .relight-toolbox > div:hover { opacity:0.9; }
-.relight-home       { background-image: url(skins/minimal_light/home.png); }
-.relight-zoomin     { background-image: url(skins/minimal_light/zoomin.png); }
-.relight-zoomout    { background-image: url(skins/minimal_light/zoomout.png); }
+.relight-home       { background-image: url(../../styles/interface/frame.png); background-size:30px!important; background-repeat:no-repeat;}
+.relight-zoomin     { background-image: url(../../styles/interface/plus_big.png);  }
+.relight-zoomout    { background-image: url(../../styles/interface/minus_big.png);  }
 .relight-rotate     { background-image: url(skins/minimal_light/rotate.png); }
-.relight-light      { background-image: url(skins/minimal_light/light.png); }
-.relight-light_on   { background-image: url(skins/minimal_light/light_on.png); }
-.relight-normals    { background-image: url(skins/minimal_light/normals.png); }
-.relight-normals_on { background-image: url(skins/minimal_light/normals_on.png); }
+.relight-light      { background-image: url(../../styles/interface/light.png); }
+.relight-light_on   { background-image: url(../../styles/interface/light_on.png); }
+.relight-normals    { background-image: url(../../styles/interface/colour_on.png); }
+.relight-normals_on { background-image: url(../../styles/interface/colour_off.png); }
 .relight-full       { background-image: url(skins/minimal_light/full.png); }
 .relight-full_on    { background-image: url(skins/minimal_light/full_on.png); }
 .relight-info       { background-image: url(skins/minimal_light/help.png); }

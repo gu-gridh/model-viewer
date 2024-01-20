@@ -70,6 +70,7 @@ body {
     -ms-touch-action: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0); 
     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
 }
 
 #toolbar_m img {
