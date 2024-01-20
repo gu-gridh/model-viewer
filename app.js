@@ -98,6 +98,7 @@ app.use('/pointcloud', express.static(path.join(__dirname, 'pointcloud')));
 app.use('/relight', express.static(path.join(__dirname, 'relight')));
 app.use('/iiif', express.static(path.join(__dirname, 'iiif')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
+app.use('/metadata', express.static(path.join(__dirname, 'metadata')));
 
 // Router to handle incoming modelId
 app.get('/:type', async (req, res) => {

@@ -10,7 +10,8 @@
     --color-1: rgba(122, 129, 132, 1);
     --color-2: rgba(48, 48, 48, 1);
     --color-3: rgba(45, 109, 130, 1);
-    --color-4: rgba(16, 143, 185, 1);
+    --color-4: rgba(180, 100, 100, 1);
+    --color-5: rgba(140, 60, 60, 1);
 
     --bg-color: var(--color-0);
     --bg-color-2: rgb(60, 80, 85);
@@ -20,7 +21,6 @@
 
     --font-color: #ffffff;
     --font-color-2: #ddd;
-    --font-color: #cccccc;
     --border-color: black;
 
     --measurement-detail-node-bg-light: var(--color-1);
@@ -56,6 +56,28 @@ body {
     line-height: 0.90;
     font-size: 3.5vw;
     pointer-events: none;
+}
+
+.theme-color-text {
+    color:var(--color-4) !important;
+}
+
+.theme-color-background {
+    background-color:var(--color-4)!important;
+}
+
+.theme-button {
+    background-color:var(--color-4);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    width: 150px;
+    color: var( --font-color);
+    cursor:pointer;
+}
+
+.theme-button:hover {
+    background-color:var(--color-5);
 }
 
 /* This is the label that states what type of viewer this is: mesh or point cloud */
@@ -314,14 +336,8 @@ border-radius:50% !important;
     margin-top: 5px;
 }
 
-.theme-button {
-    background-color:var(--color-4);
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-top: 20px;
-    width: 150px;
-    color: var( --font-color) !important;
-}
+
+
 
 .potree_menu_toggle{
     display: none;
