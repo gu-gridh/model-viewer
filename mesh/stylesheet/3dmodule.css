@@ -275,7 +275,7 @@ table, th, td, tr {
     position: absolute;
     width: 160px;
     height: auto;
-    margin-top: 30px;
+    margin-top: 150px;
     margin-left: calc(50% - 110px);
     padding: 5px 10px 5px 10px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -327,23 +327,7 @@ table, th, td, tr {
 }
 
 @media screen and (max-width: 800px) {
-    #module-container {
-    
-        left: 0px;
-
-    }
-
-    #ar-widget {
-        display: block;
-    }
-
-    #toolbar_m {
-        display: block;
-    }
-
-    #menu-widget {
-        display: none;
-    }
+   
 }
 
 /*IE*/
