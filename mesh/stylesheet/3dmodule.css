@@ -56,10 +56,10 @@ body {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 8px;
-    padding: 8px 5px;
     bottom: 100px;
-    width: 300px;
-    height: 30px;
+    padding-left:10px;
+    width: 355px;
+    height:48px;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -khtml-user-select: none;
@@ -71,15 +71,19 @@ body {
     -webkit-tap-highlight-color: rgba(0,0,0,0); 
     -webkit-tap-highlight-color: transparent;
     box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 #toolbar_m img {
-    margin-left: 15px;
-    margin-top: 0px;
-    margin-bottom: 35px;
-    width: 30px;
-    height: 30px;
-    opacity: 0.9;
+    background-size:cover; 
+    padding-top:4px;
+	margin-right:8px; 
+	margin-left:8px; 
+	max-width:30px; 
+	max-height:30px; 
+    opacity: 0.8;
     cursor: pointer;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -99,7 +103,7 @@ body {
 
 .tool-icon img {
     margin-left: 20px;
-    margin-top: 0px;
+    margin-top: 4px;
     margin-bottom: 15px;
     width: 30px;
     height: 30px;

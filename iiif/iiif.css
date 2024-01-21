@@ -47,7 +47,7 @@ body {
 		justify-content: center;
 		width: 100%;
 		position: absolute;
-		bottom: 40px;
+		bottom: 50px;
 		height:100px;
 	}
 	
@@ -55,12 +55,12 @@ body {
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-	  width:80px;
-	  height:30px;
-	  padding:2px 5px 6px 5px;
-
- background-color:rgb(0,0,0,0.8);
- border-radius:8px;
+		padding-left:12px;
+		padding-right:10px;
+	  	width:auto;
+		height:48px;
+ 		background-color:rgb(0,0,0,0.8);
+ 		border-radius:8px;
 	  z-index: 1000;
 	  cursor:pointer;
 	  box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
@@ -71,10 +71,8 @@ body {
 	  background-size: 100%;
 	  background-repeat: no-repeat;
 	  background-position: center;
-	
 	  width: 35px;
 	  height: 35px;
-	  border-radius: 50%;
 	  overflow: hidden;
 	  cursor:pointer;
 	}
@@ -98,6 +96,17 @@ body {
 	  display: inline-block;
 	  position: relative;
 	}
+
+	#Home {
+		background: url(../styles/interface/frame.png);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 30px;
+		height: 30px;
+		cursor:pointer;
+		overflow: hidden;
+	  }
 	
 	#ZoomIn {
 	  background: url(../styles/interface/plus_big.png);
@@ -124,10 +133,12 @@ body {
 	.NavButton {
 	  width: 35px;
 	  height: 35px;
-	  border-radius: 50%;
 	  color: white;
 	  opacity: 0.7;
-	  margin-bottom: 3px;
+	  margin-right:8px; 
+	  margin-left:8px; 
+	  margin-top:8px; 
+	  margin-bottom:8px; 
 	  cursor:pointer;
 	}
 	.NavButton:hover {

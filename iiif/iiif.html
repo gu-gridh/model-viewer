@@ -20,15 +20,20 @@
 
         <div class="interface-area">
     <div id="ToolbarBottom">
-        <!-- <a id="full-page" href="#full-page">
-            <div id="FullPage" class="NavButton"></div>
-        </a> -->
+
+        <a id="home" href="#home">
+            <div id="Home" class="NavButton"></div>
+        </a>
+       
         <a id="zoom-in" href="#zoom-in">
             <div id="ZoomIn" class="NavButton"></div>
         </a>
         <a id="zoom-out" href="#zoom-out">
             <div id="ZoomOut" class="NavButton"></div>
         </a>
+          <a id="full-page" href="#full-page">
+            <div id="FullPage" class="NavButton"></div>
+        </a> 
     </div>
 </div>
 
@@ -45,13 +50,14 @@
                 minZoomImageRatio: 0.8,
                 homeFillsViewer: true,
                 showZoomControl: true,
-                showHomeControl: false,
+                showHomeControl: true,
                 showFullPageControl: true,
                 showNavigator: true,
                 navigatorAutoFade: true,
                 fullPageButton: "full-page",
                 zoomInButton: "zoom-in",
                 zoomOutButton: "zoom-out",
+                homeButton: "home",
             });
 
             // Initialize the Annotorious plugin
