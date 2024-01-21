@@ -49,8 +49,8 @@
 .relight-light_on   { background-image: url(../../styles/interface/light_on.png); }
 .relight-normals    { background-image: url(../../styles/interface/colour_on.png); }
 .relight-normals_on { background-image: url(../../styles/interface/colour_off.png); }
-.relight-full       { background-image: url(../../styles/interface/expand.svg); max-width:35px!important; max-height:35px!important; margin-top:4px!important; }
-.relight-full_on    { background-image: url(../../styles/interface/compress.svg); max-width:35px!important; max-height:35px!important;  margin-top:4px!important;  }
+.relight-full       { background-image: url(../../styles/interface/expand.svg);  }
+.relight-full_on    { background-image: url(../../styles/interface/compress.svg);   }
 .relight-info       { background-image: url(skins/minimal_light/help.png); }
 
 .relight {
