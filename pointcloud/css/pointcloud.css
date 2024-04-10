@@ -113,8 +113,8 @@
 
 #splat_quality_options .ui-state-default {
     border-style: none !important;
-    background-color: rgb(50, 50, 50) !important;
-    color: white;
+   
+    color: black;
 }
 
 .ui-button {
