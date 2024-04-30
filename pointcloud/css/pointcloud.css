@@ -32,6 +32,19 @@
     cursor:default;
 }
 
+.orientation{
+    display:flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    pointer-events:auto;
+    width:230px; 
+    height:30px; 
+    border-radius:8px; 
+    background-color:rgba(0,0,0,0.8); 
+    padding:10px 15px; 
+    box-shadow: 0.0rem 0.1rem 1rem rgba(0, 0, 0, 0.3) !important;
+}
+
 
 
 /* Potree sidebar lists*/
