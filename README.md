@@ -1,4 +1,4 @@
-# Project Name
+# Model Viewer
 GRIDH Model Viewer
 A Node.js application built with Express for visualizing and interacting with 3D models using 3DHOP and Potree
 
